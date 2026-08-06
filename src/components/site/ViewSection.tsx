@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Expand, Loader2 } from "lucide-react";
-import landscape from "@/assets/Group-35.png.asset.json";
+import landscape from "@/assets/Maruti_360_view.webp.asset.json";
 import { Reveal } from "./Reveal";
 
 const TOUR_URL = "https://view.pixeldo.com/Maruti360/";
