@@ -66,7 +66,7 @@ export function SiteHeader() {
         </div>
 
         <button
-          className="md:hidden text-foreground"
+          className="lg:hidden text-foreground"
           aria-label="Toggle menu"
           onClick={() => setOpen((v) => !v)}
         >
@@ -75,7 +75,7 @@ export function SiteHeader() {
       </div>
 
       {open && (
-        <nav className="md:hidden border-t border-border bg-surface-2 px-6 py-4">
+        <nav className="lg:hidden border-t border-border bg-surface-2 px-6 py-4">
           {NAV.map((item) => (
             <a
               key={item.label}
