@@ -4,7 +4,13 @@ import { Reveal } from "./Reveal";
 
 export function FloorPlanSection() {
   const [plan, setPlan] = useState("4 BHK");
-  const PLANS = ["3 BHK", "4 BHK", "5 BHK"];
+  const PLANS = [
+    { label: "3 BHK", href: "/floor-plan/3-bhk" },
+    { label: "4 BHK", href: "/floor-plan/4-bhk" },
+    { label: "5 BHK", href: "/floor-plan/5-bhk" },
+  ];
+  const active = PLANS.find((p) => p.label === plan) ?? { label: "4 BHK", href: "/floor-plan/4-bhk" };
+
 
   return (
     <section id="floor-plan" className="bg-surface px-5 py-16 md:px-10 md:py-28">
@@ -34,22 +40,23 @@ export function FloorPlanSection() {
               <div className="mt-6 flex flex-wrap gap-6">
                 {PLANS.map((p) => (
                   <button
-                    key={p}
-                    onClick={() => setPlan(p)}
+                    key={p.label}
+                    onClick={() => setPlan(p.label)}
                     className={`w-fit border-b pb-1 text-[12px] uppercase tracking-[0.16em] transition-colors ${
-                      plan === p
+                      plan === p.label
                         ? "border-gold text-gold"
                         : "border-transparent text-muted-foreground hover:text-gold"
                     }`}
                   >
-                    {p}
+                    {p.label}
                   </button>
                 ))}
               </div>
 
-              <a href="/floor-plan" className="btn-gold mt-8">
-                Explore
+              <a href={active.href} className="btn-gold mt-8">
+                Explore {active.label}
               </a>
+
             </div>
 
             <img
