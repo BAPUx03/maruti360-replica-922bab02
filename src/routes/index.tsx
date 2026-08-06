@@ -3,6 +3,7 @@ import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { Hero } from "@/components/site/Hero";
 import { IntroSection } from "@/components/site/IntroSection";
+import { VideoSection } from "@/components/site/VideoSection";
 import { StatsSection } from "@/components/site/StatsSection";
 import { ViewSection } from "@/components/site/ViewSection";
 import { LocationSection } from "@/components/site/LocationSection";
@@ -42,6 +43,7 @@ function Index() {
       <main>
         <Hero />
         <IntroSection />
+        <VideoSection />
         <StatsSection />
         <ViewSection />
         <LocationSection />
