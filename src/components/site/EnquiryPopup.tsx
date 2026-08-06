@@ -189,7 +189,7 @@ export function EnquiryPopup() {
               </div>
 
               <form className="mt-6 space-y-4 text-left" onSubmit={submitForm}>
-                <div className="grid gap-4 sm:grid-cols-2">
+                <div className="grid grid-cols-2 gap-3 sm:gap-4">
                   <div>
                     <label className={labelClass}>Requirement</label>
                     <Select
@@ -210,7 +210,7 @@ export function EnquiryPopup() {
                   </div>
                 </div>
 
-                <div className="grid gap-4 sm:grid-cols-2">
+                <div className="grid grid-cols-2 gap-3 sm:gap-4">
                   <div>
                     <label className={labelClass}>First Name</label>
                     <input
@@ -280,7 +280,7 @@ export function EnquiryPopup() {
                   </div>
                 </div>
 
-                <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-[10px] uppercase tracking-[0.16em] text-muted-foreground">
+                <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1.5 text-[9px] sm:text-[10px] uppercase tracking-[0.16em] text-muted-foreground">
                   <span className="text-gold">✦ Instant Call Back</span>
                   <span className="text-gold">✦ Floor Plans</span>
                   <span className="text-gold">✦ Priority Visit</span>
