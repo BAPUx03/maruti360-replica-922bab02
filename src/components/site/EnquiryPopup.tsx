@@ -1,60 +1,382 @@
-import { useEffect, useState } from "react";
-import { X } from "lucide-react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { ChevronDown, Phone, ShieldCheck, X } from "lucide-react";
+import { useServerFn } from "@tanstack/react-start";
+import { sendPhoneOtp, verifyPhoneOtp } from "@/lib/otp.functions";
+
+const REQUIREMENTS = [
+  "3 BHK",
+  "4 BHK",
+  "5 BHK",
+  "Larger-format residence",
+  "Jodi / Duplex / Penthouse — if available",
+  "Investment",
+];
+
+const BUDGETS = ["₹2 Cr – ₹3 Cr", "₹4 Cr – ₹5 Cr", "₹6 Cr – ₹7 Cr", "₹8 Cr – ₹10 Cr", "₹10 Cr+"];
+
+const COUNTRIES = [
+  { code: "+91", label: "IN +91" },
+  { code: "+971", label: "AE +971" },
+  { code: "+44", label: "UK +44" },
+  { code: "+1", label: "US +1" },
+];
+
+const fieldClass =
+  "w-full appearance-none rounded-md border border-border bg-surface-2 px-4 py-3 text-[13px] text-foreground outline-none transition-colors placeholder:text-muted-foreground focus:border-gold";
+
+const labelClass = "mb-2 block text-[10px] uppercase tracking-[0.18em] text-muted-foreground";
+
+function Select({
+  value,
+  onChange,
+  placeholder,
+  options,
+}: {
+  value: string;
+  onChange: (v: string) => void;
+  placeholder: string;
+  options: string[];
+}) {
+  return (
+    <div className="relative">
+      <select
+        required
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        className={`${fieldClass} pr-10 ${value ? "" : "text-muted-foreground"}`}
+      >
+        <option value="">{placeholder}</option>
+        {options.map((o) => (
+          <option key={o} value={o} className="bg-surface-2 text-foreground">
+            {o}
+          </option>
+        ))}
+      </select>
+      <ChevronDown
+        size={15}
+        className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-gold"
+      />
+    </div>
+  );
+}
 
 export function EnquiryPopup() {
   const [open, setOpen] = useState(false);
+  const [step, setStep] = useState<"form" | "otp" | "done">("form");
+  const [requirement, setRequirement] = useState("");
+  const [budget, setBudget] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [dial, setDial] = useState("+91");
+  const [phone, setPhone] = useState("");
+  const [sessionId, setSessionId] = useState("");
+  const [digits, setDigits] = useState(["", "", "", ""]);
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState("");
+  const [seconds, setSeconds] = useState(0);
+  const otpRefs = useRef<Array<HTMLInputElement | null>>([]);
+
+  const send = useServerFn(sendPhoneOtp);
+  const verify = useServerFn(verifyPhoneOtp);
+
+  const fullPhone = useMemo(() => `${dial}${phone.replace(/\D/g, "")}`, [dial, phone]);
 
   useEffect(() => {
-    const t = setTimeout(() => setOpen(true), 1200);
+    const t = setTimeout(() => setOpen(true), 2000);
     return () => clearTimeout(t);
   }, []);
 
+  useEffect(() => {
+    if (seconds <= 0) return;
+    const t = setTimeout(() => setSeconds((s) => s - 1), 1000);
+    return () => clearTimeout(t);
+  }, [seconds]);
+
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
+
   if (!open) return null;
 
+  const requestOtp = async () => {
+    setError("");
+    setBusy(true);
+    try {
+      const res = await send({ data: { phone: fullPhone } });
+      if (!res.ok) {
+        setError(res.error);
+        return;
+      }
+      setSessionId(res.sessionId);
+      setDigits(["", "", "", ""]);
+      setStep("otp");
+      setSeconds(30);
+      setTimeout(() => otpRefs.current[0]?.focus(), 60);
+    } catch {
+      setError("Something went wrong. Please try again.");
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  const submitForm = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!/^\+\d{7,15}$/.test(fullPhone)) {
+      setError("Enter a valid phone number.");
+      return;
+    }
+    void requestOtp();
+  };
+
+  const submitOtp = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError("");
+    setBusy(true);
+    try {
+      const res = await verify({ data: { sessionId, otp: digits.join("") } });
+      if (!res.ok) {
+        setError(res.error);
+        return;
+      }
+      setStep("done");
+    } catch {
+      setError("Verification failed. Please try again.");
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  const onDigit = (i: number, v: string) => {
+    const d = v.replace(/\D/g, "").slice(-1);
+    const next = [...digits];
+    next[i] = d;
+    setDigits(next);
+    if (d && i < 3) otpRefs.current[i + 1]?.focus();
+  };
+
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 px-5">
-      <div className="relative w-full max-w-[420px] border border-gold/40 bg-[#3a1712] p-8 text-center shadow-2xl">
+    <div className="fixed inset-0 z-[100] flex items-center justify-center overflow-y-auto bg-black/80 px-4 py-8 backdrop-blur-sm">
+      <div className="relative my-auto w-full max-w-[640px] overflow-hidden rounded-xl border border-gold/30 bg-surface shadow-[0_40px_120px_-40px_rgba(0,0,0,0.95)]">
+        <div className="h-[3px] w-full bg-gradient-to-r from-transparent via-gold to-transparent" />
         <button
-          aria-label="Close"
+          aria-label="Close enquiry"
           onClick={() => setOpen(false)}
-          className="absolute right-3 top-3 text-gold/80 hover:text-gold"
+          className="absolute right-4 top-5 text-muted-foreground transition-colors hover:text-gold"
         >
           <X size={18} />
         </button>
 
-        <p className="eyebrow">Want to be invited?</p>
-        <div className="mx-auto my-6 flex h-16 w-16 items-center justify-center rounded-full border border-gold/60">
-          <span className="font-display text-xl text-gold">360°</span>
-        </div>
-        <p className="text-[11px] uppercase tracking-[0.22em] text-gold/80">Above It All</p>
+        <div className="px-6 py-8 md:px-10 md:py-10">
+          {step === "form" && (
+            <>
+              <div className="text-center">
+                <p className="eyebrow">Private Residence Enquiry</p>
+                <h3 className="mt-3 font-display text-[26px] leading-tight text-foreground md:text-[32px]">
+                  Request Priority Access
+                </h3>
+                <p className="mt-2 text-[13px] text-muted-foreground">
+                  Share your requirements &amp; get exclusive listings.
+                </p>
+                <span className="mt-5 inline-flex items-center gap-2 rounded-full border border-gold/40 px-4 py-1.5 text-[10px] uppercase tracking-[0.18em] text-gold">
+                  <span className="h-1.5 w-1.5 rounded-full bg-gold" />
+                  Site Visits — By Appointment Only
+                </span>
+              </div>
 
-        <form
-          className="mt-6 space-y-3"
-          onSubmit={(e) => {
-            e.preventDefault();
-            setOpen(false);
-          }}
-        >
-          <input
-            required
-            placeholder="Name"
-            className="w-full border border-gold/30 bg-black/25 px-4 py-3 text-[12px] text-foreground outline-none placeholder:text-muted-foreground focus:border-gold"
-          />
-          <input
-            required
-            type="email"
-            placeholder="Email ID"
-            className="w-full border border-gold/30 bg-black/25 px-4 py-3 text-[12px] text-foreground outline-none placeholder:text-muted-foreground focus:border-gold"
-          />
-          <input
-            required
-            placeholder="Cell Number"
-            className="w-full border border-gold/30 bg-black/25 px-4 py-3 text-[12px] text-foreground outline-none placeholder:text-muted-foreground focus:border-gold"
-          />
-          <button type="submit" className="btn-gold w-full">
-            Submit Request
-          </button>
-        </form>
+              <form className="mt-8 space-y-5 text-left" onSubmit={submitForm}>
+                <div className="grid gap-5 sm:grid-cols-2">
+                  <div>
+                    <label className={labelClass}>Requirement</label>
+                    <Select
+                      value={requirement}
+                      onChange={setRequirement}
+                      placeholder="Select Requirement"
+                      options={REQUIREMENTS}
+                    />
+                  </div>
+                  <div>
+                    <label className={labelClass}>Budget (INR)</label>
+                    <Select
+                      value={budget}
+                      onChange={setBudget}
+                      placeholder="Select Budget"
+                      options={BUDGETS}
+                    />
+                  </div>
+                </div>
+
+                <div className="grid gap-5 sm:grid-cols-2">
+                  <div>
+                    <label className={labelClass}>First Name</label>
+                    <input
+                      required
+                      value={firstName}
+                      onChange={(e) => setFirstName(e.target.value)}
+                      maxLength={60}
+                      placeholder="First Name"
+                      className={fieldClass}
+                    />
+                  </div>
+                  <div>
+                    <label className={labelClass}>Last Name</label>
+                    <input
+                      required
+                      value={lastName}
+                      onChange={(e) => setLastName(e.target.value)}
+                      maxLength={60}
+                      placeholder="Last Name"
+                      className={fieldClass}
+                    />
+                  </div>
+                </div>
+
+                <div className="grid gap-5 sm:grid-cols-2">
+                  <div>
+                    <label className={labelClass}>Email Address</label>
+                    <input
+                      required
+                      type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      maxLength={120}
+                      placeholder="your@email.com"
+                      className={fieldClass}
+                    />
+                  </div>
+                  <div>
+                    <label className={labelClass}>Phone Number</label>
+                    <div className="flex gap-2">
+                      <div className="relative w-[110px] shrink-0">
+                        <select
+                          value={dial}
+                          onChange={(e) => setDial(e.target.value)}
+                          className={`${fieldClass} px-3 pr-8 text-[12px]`}
+                        >
+                          {COUNTRIES.map((c) => (
+                            <option key={c.code} value={c.code} className="bg-surface-2">
+                              {c.label}
+                            </option>
+                          ))}
+                        </select>
+                        <ChevronDown
+                          size={14}
+                          className="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-gold"
+                        />
+                      </div>
+                      <input
+                        required
+                        inputMode="numeric"
+                        value={phone}
+                        onChange={(e) => setPhone(e.target.value.replace(/\D/g, "").slice(0, 12))}
+                        placeholder="9876543210"
+                        className={fieldClass}
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-[10px] uppercase tracking-[0.16em] text-muted-foreground">
+                  <span className="text-gold">✦ Instant Call Back</span>
+                  <span className="text-gold">✦ Floor Plans</span>
+                  <span className="text-gold">✦ Priority Visit</span>
+                </div>
+
+                {error && <p className="text-center text-[12px] text-red-400">{error}</p>}
+
+                <button type="submit" disabled={busy} className="btn-gold w-full disabled:opacity-60">
+                  {busy ? "Sending Code…" : "Get Exclusive Access"}
+                </button>
+
+                <p className="text-center text-[11px] leading-relaxed text-muted-foreground">
+                  By submitting, you agree to receive property updates via call, SMS &amp; email.
+                </p>
+              </form>
+            </>
+          )}
+
+          {step === "otp" && (
+            <form onSubmit={submitOtp} className="text-center">
+              <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full border border-gold/50 bg-surface-2">
+                <ShieldCheck size={22} className="text-gold" />
+              </div>
+              <h3 className="mt-5 font-display text-[24px] text-foreground">Verify your mobile</h3>
+              <p className="mt-2 flex items-center justify-center gap-2 text-[13px] text-muted-foreground">
+                <Phone size={13} className="text-gold" />
+                4-digit SMS OTP sent to{" "}
+                <span className="text-foreground">{fullPhone}</span>
+              </p>
+
+              <div className="mt-7 flex items-center justify-center gap-3">
+                {digits.map((d, i) => (
+                  <input
+                    key={i}
+                    ref={(el) => {
+                      otpRefs.current[i] = el;
+                    }}
+                    value={d}
+                    inputMode="numeric"
+                    onChange={(e) => onDigit(i, e.target.value)}
+                    onKeyDown={(e) => {
+                      if (e.key === "Backspace" && !digits[i] && i > 0)
+                        otpRefs.current[i - 1]?.focus();
+                    }}
+                    className="h-14 w-12 rounded-md border border-gold/30 bg-surface-2 text-center font-display text-[20px] text-foreground outline-none focus:border-gold"
+                  />
+                ))}
+              </div>
+
+              {error && <p className="mt-5 text-[12px] text-red-400">{error}</p>}
+
+              <p className="mt-6 text-[12px] text-muted-foreground">
+                Didn&apos;t receive code?{" "}
+                {seconds > 0 ? (
+                  <span className="text-foreground">Resend in {seconds}s</span>
+                ) : (
+                  <button
+                    type="button"
+                    onClick={() => void requestOtp()}
+                    className="text-gold hover:underline"
+                  >
+                    Resend now
+                  </button>
+                )}
+              </p>
+
+              <button
+                type="submit"
+                disabled={busy || digits.join("").length < 4}
+                className="btn-gold mt-7 w-full disabled:opacity-60"
+              >
+                {busy ? "Verifying…" : "Verify & Continue"}
+              </button>
+
+              <p className="mt-5 text-[11px] leading-relaxed text-muted-foreground">
+                By verifying, you confirm this is your number and agree to receive property updates
+                via call/SMS.
+              </p>
+            </form>
+          )}
+
+          {step === "done" && (
+            <div className="py-6 text-center">
+              <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full border border-gold/50 bg-surface-2">
+                <ShieldCheck size={22} className="text-gold" />
+              </div>
+              <h3 className="mt-5 font-display text-[24px] text-foreground">You&apos;re on the list</h3>
+              <p className="mx-auto mt-3 max-w-[400px] text-[13px] leading-[1.9] text-muted-foreground">
+                Thank you, {firstName || "there"}. Your number is verified — our residence advisor
+                will call you shortly with floor plans and priority visit slots.
+              </p>
+              <button onClick={() => setOpen(false)} className="btn-gold mt-7 w-full">
+                Close
+              </button>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
