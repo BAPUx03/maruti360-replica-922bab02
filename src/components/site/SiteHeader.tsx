@@ -1,3 +1,4 @@
+import logo from "@/assets/Group-35-2.png.asset.json";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 
