@@ -36,9 +36,14 @@ export function Hero() {
       </div>
 
       <div className="absolute inset-0 flex items-center justify-center px-5">
-        <h1 className="reveal-up text-center font-display text-[42px] leading-tight tracking-[0.06em] text-foreground/90 md:text-[74px]">
-          Above It All
-        </h1>
+        <div className="text-center">
+          <h1 className="reveal-up font-display text-[38px] leading-tight tracking-[0.06em] text-foreground/90 sm:text-[52px] md:text-[74px]">
+            Above It All
+          </h1>
+          <p className="reveal-up mx-auto mt-5 max-w-[520px] text-[11px] uppercase leading-[2.2] tracking-[0.24em] text-foreground/70 sm:text-[12px]">
+            41-Storey Twin Towers &middot; 3, 4 &amp; 5 BHK Sky Residences
+          </p>
+        </div>
       </div>
     </section>
   );

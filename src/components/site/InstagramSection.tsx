@@ -1,39 +1,44 @@
 import { Instagram } from "lucide-react";
 import { Reveal } from "./Reveal";
+import towers from "@/assets/adasd-1.webp.asset.json";
+import banner from "@/assets/main-banner-scaled.webp.asset.json";
+import deck from "@/assets/Group-35.png.asset.json";
+import groupImg from "@/assets/maruti-group.jpg";
+import brochureBg from "@/assets/brochure-bg.jpg";
 
 const POSTS = [
-  "Everyday well-being ensured ✨ 4 BHK living craft",
-  "Your sanctuary of peace and luxury! 4 BHK living",
-  "Homes where daily life looks like a calming retrea",
-  "From ultra-luxurious amenities to never-ending com",
-  "Landmark residences that are not only luxurious bu",
-  "Homes that honour the importance of what you're ch",
-  "Close to everything that matters. From spiritual e",
-  "Real luxury is lived in life's finest moments. At",
+  { img: towers.url, caption: "Everyday well-being, crafted into every sky residence." },
+  { img: banner.url, caption: "Your private sanctuary of peace and panoramic light." },
+  { img: deck.url, caption: "Homes where daily life feels like a calming retreat." },
+  { img: brochureBg, caption: "From ultra-luxurious amenities to never-ending comfort." },
+  { img: groupImg, caption: "Landmark residences built to outlast trends." },
+  { img: towers.url, caption: "Honouring the importance of what you are choosing." },
+  { img: banner.url, caption: "Close to everything that matters in the city." },
+  { img: deck.url, caption: "Real luxury is lived in life's finest moments." },
 ];
 
 export function InstagramSection() {
   return (
-    <section className="bg-surface px-5 py-20 md:px-10 md:py-24">
+    <section className="bg-surface px-5 py-14 md:px-10 md:py-24">
       <div className="mx-auto max-w-[1200px]">
         <Reveal>
           <div className="grid grid-cols-2 gap-1 sm:grid-cols-4">
-            {POSTS.map((caption, i) => (
+            {POSTS.map((post, i) => (
               <a
-                key={caption}
+                key={`${post.caption}-${i}`}
                 href="https://www.instagram.com/"
                 target="_blank"
                 rel="noreferrer"
                 className="group relative block aspect-square overflow-hidden bg-surface-2"
               >
-                <div
-                  className="absolute inset-0 transition-transform duration-700 group-hover:scale-105"
-                  style={{
-                    background: `linear-gradient(${140 + i * 20}deg, oklch(0.26 0.01 60), oklch(0.19 0.01 60))`,
-                  }}
+                <img
+                  src={post.img}
+                  alt={post.caption}
+                  loading="lazy"
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 flex items-end bg-black/25 p-3 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                  <p className="text-[10px] leading-snug text-foreground/90">{caption}</p>
+                <div className="absolute inset-0 flex items-end bg-gradient-to-t from-black/80 via-black/10 to-transparent p-3 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                  <p className="text-[10px] leading-snug text-foreground/90">{post.caption}</p>
                 </div>
               </a>
             ))}

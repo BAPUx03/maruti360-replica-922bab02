@@ -22,9 +22,10 @@ const COUNTRIES = [
 ];
 
 const fieldClass =
-  "w-full appearance-none rounded-md border border-border bg-surface-2 px-4 py-3 text-[13px] text-foreground outline-none transition-colors placeholder:text-muted-foreground focus:border-gold";
+  "w-full appearance-none rounded-md border border-border bg-surface-2 px-3.5 py-2.5 text-[13px] text-foreground outline-none transition-colors placeholder:text-muted-foreground focus:border-gold md:px-4 md:py-3";
 
-const labelClass = "mb-2 block text-[10px] uppercase tracking-[0.18em] text-muted-foreground";
+const labelClass =
+  "mb-1.5 block text-[9px] uppercase tracking-[0.18em] text-muted-foreground md:text-[10px]";
 
 function Select({
   value,
@@ -159,8 +160,8 @@ export function EnquiryPopup() {
   };
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center overflow-y-auto bg-black/80 px-4 py-8 backdrop-blur-sm">
-      <div className="relative my-auto w-full max-w-[640px] overflow-hidden rounded-xl border border-gold/30 bg-surface shadow-[0_40px_120px_-40px_rgba(0,0,0,0.95)]">
+    <div className="fixed inset-0 z-[100] flex items-start justify-center overflow-y-auto bg-black/80 px-3 py-6 backdrop-blur-sm sm:items-center sm:px-4 sm:py-8">
+      <div className="relative my-auto max-h-[94vh] w-full max-w-[560px] overflow-y-auto overflow-x-hidden rounded-xl border border-gold/30 bg-surface shadow-[0_40px_120px_-40px_rgba(0,0,0,0.95)]">
         <div className="h-[3px] w-full bg-gradient-to-r from-transparent via-gold to-transparent" />
         <button
           aria-label="Close enquiry"
@@ -170,25 +171,25 @@ export function EnquiryPopup() {
           <X size={18} />
         </button>
 
-        <div className="px-6 py-8 md:px-10 md:py-10">
+        <div className="px-5 py-7 sm:px-8 md:px-10 md:py-9">
           {step === "form" && (
             <>
               <div className="text-center">
                 <p className="eyebrow">Private Residence Enquiry</p>
-                <h3 className="mt-3 font-display text-[26px] leading-tight text-foreground md:text-[32px]">
+                <h3 className="mt-2.5 font-display text-[22px] leading-tight text-foreground sm:text-[26px] md:text-[30px]">
                   Request Priority Access
                 </h3>
                 <p className="mt-2 text-[13px] text-muted-foreground">
                   Share your requirements &amp; get exclusive listings.
                 </p>
-                <span className="mt-5 inline-flex items-center gap-2 rounded-full border border-gold/40 px-4 py-1.5 text-[10px] uppercase tracking-[0.18em] text-gold">
+                <span className="mt-4 inline-flex items-center gap-2 rounded-full border border-gold/40 px-3.5 py-1.5 text-[9px] sm:text-[10px] uppercase tracking-[0.18em] text-gold">
                   <span className="h-1.5 w-1.5 rounded-full bg-gold" />
                   Site Visits — By Appointment Only
                 </span>
               </div>
 
-              <form className="mt-8 space-y-5 text-left" onSubmit={submitForm}>
-                <div className="grid gap-5 sm:grid-cols-2">
+              <form className="mt-6 space-y-4 text-left" onSubmit={submitForm}>
+                <div className="grid grid-cols-2 gap-3 sm:gap-4">
                   <div>
                     <label className={labelClass}>Requirement</label>
                     <Select
@@ -209,7 +210,7 @@ export function EnquiryPopup() {
                   </div>
                 </div>
 
-                <div className="grid gap-5 sm:grid-cols-2">
+                <div className="grid grid-cols-2 gap-3 sm:gap-4">
                   <div>
                     <label className={labelClass}>First Name</label>
                     <input
@@ -234,7 +235,7 @@ export function EnquiryPopup() {
                   </div>
                 </div>
 
-                <div className="grid gap-5 sm:grid-cols-2">
+                <div className="grid gap-4 sm:grid-cols-2">
                   <div>
                     <label className={labelClass}>Email Address</label>
                     <input
@@ -279,7 +280,7 @@ export function EnquiryPopup() {
                   </div>
                 </div>
 
-                <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-[10px] uppercase tracking-[0.16em] text-muted-foreground">
+                <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1.5 text-[9px] sm:text-[10px] uppercase tracking-[0.16em] text-muted-foreground">
                   <span className="text-gold">✦ Instant Call Back</span>
                   <span className="text-gold">✦ Floor Plans</span>
                   <span className="text-gold">✦ Priority Visit</span>
@@ -324,7 +325,7 @@ export function EnquiryPopup() {
                       if (e.key === "Backspace" && !digits[i] && i > 0)
                         otpRefs.current[i - 1]?.focus();
                     }}
-                    className="h-14 w-12 rounded-md border border-gold/30 bg-surface-2 text-center font-display text-[20px] text-foreground outline-none focus:border-gold"
+                    className="h-13 w-11 rounded-md sm:h-14 sm:w-12 border border-gold/30 bg-surface-2 text-center font-display text-[20px] text-foreground outline-none focus:border-gold"
                   />
                 ))}
               </div>

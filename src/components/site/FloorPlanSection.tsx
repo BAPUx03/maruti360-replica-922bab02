@@ -4,9 +4,10 @@ import { Reveal } from "./Reveal";
 
 export function FloorPlanSection() {
   const [plan, setPlan] = useState("4 BHK");
+  const PLANS = ["3 BHK", "4 BHK", "5 BHK"];
 
   return (
-    <section id="floor-plan" className="bg-surface px-5 py-24 md:px-10 md:py-32">
+    <section id="floor-plan" className="bg-surface px-5 py-16 md:px-10 md:py-28">
       <div className="mx-auto max-w-[1100px]">
         <Reveal>
           <div className="text-center">
@@ -15,7 +16,7 @@ export function FloorPlanSection() {
               An Engineering Perfection
             </h2>
             <p className="mx-auto mt-6 max-w-[820px] text-[13px] leading-[2] text-muted-foreground">
-              Maruti 360 is a reflection of years of exclusive research, mindful planning,
+              Every residence is a reflection of years of exclusive research, mindful planning,
               systematic execution, functional amenities and a philosophy of committing ourselves to
               a few exclusive projects at a time.
             </p>
@@ -30,8 +31,8 @@ export function FloorPlanSection() {
                 Come find a home that equates to your lifestyle and enhances it.
               </p>
 
-              <div className="mt-6 flex flex-col gap-3">
-                {["4 BHK", "5 BHK"].map((p) => (
+              <div className="mt-6 flex flex-wrap gap-6">
+                {PLANS.map((p) => (
                   <button
                     key={p}
                     onClick={() => setPlan(p)}
@@ -57,7 +58,7 @@ export function FloorPlanSection() {
               loading="lazy"
               width={900}
               height={600}
-              className="w-full object-cover"
+              className="mx-auto w-full max-w-[520px] object-contain md:max-w-none"
             />
           </div>
         </Reveal>

@@ -2,7 +2,7 @@ import { Reveal } from "./Reveal";
 
 export function ContactSection() {
   return (
-    <section id="contact" className="bg-surface px-5 py-24 md:px-10 md:py-32">
+    <section id="contact" className="bg-surface px-5 py-16 md:px-10 md:py-28">
       <div className="mx-auto max-w-[720px] text-center">
         <Reveal>
           <p className="eyebrow">Come Witness Yourself</p>

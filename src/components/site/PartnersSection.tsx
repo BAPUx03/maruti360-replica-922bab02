@@ -8,7 +8,7 @@ const PARTNERS = [
 
 export function PartnersSection() {
   return (
-    <section className="bg-surface px-5 py-20 md:px-10 md:py-24">
+    <section className="bg-surface px-5 py-14 md:px-10 md:py-24">
       <div className="mx-auto max-w-[1100px] text-center">
         <Reveal>
           <p className="eyebrow">Our Partners</p>
