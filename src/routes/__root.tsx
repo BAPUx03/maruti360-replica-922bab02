@@ -77,7 +77,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "MARUTI360 — Above It All" },
+      { title: "MARUTI360 — A Life Written In The Sky" },
       {
         name: "description",
         content: "Luxurious 4 & 5 BHK suites in Ahmedabad by Maruti Buildcon.",
