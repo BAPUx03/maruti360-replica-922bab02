@@ -15,6 +15,7 @@ import { ContactSection } from "@/components/site/ContactSection";
 import { BrochureSection } from "@/components/site/BrochureSection";
 import { InstagramSection } from "@/components/site/InstagramSection";
 import { EnquiryPopup } from "@/components/site/EnquiryPopup";
+import { WhatsAppButton } from "@/components/site/WhatsAppButton";
 
 const TITLE = "Home - MARUTI360";
 const DESCRIPTION =
@@ -57,6 +58,7 @@ function Index() {
       </main>
       <SiteFooter />
       <EnquiryPopup />
+      <WhatsAppButton />
     </div>
   );
 }
