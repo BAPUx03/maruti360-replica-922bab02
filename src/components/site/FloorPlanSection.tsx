@@ -9,7 +9,7 @@ export function FloorPlanSection() {
     { label: "4 BHK", href: "/floor-plan/4-bhk" },
     { label: "5 BHK", href: "/floor-plan/5-bhk" },
   ];
-  const active = PLANS.find((p) => p.label === plan) ?? PLANS[1];
+  const active = PLANS.find((p) => p.label === plan) ?? { label: "4 BHK", href: "/floor-plan/4-bhk" };
 
 
   return (
