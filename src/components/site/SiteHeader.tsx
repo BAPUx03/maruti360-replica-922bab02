@@ -1,6 +1,7 @@
 import logo from "@/assets/Group-35-2.png.asset.json";
 import { useEffect, useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Phone } from "lucide-react";
+
 
 const NAV = [
   { label: "Home", href: "/" },
