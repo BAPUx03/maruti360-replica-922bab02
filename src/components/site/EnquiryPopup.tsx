@@ -85,7 +85,7 @@ export function EnquiryPopup() {
   const fullPhone = useMemo(() => `${dial}${phone.replace(/\D/g, "")}`, [dial, phone]);
 
   useEffect(() => {
-    const t = setTimeout(() => setOpen(true), 2000);
+    const t = setTimeout(() => setOpen(true), 7000);
     return () => clearTimeout(t);
   }, []);
 
@@ -161,41 +161,41 @@ export function EnquiryPopup() {
   };
 
   return (
-    <div className="backdrop-in fixed inset-0 z-[100] flex items-start justify-center overflow-y-auto bg-black/30 px-3 py-6 backdrop-blur-[3px] sm:items-center sm:px-4 sm:py-8">
-      <div className="popup-in relative my-auto max-h-[94vh] w-full max-w-[560px] overflow-y-auto overflow-x-hidden rounded-xl border border-gold/30 bg-surface/95 shadow-[0_40px_120px_-40px_rgba(0,0,0,0.95)]">
+    <div className="backdrop-in fixed inset-0 z-[100] flex items-center justify-center bg-black/30 px-3 py-3 backdrop-blur-[3px] sm:px-4 sm:py-8">
+      <div className="popup-in relative my-auto max-h-[96vh] w-full max-w-[560px] overflow-x-hidden rounded-xl border border-gold/30 bg-surface/95 shadow-[0_40px_120px_-40px_rgba(0,0,0,0.95)]">
         <div className="gold-sheen h-[3px] w-full" />
 
-        <div className="px-5 py-7 sm:px-8 md:px-10 md:py-9">
+        <div className="px-4 py-5 sm:px-8 sm:py-7 md:px-10 md:py-9">
           <div className="logo-in flex justify-center">
             <img
               src={logo.url}
               alt="Above It All logo"
-              className="h-10 w-auto md:h-12"
+              className="h-8 w-auto sm:h-10 md:h-12"
             />
           </div>
 
           {step === "form" && (
             <>
-              <div className="mt-5 text-center">
+              <div className="mt-3.5 text-center sm:mt-5">
                 <p className="eyebrow field-in" style={{ animationDelay: "80ms" }}>
                   Private Residence Enquiry
                 </p>
                 <h3
-                  className="field-in mt-2.5 font-display text-[22px] leading-tight text-foreground sm:text-[26px] md:text-[30px]"
+                  className="field-in mt-2 font-display text-[20px] sm:mt-2.5 leading-tight text-foreground sm:text-[26px] md:text-[30px]"
                   style={{ animationDelay: "140ms" }}
                 >
                   Request Priority Access
                 </h3>
-                <p className="field-in mt-2 text-[13px] text-muted-foreground" style={{ animationDelay: "200ms" }}>
+                <p className="field-in mt-1.5 hidden text-[13px] text-muted-foreground sm:block" style={{ animationDelay: "200ms" }}>
                   Share your requirements &amp; get exclusive listings.
                 </p>
-                <span className="mt-4 inline-flex items-center gap-2 rounded-full border border-gold/40 px-3.5 py-1.5 text-[9px] sm:text-[10px] uppercase tracking-[0.18em] text-gold">
+                <span className="mt-4 hidden items-center gap-2 sm:inline-flex rounded-full border border-gold/40 px-3.5 py-1.5 text-[9px] sm:text-[10px] uppercase tracking-[0.18em] text-gold">
                   <span className="h-1.5 w-1.5 rounded-full bg-gold" />
                   Site Visits — By Appointment Only
                 </span>
               </div>
 
-              <form className="mt-6 space-y-4 text-left" onSubmit={submitForm}>
+              <form className="mt-4 space-y-3 text-left sm:mt-6 sm:space-y-4" onSubmit={submitForm}>
                 <div className="grid grid-cols-2 gap-3 sm:gap-4">
                   <div>
                     <label className={labelClass}>Requirement</label>
@@ -287,7 +287,7 @@ export function EnquiryPopup() {
                   </div>
                 </div>
 
-                <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1.5 text-[9px] sm:text-[10px] uppercase tracking-[0.16em] text-muted-foreground">
+                <div className="hidden flex-wrap items-center justify-center gap-x-4 gap-y-1.5 text-[9px] sm:flex sm:text-[10px] uppercase tracking-[0.16em] text-muted-foreground">
                   <span className="text-gold">✦ Instant Call Back</span>
                   <span className="text-gold">✦ Floor Plans</span>
                   <span className="text-gold">✦ Priority Visit</span>
@@ -299,7 +299,7 @@ export function EnquiryPopup() {
                   {busy ? "Sending Code…" : "Get Exclusive Access"}
                 </button>
 
-                <p className="text-center text-[11px] leading-relaxed text-muted-foreground">
+                <p className="text-center text-[10px] leading-relaxed text-muted-foreground sm:text-[11px]">
                   By submitting, you agree to receive property updates via call, SMS &amp; email.
                 </p>
               </form>
