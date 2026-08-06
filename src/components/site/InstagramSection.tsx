@@ -1,20 +1,22 @@
 import { Instagram } from "lucide-react";
 import { Reveal } from "./Reveal";
-import towers from "@/assets/adasd-1.webp.asset.json";
+import towers from "@/assets/Maruti_360_1.webp.asset.json";
 import banner from "@/assets/main-banner-scaled.webp.asset.json";
-import deck from "@/assets/Group-35.png.asset.json";
-import groupImg from "@/assets/maruti-group.jpg";
-import brochureBg from "@/assets/brochure-bg.jpg";
+import deck from "@/assets/Maruti_360_view.webp.asset.json";
+import pool from "@/assets/Maruti_360_POOL_3.webp.asset.json";
+import play from "@/assets/Maruti360_PLAY_AREA_4.webp.asset.json";
+import bedroom from "@/assets/Maruti_360_bedroom_2.webp.asset.json";
+import render from "@/assets/adasd-1.webp.asset.json";
 
 const POSTS = [
-  { img: towers.url, caption: "Everyday well-being, crafted into every sky residence." },
-  { img: banner.url, caption: "Your private sanctuary of peace and panoramic light." },
-  { img: deck.url, caption: "Homes where daily life feels like a calming retreat." },
-  { img: brochureBg, caption: "From ultra-luxurious amenities to never-ending comfort." },
-  { img: groupImg, caption: "Landmark residences built to outlast trends." },
-  { img: towers.url, caption: "Honouring the importance of what you are choosing." },
-  { img: banner.url, caption: "Close to everything that matters in the city." },
-  { img: deck.url, caption: "Real luxury is lived in life's finest moments." },
+  { img: towers.url, caption: "Twin towers rising 41 storeys above the skyline." },
+  { img: bedroom.url, caption: "Bedrooms framed by uninterrupted horizons." },
+  { img: pool.url, caption: "An emerald pool deck wrapped in greenery." },
+  { img: play.url, caption: "Indoor games arena built for every generation." },
+  { img: deck.url, caption: "The 360 viewing gallery — spectacles come alive." },
+  { img: banner.url, caption: "Sunsets watched from 501 feet above." },
+  { img: render.url, caption: "Architecture designed to outlast trends." },
+  { img: bedroom.url, caption: "Real luxury is lived in life's finest moments." },
 ];
 
 export function InstagramSection() {

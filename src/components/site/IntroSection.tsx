@@ -1,4 +1,4 @@
-import twinTowers from "@/assets/adasd-1.webp.asset.json";
+import twinTowers from "@/assets/Maruti_360_1.webp.asset.json";
 import { Reveal } from "./Reveal";
 
 export function IntroSection() {
