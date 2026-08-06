@@ -73,11 +73,38 @@
     border-color: var(--color-border);
   }
 
+  html,
+  body {
+    max-width: 100%;
+    overflow-x: hidden;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  html::-webkit-scrollbar,
+  body::-webkit-scrollbar,
+  *::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    display: none;
+  }
+
+  * {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-body);
     -webkit-font-smoothing: antialiased;
+  }
+
+  img,
+  video,
+  iframe {
+    max-width: 100%;
   }
 
   h1,
@@ -88,6 +115,7 @@
     font-weight: 400;
   }
 }
+
 
 @utility eyebrow {
   font-family: var(--font-body);
