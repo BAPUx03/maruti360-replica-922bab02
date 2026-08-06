@@ -1,3 +1,4 @@
+import logo from "@/assets/Group-35-2.png.asset.json";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 
@@ -27,10 +28,10 @@ export function SiteHeader() {
       }`}
     >
       <div className="mx-auto flex max-w-[1400px] items-center justify-between px-5 md:px-10">
-        <a href="/" className="flex items-baseline gap-3">
-          <span className="font-display text-lg tracking-[0.22em] text-foreground">MARUTI</span>
-          <span className="text-2xl tracking-[0.1em] text-gold font-display">360°</span>
+        <a href="/" className="flex items-center">
+          <img src={logo.url} alt="Maruti 360 logo" className="h-9 w-auto md:h-11" />
         </a>
+
 
         <nav className="hidden items-center gap-9 md:flex">
           {NAV.map((item) => (

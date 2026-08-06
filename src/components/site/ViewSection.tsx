@@ -1,5 +1,5 @@
 import { useState } from "react";
-import landscape from "@/assets/landscape-drive.jpg";
+import landscape from "@/assets/Group-35.png.asset.json";
 import { Reveal } from "./Reveal";
 
 const VIEWS = ["Night View", "Sunset View", "Day View"];
@@ -12,7 +12,7 @@ export function ViewSection() {
   return (
     <section className="bg-surface">
       <img
-        src={landscape}
+        src={landscape.url}
         alt="Landscaped arrival driveway at Maruti 360"
         loading="lazy"
         width={1920}

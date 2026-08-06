@@ -1,11 +1,11 @@
-import heroNight from "@/assets/hero-night.jpg";
+import heroNight from "@/assets/main-banner-scaled.webp.asset.json";
 import { Phone, Mail, MapPin } from "lucide-react";
 
 export function Hero() {
   return (
     <section className="relative h-screen min-h-[620px] w-full overflow-hidden">
       <img
-        src={heroNight}
+        src={heroNight.url}
         alt="Maruti 360 luxury tower overlooking the Ahmedabad skyline at night"
         width={1920}
         height={1088}
