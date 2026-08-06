@@ -160,26 +160,39 @@ export function EnquiryPopup() {
   };
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-start justify-center overflow-y-auto bg-black/80 px-3 py-6 backdrop-blur-sm sm:items-center sm:px-4 sm:py-8">
-      <div className="relative my-auto max-h-[94vh] w-full max-w-[560px] overflow-y-auto overflow-x-hidden rounded-xl border border-gold/30 bg-surface shadow-[0_40px_120px_-40px_rgba(0,0,0,0.95)]">
-        <div className="h-[3px] w-full bg-gradient-to-r from-transparent via-gold to-transparent" />
+    <div className="backdrop-in fixed inset-0 z-[100] flex items-start justify-center overflow-y-auto bg-black/30 px-3 py-6 backdrop-blur-[3px] sm:items-center sm:px-4 sm:py-8">
+      <div className="popup-in relative my-auto max-h-[94vh] w-full max-w-[560px] overflow-y-auto overflow-x-hidden rounded-xl border border-gold/30 bg-surface/95 shadow-[0_40px_120px_-40px_rgba(0,0,0,0.95)]">
+        <div className="gold-sheen h-[3px] w-full" />
         <button
           aria-label="Close enquiry"
           onClick={() => setOpen(false)}
-          className="absolute right-4 top-5 text-muted-foreground transition-colors hover:text-gold"
+          className="absolute right-4 top-5 text-muted-foreground transition-all duration-300 hover:rotate-90 hover:text-gold"
         >
           <X size={18} />
         </button>
 
         <div className="px-5 py-7 sm:px-8 md:px-10 md:py-9">
+          <div className="logo-in flex justify-center">
+            <img
+              src={logo.url}
+              alt="Above It All logo"
+              className="h-10 w-auto md:h-12"
+            />
+          </div>
+
           {step === "form" && (
             <>
-              <div className="text-center">
-                <p className="eyebrow">Private Residence Enquiry</p>
-                <h3 className="mt-2.5 font-display text-[22px] leading-tight text-foreground sm:text-[26px] md:text-[30px]">
+              <div className="mt-5 text-center">
+                <p className="eyebrow field-in" style={{ animationDelay: "80ms" }}>
+                  Private Residence Enquiry
+                </p>
+                <h3
+                  className="field-in mt-2.5 font-display text-[22px] leading-tight text-foreground sm:text-[26px] md:text-[30px]"
+                  style={{ animationDelay: "140ms" }}
+                >
                   Request Priority Access
                 </h3>
-                <p className="mt-2 text-[13px] text-muted-foreground">
+                <p className="field-in mt-2 text-[13px] text-muted-foreground" style={{ animationDelay: "200ms" }}>
                   Share your requirements &amp; get exclusive listings.
                 </p>
                 <span className="mt-4 inline-flex items-center gap-2 rounded-full border border-gold/40 px-3.5 py-1.5 text-[9px] sm:text-[10px] uppercase tracking-[0.18em] text-gold">
