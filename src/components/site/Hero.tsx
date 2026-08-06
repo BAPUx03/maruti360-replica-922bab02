@@ -4,18 +4,15 @@ import { Phone, Mail, MapPin } from "lucide-react";
 export function Hero() {
   return (
     <section className="relative h-screen min-h-[620px] w-full overflow-hidden">
-      <video
+      <img
+        src={heroNight.url}
+        alt="Rooftop observation deck overlooking the Ahmedabad skyline at sunset"
+        width={1920}
+        height={1088}
         className="absolute inset-0 h-full w-full object-cover"
-        src="https://maruti360.com/wp-content/uploads/2024/05/bg-video.mp4"
-        poster={heroNight.url}
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="auto"
-        aria-label="Maruti 360 cinematic tower film"
       />
       <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/25 to-black/80" />
+
 
 
       <div className="relative hidden w-full border-b border-white/10 pt-24 text-[11px] text-foreground/70 md:block">
