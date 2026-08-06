@@ -168,6 +168,7 @@ export function EnquiryPopup() {
         <div className="px-4 py-5 sm:px-8 sm:py-7 md:px-10 md:py-9">
           <div className="logo-in flex justify-center">
             <img
+              data-brand-logo
               src={logo.url}
               alt="Above It All logo"
               className="h-8 w-auto sm:h-10 md:h-12"
