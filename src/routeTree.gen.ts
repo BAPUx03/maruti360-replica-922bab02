@@ -11,6 +11,9 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as FloorPlanIndexRouteImport } from './routes/floor-plan.index'
+import { Route as FloorPlan3BhkRouteImport } from './routes/floor-plan.3-bhk'
+import { Route as FloorPlan4BhkRouteImport } from './routes/floor-plan.4-bhk'
+import { Route as FloorPlan5BhkRouteImport } from './routes/floor-plan.5-bhk'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -22,30 +25,73 @@ const FloorPlanIndexRoute = FloorPlanIndexRouteImport.update({
   path: '/floor-plan/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FloorPlan3BhkRoute = FloorPlan3BhkRouteImport.update({
+  id: '/floor-plan/3-bhk',
+  path: '/floor-plan/3-bhk',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FloorPlan4BhkRoute = FloorPlan4BhkRouteImport.update({
+  id: '/floor-plan/4-bhk',
+  path: '/floor-plan/4-bhk',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FloorPlan5BhkRoute = FloorPlan5BhkRouteImport.update({
+  id: '/floor-plan/5-bhk',
+  path: '/floor-plan/5-bhk',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/floor-plan/3-bhk': typeof FloorPlan3BhkRoute
+  '/floor-plan/4-bhk': typeof FloorPlan4BhkRoute
+  '/floor-plan/5-bhk': typeof FloorPlan5BhkRoute
   '/floor-plan/': typeof FloorPlanIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/floor-plan/3-bhk': typeof FloorPlan3BhkRoute
+  '/floor-plan/4-bhk': typeof FloorPlan4BhkRoute
+  '/floor-plan/5-bhk': typeof FloorPlan5BhkRoute
   '/floor-plan': typeof FloorPlanIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/floor-plan/3-bhk': typeof FloorPlan3BhkRoute
+  '/floor-plan/4-bhk': typeof FloorPlan4BhkRoute
+  '/floor-plan/5-bhk': typeof FloorPlan5BhkRoute
   '/floor-plan/': typeof FloorPlanIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/floor-plan/'
+  fullPaths:
+    | '/'
+    | '/floor-plan/3-bhk'
+    | '/floor-plan/4-bhk'
+    | '/floor-plan/5-bhk'
+    | '/floor-plan/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/floor-plan'
-  id: '__root__' | '/' | '/floor-plan/'
+  to:
+    | '/'
+    | '/floor-plan/3-bhk'
+    | '/floor-plan/4-bhk'
+    | '/floor-plan/5-bhk'
+    | '/floor-plan'
+  id:
+    | '__root__'
+    | '/'
+    | '/floor-plan/3-bhk'
+    | '/floor-plan/4-bhk'
+    | '/floor-plan/5-bhk'
+    | '/floor-plan/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  FloorPlan3BhkRoute: typeof FloorPlan3BhkRoute
+  FloorPlan4BhkRoute: typeof FloorPlan4BhkRoute
+  FloorPlan5BhkRoute: typeof FloorPlan5BhkRoute
   FloorPlanIndexRoute: typeof FloorPlanIndexRoute
 }
 
@@ -65,11 +111,35 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FloorPlanIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/floor-plan/3-bhk': {
+      id: '/floor-plan/3-bhk'
+      path: '/floor-plan/3-bhk'
+      fullPath: '/floor-plan/3-bhk'
+      preLoaderRoute: typeof FloorPlan3BhkRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/floor-plan/4-bhk': {
+      id: '/floor-plan/4-bhk'
+      path: '/floor-plan/4-bhk'
+      fullPath: '/floor-plan/4-bhk'
+      preLoaderRoute: typeof FloorPlan4BhkRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/floor-plan/5-bhk': {
+      id: '/floor-plan/5-bhk'
+      path: '/floor-plan/5-bhk'
+      fullPath: '/floor-plan/5-bhk'
+      preLoaderRoute: typeof FloorPlan5BhkRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  FloorPlan3BhkRoute: FloorPlan3BhkRoute,
+  FloorPlan4BhkRoute: FloorPlan4BhkRoute,
+  FloorPlan5BhkRoute: FloorPlan5BhkRoute,
   FloorPlanIndexRoute: FloorPlanIndexRoute,
 }
 export const routeTree = rootRouteImport

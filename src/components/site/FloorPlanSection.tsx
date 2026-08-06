@@ -4,7 +4,13 @@ import { Reveal } from "./Reveal";
 
 export function FloorPlanSection() {
   const [plan, setPlan] = useState("4 BHK");
-  const PLANS = ["3 BHK", "4 BHK", "5 BHK"];
+  const PLANS = [
+    { label: "3 BHK", href: "/floor-plan/3-bhk" },
+    { label: "4 BHK", href: "/floor-plan/4-bhk" },
+    { label: "5 BHK", href: "/floor-plan/5-bhk" },
+  ];
+  const active = PLANS.find((p) => p.label === plan) ?? PLANS[1];
+
 
   return (
     <section id="floor-plan" className="bg-surface px-5 py-16 md:px-10 md:py-28">
