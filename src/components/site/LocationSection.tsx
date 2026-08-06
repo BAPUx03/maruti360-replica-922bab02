@@ -14,7 +14,7 @@ const MAP_LINK = `https://www.google.com/maps/search/?api=1&query=${encodeURICom
 
 export function LocationSection() {
   return (
-    <section id="location" className="bg-surface-2 px-5 py-24 md:px-10 md:py-32">
+    <section id="location" className="bg-surface-2 px-5 py-16 md:px-10 md:py-28">
       <Reveal>
         <div className="text-center">
           <p className="eyebrow">Fulfill Your Dream To</p>

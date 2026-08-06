@@ -3,7 +3,7 @@ import { Reveal } from "./Reveal";
 
 export function IntroSection() {
   return (
-    <section id="about" className="bg-surface px-5 py-24 md:px-10 md:py-32">
+    <section id="about" className="bg-surface px-5 py-16 md:px-10 md:py-28">
       <div className="mx-auto grid max-w-[1200px] items-center gap-12 md:grid-cols-2 md:gap-20">
         <Reveal>
           <img

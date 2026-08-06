@@ -14,7 +14,7 @@ const POSTS = [
 
 export function InstagramSection() {
   return (
-    <section className="bg-surface px-5 py-20 md:px-10 md:py-24">
+    <section className="bg-surface px-5 py-14 md:px-10 md:py-24">
       <div className="mx-auto max-w-[1200px]">
         <Reveal>
           <div className="grid grid-cols-2 gap-1 sm:grid-cols-4">

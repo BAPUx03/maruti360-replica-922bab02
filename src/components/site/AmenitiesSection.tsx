@@ -27,7 +27,7 @@ const AMENITIES = [
 
 export function AmenitiesSection() {
   return (
-    <section id="amenities" className="bg-surface-2 px-5 py-24 md:px-10 md:py-32">
+    <section id="amenities" className="bg-surface-2 px-5 py-16 md:px-10 md:py-28">
       <div className="mx-auto grid max-w-[1200px] gap-12 md:grid-cols-[320px_1fr] md:gap-16">
         <Reveal>
           <p className="eyebrow">Amenities</p>

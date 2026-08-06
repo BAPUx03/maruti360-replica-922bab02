@@ -6,7 +6,7 @@ export function FloorPlanSection() {
   const [plan, setPlan] = useState("4 BHK");
 
   return (
-    <section id="floor-plan" className="bg-surface px-5 py-24 md:px-10 md:py-32">
+    <section id="floor-plan" className="bg-surface px-5 py-16 md:px-10 md:py-28">
       <div className="mx-auto max-w-[1100px]">
         <Reveal>
           <div className="text-center">
