@@ -40,22 +40,23 @@ export function FloorPlanSection() {
               <div className="mt-6 flex flex-wrap gap-6">
                 {PLANS.map((p) => (
                   <button
-                    key={p}
-                    onClick={() => setPlan(p)}
+                    key={p.label}
+                    onClick={() => setPlan(p.label)}
                     className={`w-fit border-b pb-1 text-[12px] uppercase tracking-[0.16em] transition-colors ${
-                      plan === p
+                      plan === p.label
                         ? "border-gold text-gold"
                         : "border-transparent text-muted-foreground hover:text-gold"
                     }`}
                   >
-                    {p}
+                    {p.label}
                   </button>
                 ))}
               </div>
 
-              <a href="/floor-plan" className="btn-gold mt-8">
-                Explore
+              <a href={active.href} className="btn-gold mt-8">
+                Explore {active.label}
               </a>
+
             </div>
 
             <img
