@@ -4,7 +4,7 @@ import { Reveal } from "./Reveal";
 
 export function BrochureSection() {
   return (
-    <section className="relative overflow-hidden">
+    <section className="over-media relative overflow-hidden">
       <img
         src={brochureBg}
         alt="Wooden slat feature wall inside Maruti 360"

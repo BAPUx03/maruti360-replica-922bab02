@@ -2,7 +2,7 @@ import { Reveal } from "./Reveal";
 
 export function VideoSection() {
   return (
-    <section className="relative overflow-hidden bg-background">
+    <section className="over-media relative overflow-hidden bg-background">
       <div className="relative h-[70vh] min-h-[420px] w-full">
         <video
           className="absolute inset-0 h-full w-full object-cover"
