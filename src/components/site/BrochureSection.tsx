@@ -11,20 +11,20 @@ export function BrochureSection() {
         loading="lazy"
         width={1920}
         height={600}
-        className="h-[320px] w-full object-cover md:h-[360px]"
+        className="h-[420px] w-full object-cover sm:h-[360px]"
       />
       <div className="absolute inset-0 bg-black/55" />
 
-      <div className="absolute inset-0 flex items-center px-5 md:px-14">
+      <div className="absolute inset-0 flex items-center px-5 py-10 md:px-14">
         <Reveal>
           <div className="max-w-[520px]">
-            <h2 className="font-display text-[26px] text-foreground md:text-[34px]">
+            <h2 className="font-display text-[24px] leading-tight text-foreground sm:text-[28px] md:text-[34px]">
               The 360 Brochure
             </h2>
-            <p className="mt-4 text-[11px] leading-[1.9] text-muted-foreground">
+            <p className="mt-4 break-words text-[11px] leading-[1.9] text-muted-foreground">
               RERA Number: PR/GJ/AHMEDABAD/AHMEDABAD CITY/AUDA/RAA12039/280623
             </p>
-            <p className="text-[11px] text-muted-foreground">
+            <p className="mt-1 break-all text-[11px] leading-[1.9] text-muted-foreground">
               RERA Website:{" "}
               <a
                 href="http://www.gujrera.gujarat.gov.in/"
