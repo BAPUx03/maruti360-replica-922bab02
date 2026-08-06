@@ -35,7 +35,7 @@ export function Hero() {
           <span>Twin Towers</span>
         </div>
 
-        <a href="#enquire" className="btn-gold reveal-up mt-10">
+        <a href="#contact" className="btn-gold reveal-up mt-10">
           Request Priority Access
         </a>
       </div>
