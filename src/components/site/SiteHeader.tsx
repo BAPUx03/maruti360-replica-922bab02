@@ -1,6 +1,7 @@
 import logo from "@/assets/Group-35-2.png.asset.json";
 import { useEffect, useState } from "react";
 import { Menu, X, Phone } from "lucide-react";
+import { ThemeToggle } from "@/components/site/ThemeToggle";
 
 
 const NAV = [
@@ -25,12 +26,13 @@ export function SiteHeader() {
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
-        scrolled ? "bg-surface-2/95 backdrop-blur-sm py-3" : "bg-transparent py-5"
+        scrolled ? "bg-surface-2/95 backdrop-blur-sm py-3" : "over-media bg-transparent py-5"
       }`}
     >
       <div className="mx-auto flex max-w-[1400px] items-center justify-between px-5 md:px-10">
         <a href="/" className="flex items-center">
-          <img src={logo.url} alt="Maruti 360 logo" className="h-9 w-auto md:h-11" />
+          <img src={logo.url} data-brand-logo
+            alt="Maruti 360 logo" className="h-9 w-auto md:h-11" />
         </a>
 
 
@@ -46,7 +48,8 @@ export function SiteHeader() {
           ))}
         </nav>
 
-        <div className="hidden items-center gap-5 md:flex">
+        <div className="hidden items-center gap-4 md:flex">
+          <ThemeToggle />
           <a
             href="tel:+919909923456"
             className="group flex items-center gap-3 border-l border-gold/25 pl-5"
@@ -65,13 +68,16 @@ export function SiteHeader() {
           </a>
         </div>
 
+        <div className="flex items-center gap-3 lg:hidden">
+          <ThemeToggle className="md:hidden" />
         <button
-          className="lg:hidden text-foreground"
+          className="text-foreground"
           aria-label="Toggle menu"
           onClick={() => setOpen((v) => !v)}
         >
           {open ? <X size={22} /> : <Menu size={22} />}
         </button>
+        </div>
       </div>
 
       {open && (

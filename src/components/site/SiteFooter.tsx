@@ -6,7 +6,8 @@ export function SiteFooter() {
     <footer className="bg-surface-2 px-5 py-16 text-center md:px-10">
       <div className="mx-auto max-w-[1400px]">
         <div className="flex flex-col items-center gap-2">
-          <img src={logo.url} alt="Maruti 360 logo" className="h-14 w-auto" />
+          <img data-brand-logo
+              src={logo.url} alt="Maruti 360 logo" className="h-14 w-auto" />
           <span className="text-[10px] uppercase tracking-[0.35em] text-muted-foreground">
             Above It All
           </span>
