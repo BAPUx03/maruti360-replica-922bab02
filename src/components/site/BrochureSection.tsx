@@ -35,9 +35,14 @@ export function BrochureSection() {
                 http://www.gujrera.gujarat.gov.in/
               </a>
             </p>
-            <a href="/brochure.pdf" className="btn-gold mt-6 gap-2">
+            <a
+              href="https://wa.me/919909923456?text=Hi%2C%20please%20share%20the%20Maruti%20360%20brochure%2C%20floor%20plans%20and%20price%20list."
+              target="_blank"
+              rel="noreferrer"
+              className="btn-gold mt-6 gap-2"
+            >
               <Download size={13} />
-              Download Brochure
+              Download Brochure on WhatsApp
             </a>
           </div>
         </Reveal>
