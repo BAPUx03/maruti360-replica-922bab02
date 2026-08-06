@@ -1,6 +1,6 @@
 import logo from "@/assets/Group-35-2.png.asset.json";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { ChevronDown, Phone, ShieldCheck, X } from "lucide-react";
+import { ChevronDown, Phone, ShieldCheck } from "lucide-react";
 import { useServerFn } from "@tanstack/react-start";
 import { sendPhoneOtp, verifyPhoneOtp } from "@/lib/otp.functions";
 
