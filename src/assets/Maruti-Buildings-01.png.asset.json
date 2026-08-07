@@ -1,11 +1,11 @@
 {
-  "version": 1,
   "asset_id": "a9531d04-6c26-41e2-b8fc-3c249418c78d",
-  "project_id": "afe4fd67-a3bb-4ca4-8260-5b0c0ab33424",
-  "url": "/__l5e/assets-v1/a9531d04-6c26-41e2-b8fc-3c249418c78d/Maruti-Buildings-01.png",
-  "r2_key": "a/v1/afe4fd67-a3bb-4ca4-8260-5b0c0ab33424/a9531d04-6c26-41e2-b8fc-3c249418c78d/Maruti-Buildings-01.png",
-  "original_filename": "Maruti-Buildings-01.png",
-  "size": 48772,
   "content_type": "image/webp",
-  "created_at": "2026-08-06T09:49:07Z"
+  "created_at": "2026-08-06T09:49:07Z",
+  "original_filename": "Maruti-Buildings-01.png",
+  "project_id": "ba7e418d-83ab-4013-89f5-e2b0b358ae75",
+  "r2_key": "a/v1/ba7e418d-83ab-4013-89f5-e2b0b358ae75/a9531d04-6c26-41e2-b8fc-3c249418c78d/Maruti-Buildings-01.png",
+  "size": 48772,
+  "url": "/__l5e/assets-v1/a9531d04-6c26-41e2-b8fc-3c249418c78d/Maruti-Buildings-01.png",
+  "version": 1
 }
