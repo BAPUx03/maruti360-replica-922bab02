@@ -32,7 +32,7 @@ export function VideoSection() {
     return () => clearTimeout(t);
   }, [inView, playing]);
 
-  const showText = inView && !(playing && false);
+  const showText = inView;
 
   return (
     <section
