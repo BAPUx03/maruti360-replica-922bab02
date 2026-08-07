@@ -156,7 +156,9 @@ export function EnquiryPopup() {
         source: "enquiry_popup",
         phone_verified: true,
       });
-      setStep("done");
+      setOpen(false);
+      setStep("form");
+
 
     } catch {
       setError("Verification failed. Please try again.");
