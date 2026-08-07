@@ -2,7 +2,7 @@ import type { Lead } from "@/lib/lead-schema";
 
 const BRAND = "Maruti 360";
 const SENDER = { name: BRAND, email: "sales@maruti360.com" };
-const ADMIN_RECIPIENTS = [{ email: "sales@maruti360.com", name: `${BRAND} Sales` }];
+const ADMIN_RECIPIENTS = [{ email: "luxuryrealestateahmedabad@gmail.com", name: `${BRAND} Sales` }];
 const GATEWAY = "https://connector-gateway.lovable.dev/brevo";
 
 const esc = (v: string) =>
