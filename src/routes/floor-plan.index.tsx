@@ -7,19 +7,15 @@ import { Faqs } from "@/components/site/ResidencePage";
 import blueprint from "@/assets/Maruti-Buildings-01.png.asset.json";
 import bedroom from "@/assets/Maruti_360_bedroom_2.webp.asset.json";
 
-const TITLE = "Floor Plans — 3, 4 & 5 BHK Sky Residences Off SG Highway, Ahmedabad";
+const TITLE = "Floor Plans — 4 & 5 BHK Sky Residences Off SG Highway, Ahmedabad";
 const DESCRIPTION =
-  "Explore 4 BHK and 5 BHK luxury floor plans in 41-storey twin towers off SG Highway, Ahmedabad — carpet areas, layouts, sky decks and FAQs. 3 BHK options available in our other projects.";
+  "Explore 4 BHK and 5 BHK luxury floor plans in 41-storey twin towers off SG Highway, Ahmedabad — carpet areas, layouts, sky decks and FAQs.";
 const URL = "https://maruti360.lovable.app/floor-plan";
 
 const FAQS = [
   {
     q: "Which configurations are available in this project?",
     a: "The twin towers offer 4 BHK and 5 BHK sky residences across 41 storeys. Jodi, duplex and penthouse formats can be planned on select floors on request.",
-  },
-  {
-    q: "Is a 3 BHK available here?",
-    a: "This project does not have any 3 BHK configuration. However, our other projects do offer well-planned 3 BHK homes — share your requirement and our team will present the closest matching options.",
   },
   {
     q: "Can I see the floor plan before booking?",
@@ -36,12 +32,6 @@ const FAQS = [
 ];
 
 const PLANS = [
-  {
-    href: "/floor-plan/3-bhk",
-    name: "3 BHK",
-    note: "Not in this project — available in our other projects",
-    copy: "Compact-luxury three-bedroom homes planned in our other Ahmedabad developments.",
-  },
   {
     href: "/floor-plan/4-bhk",
     name: "4 BHK",
