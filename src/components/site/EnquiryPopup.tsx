@@ -3,6 +3,8 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { ChevronDown, Phone, ShieldCheck } from "lucide-react";
 import { useServerFn } from "@tanstack/react-start";
 import { sendPhoneOtp, verifyPhoneOtp } from "@/lib/otp.functions";
+import { saveLead } from "@/lib/leads";
+
 
 const REQUIREMENTS = [
   "3 BHK",
@@ -144,7 +146,18 @@ export function EnquiryPopup() {
         setError(res.error);
         return;
       }
+      await saveLead({
+        first_name: firstName,
+        last_name: lastName,
+        email,
+        phone: fullPhone,
+        requirement,
+        budget,
+        source: "enquiry_popup",
+        phone_verified: true,
+      });
       setStep("done");
+
     } catch {
       setError("Verification failed. Please try again.");
     } finally {

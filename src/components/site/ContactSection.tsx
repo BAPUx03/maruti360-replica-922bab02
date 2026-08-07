@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { toast } from "sonner";
 import { Reveal } from "./Reveal";
+import { saveLead } from "@/lib/leads";
+
 
 const WA_NUMBER = "919909923456";
 
@@ -52,6 +54,16 @@ export function ContactSection() {
                 .filter(Boolean)
                 .join("\n");
 
+              void saveLead({
+                first_name: first,
+                last_name: last,
+                email,
+                phone,
+                requirement: config,
+                message,
+                source: "contact_form",
+              });
+
               window.open(
                 `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`,
                 "_blank",
@@ -61,6 +73,7 @@ export function ContactSection() {
               form.reset();
               setSending(false);
             }}
+
           >
             <div className="grid gap-4 sm:grid-cols-2">
               <input
