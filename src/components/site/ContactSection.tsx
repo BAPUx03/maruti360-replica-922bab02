@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { toast } from "sonner";
 import { Reveal } from "./Reveal";
+import { saveLead } from "@/lib/leads";
+
 
 const WA_NUMBER = "919909923456";
 
