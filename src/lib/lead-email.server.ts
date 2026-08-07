@@ -49,7 +49,8 @@ function adminHtml(lead: Lead) {
       ${row("Phone Verified", lead.phone_verified ? "Yes (OTP)" : "No")}
       ${row("Received", new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" }))}
     </table>
-    <p style="margin:26px 0 0 0;font-size:12px;color:#8c8579;">Please call back at the earliest.</p>
+    <p style="margin:26px 0 18px 0;font-size:12px;color:#8c8579;">Please call back at the earliest.</p>
+    <a href="tel:${esc(lead.phone)}" style="display:inline-block;padding:12px 26px;border-radius:6px;background:linear-gradient(90deg,#8a6b1f,#e8c874);color:#141005;font-size:12px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;">Call ${esc(lead.first_name)}</a>
   `);
 }
 
