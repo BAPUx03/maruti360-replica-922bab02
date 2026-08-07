@@ -1,4 +1,6 @@
 import { supabase } from "@/integrations/supabase/client";
+import { sendLeadEmails } from "@/lib/lead-email.functions";
+
 
 export type LeadInput = {
   first_name: string;
