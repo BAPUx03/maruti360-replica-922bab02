@@ -16,7 +16,7 @@ export type LeadInput = {
 };
 
 export async function saveLead(lead: LeadInput) {
-  const { error } = await supabase.from("leads").insert({
+  const { error } = await userSupabase.from("leads").insert({
     first_name: lead.first_name.slice(0, 60),
     last_name: lead.last_name?.slice(0, 60) ?? null,
     email: lead.email?.slice(0, 120) ?? null,
