@@ -28,7 +28,7 @@ export function Hero() {
         </p>
 
         <div className="reveal-up mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-[10px] uppercase tracking-[0.22em] text-foreground/65 sm:text-[11px]">
-          <span>3, 4 &amp; 5 BHK Sky Residences</span>
+          <span>4 &amp; 5 BHK Sky Residences</span>
           <span className="hidden h-3 w-px bg-gold/50 sm:block" />
           <span>41 Storeys</span>
           <span className="hidden h-3 w-px bg-gold/50 sm:block" />

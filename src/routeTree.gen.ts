@@ -16,7 +16,6 @@ import { Route as ContactUsRouteImport } from './routes/contact-us'
 import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as FloorPlanIndexRouteImport } from './routes/floor-plan.index'
-import { Route as FloorPlan3BhkRouteImport } from './routes/floor-plan.3-bhk'
 import { Route as FloorPlan4BhkRouteImport } from './routes/floor-plan.4-bhk'
 import { Route as FloorPlan5BhkRouteImport } from './routes/floor-plan.5-bhk'
 
@@ -55,11 +54,6 @@ const FloorPlanIndexRoute = FloorPlanIndexRouteImport.update({
   path: '/floor-plan/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const FloorPlan3BhkRoute = FloorPlan3BhkRouteImport.update({
-  id: '/floor-plan/3-bhk',
-  path: '/floor-plan/3-bhk',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const FloorPlan4BhkRoute = FloorPlan4BhkRouteImport.update({
   id: '/floor-plan/4-bhk',
   path: '/floor-plan/4-bhk',
@@ -78,7 +72,6 @@ export interface FileRoutesByFullPath {
   '/contact-us': typeof ContactUsRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/floor-plan/3-bhk': typeof FloorPlan3BhkRoute
   '/floor-plan/4-bhk': typeof FloorPlan4BhkRoute
   '/floor-plan/5-bhk': typeof FloorPlan5BhkRoute
   '/floor-plan/': typeof FloorPlanIndexRoute
@@ -90,7 +83,6 @@ export interface FileRoutesByTo {
   '/contact-us': typeof ContactUsRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/floor-plan/3-bhk': typeof FloorPlan3BhkRoute
   '/floor-plan/4-bhk': typeof FloorPlan4BhkRoute
   '/floor-plan/5-bhk': typeof FloorPlan5BhkRoute
   '/floor-plan': typeof FloorPlanIndexRoute
@@ -103,7 +95,6 @@ export interface FileRoutesById {
   '/contact-us': typeof ContactUsRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/floor-plan/3-bhk': typeof FloorPlan3BhkRoute
   '/floor-plan/4-bhk': typeof FloorPlan4BhkRoute
   '/floor-plan/5-bhk': typeof FloorPlan5BhkRoute
   '/floor-plan/': typeof FloorPlanIndexRoute
@@ -117,7 +108,6 @@ export interface FileRouteTypes {
     | '/contact-us'
     | '/privacy-policy'
     | '/sitemap.xml'
-    | '/floor-plan/3-bhk'
     | '/floor-plan/4-bhk'
     | '/floor-plan/5-bhk'
     | '/floor-plan/'
@@ -129,7 +119,6 @@ export interface FileRouteTypes {
     | '/contact-us'
     | '/privacy-policy'
     | '/sitemap.xml'
-    | '/floor-plan/3-bhk'
     | '/floor-plan/4-bhk'
     | '/floor-plan/5-bhk'
     | '/floor-plan'
@@ -141,7 +130,6 @@ export interface FileRouteTypes {
     | '/contact-us'
     | '/privacy-policy'
     | '/sitemap.xml'
-    | '/floor-plan/3-bhk'
     | '/floor-plan/4-bhk'
     | '/floor-plan/5-bhk'
     | '/floor-plan/'
@@ -154,7 +142,6 @@ export interface RootRouteChildren {
   ContactUsRoute: typeof ContactUsRoute
   PrivacyPolicyRoute: typeof PrivacyPolicyRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
-  FloorPlan3BhkRoute: typeof FloorPlan3BhkRoute
   FloorPlan4BhkRoute: typeof FloorPlan4BhkRoute
   FloorPlan5BhkRoute: typeof FloorPlan5BhkRoute
   FloorPlanIndexRoute: typeof FloorPlanIndexRoute
@@ -211,13 +198,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FloorPlanIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/floor-plan/3-bhk': {
-      id: '/floor-plan/3-bhk'
-      path: '/floor-plan/3-bhk'
-      fullPath: '/floor-plan/3-bhk'
-      preLoaderRoute: typeof FloorPlan3BhkRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/floor-plan/4-bhk': {
       id: '/floor-plan/4-bhk'
       path: '/floor-plan/4-bhk'
@@ -242,7 +222,6 @@ const rootRouteChildren: RootRouteChildren = {
   ContactUsRoute: ContactUsRoute,
   PrivacyPolicyRoute: PrivacyPolicyRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
-  FloorPlan3BhkRoute: FloorPlan3BhkRoute,
   FloorPlan4BhkRoute: FloorPlan4BhkRoute,
   FloorPlan5BhkRoute: FloorPlan5BhkRoute,
   FloorPlanIndexRoute: FloorPlanIndexRoute,
@@ -250,13 +229,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}

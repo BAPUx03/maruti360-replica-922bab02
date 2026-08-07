@@ -7,10 +7,8 @@ import { saveLead } from "@/lib/leads";
 
 
 const REQUIREMENTS = [
-  "3 BHK",
   "4 BHK",
   "5 BHK",
-  "Larger-format residence",
   "Jodi / Duplex / Penthouse — if available",
   "Investment",
 ];
