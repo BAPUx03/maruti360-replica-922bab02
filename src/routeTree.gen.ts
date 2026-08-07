@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as FloorPlanIndexRouteImport } from './routes/floor-plan.index'
 import { Route as FloorPlan3BhkRouteImport } from './routes/floor-plan.3-bhk'
@@ -19,6 +20,11 @@ import { Route as FloorPlan5BhkRouteImport } from './routes/floor-plan.5-bhk'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
@@ -49,6 +55,7 @@ const FloorPlan5BhkRoute = FloorPlan5BhkRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/floor-plan/3-bhk': typeof FloorPlan3BhkRoute
   '/floor-plan/4-bhk': typeof FloorPlan4BhkRoute
@@ -57,6 +64,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/floor-plan/3-bhk': typeof FloorPlan3BhkRoute
   '/floor-plan/4-bhk': typeof FloorPlan4BhkRoute
@@ -66,6 +74,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/floor-plan/3-bhk': typeof FloorPlan3BhkRoute
   '/floor-plan/4-bhk': typeof FloorPlan4BhkRoute
@@ -76,6 +85,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/about'
     | '/sitemap.xml'
     | '/floor-plan/3-bhk'
     | '/floor-plan/4-bhk'
@@ -84,6 +94,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/about'
     | '/sitemap.xml'
     | '/floor-plan/3-bhk'
     | '/floor-plan/4-bhk'
@@ -92,6 +103,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/about'
     | '/sitemap.xml'
     | '/floor-plan/3-bhk'
     | '/floor-plan/4-bhk'
@@ -101,6 +113,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   FloorPlan3BhkRoute: typeof FloorPlan3BhkRoute
   FloorPlan4BhkRoute: typeof FloorPlan4BhkRoute
@@ -115,6 +128,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sitemap.xml': {
@@ -157,6 +177,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   FloorPlan3BhkRoute: FloorPlan3BhkRoute,
   FloorPlan4BhkRoute: FloorPlan4BhkRoute,
