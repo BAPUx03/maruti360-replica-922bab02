@@ -49,9 +49,6 @@ export function SeoSection() {
               <Link to="/floor-plan" className="text-gold hover:underline">
                 All Floor Plans
               </Link>
-              <Link to="/floor-plan/3-bhk" className="text-gold hover:underline">
-                3 BHK Apartments in Ahmedabad
-              </Link>
               <Link to="/floor-plan/4-bhk" className="text-gold hover:underline">
                 4 BHK Luxury Residences
               </Link>
