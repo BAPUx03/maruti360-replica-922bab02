@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as AmenitiesRouteImport } from './routes/amenities'
+import { Route as ContactUsRouteImport } from './routes/contact-us'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as FloorPlanIndexRouteImport } from './routes/floor-plan.index'
 import { Route as FloorPlan3BhkRouteImport } from './routes/floor-plan.3-bhk'
@@ -31,6 +32,11 @@ const AboutRoute = AboutRouteImport.update({
 const AmenitiesRoute = AmenitiesRouteImport.update({
   id: '/amenities',
   path: '/amenities',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactUsRoute = ContactUsRouteImport.update({
+  id: '/contact-us',
+  path: '/contact-us',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
@@ -63,6 +69,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/amenities': typeof AmenitiesRoute
+  '/contact-us': typeof ContactUsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/floor-plan/3-bhk': typeof FloorPlan3BhkRoute
   '/floor-plan/4-bhk': typeof FloorPlan4BhkRoute
@@ -73,6 +80,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/amenities': typeof AmenitiesRoute
+  '/contact-us': typeof ContactUsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/floor-plan/3-bhk': typeof FloorPlan3BhkRoute
   '/floor-plan/4-bhk': typeof FloorPlan4BhkRoute
@@ -84,6 +92,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/amenities': typeof AmenitiesRoute
+  '/contact-us': typeof ContactUsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/floor-plan/3-bhk': typeof FloorPlan3BhkRoute
   '/floor-plan/4-bhk': typeof FloorPlan4BhkRoute
@@ -96,6 +105,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/amenities'
+    | '/contact-us'
     | '/sitemap.xml'
     | '/floor-plan/3-bhk'
     | '/floor-plan/4-bhk'
@@ -106,6 +116,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/amenities'
+    | '/contact-us'
     | '/sitemap.xml'
     | '/floor-plan/3-bhk'
     | '/floor-plan/4-bhk'
@@ -116,6 +127,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/amenities'
+    | '/contact-us'
     | '/sitemap.xml'
     | '/floor-plan/3-bhk'
     | '/floor-plan/4-bhk'
@@ -127,6 +139,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   AmenitiesRoute: typeof AmenitiesRoute
+  ContactUsRoute: typeof ContactUsRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   FloorPlan3BhkRoute: typeof FloorPlan3BhkRoute
   FloorPlan4BhkRoute: typeof FloorPlan4BhkRoute
@@ -155,6 +168,13 @@ declare module '@tanstack/react-router' {
       path: '/amenities'
       fullPath: '/amenities'
       preLoaderRoute: typeof AmenitiesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact-us': {
+      id: '/contact-us'
+      path: '/contact-us'
+      fullPath: '/contact-us'
+      preLoaderRoute: typeof ContactUsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sitemap.xml': {
@@ -199,6 +219,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   AmenitiesRoute: AmenitiesRoute,
+  ContactUsRoute: ContactUsRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   FloorPlan3BhkRoute: FloorPlan3BhkRoute,
   FloorPlan4BhkRoute: FloorPlan4BhkRoute,
