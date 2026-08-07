@@ -1,7 +1,4 @@
-import { userSupabase } from "@/integrations/supabase/user-client";
 import { sendLeadEmails } from "@/lib/lead-email.functions";
-
-
 
 export type LeadInput = {
   first_name: string;
@@ -15,20 +12,8 @@ export type LeadInput = {
   phone_verified?: boolean;
 };
 
+// All storage/delivery happens server-side; no keys or endpoints are exposed to the browser.
 export async function saveLead(lead: LeadInput) {
-  const { error } = await userSupabase.from("leads").insert({
-    first_name: lead.first_name.slice(0, 60),
-    last_name: lead.last_name?.slice(0, 60) ?? null,
-    email: lead.email?.slice(0, 120) ?? null,
-    phone: lead.phone.slice(0, 20),
-    requirement: lead.requirement?.slice(0, 120) ?? null,
-    budget: lead.budget?.slice(0, 60) ?? null,
-    message: lead.message?.slice(0, 1000) ?? null,
-    source: lead.source,
-    phone_verified: lead.phone_verified ?? false,
-  });
-  if (error) console.error("Failed to save lead", error.message);
-
   try {
     await sendLeadEmails({
       data: {
@@ -43,10 +28,9 @@ export async function saveLead(lead: LeadInput) {
         phone_verified: lead.phone_verified ?? false,
       },
     });
+    return true;
   } catch (e) {
-    console.error("Failed to send lead emails", e);
+    console.error("Failed to submit lead", e);
+    return false;
   }
-
-  return !error;
 }
-
