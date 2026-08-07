@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as AmenitiesRouteImport } from './routes/amenities'
 import { Route as ContactUsRouteImport } from './routes/contact-us'
+import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as FloorPlanIndexRouteImport } from './routes/floor-plan.index'
 import { Route as FloorPlan3BhkRouteImport } from './routes/floor-plan.3-bhk'
@@ -37,6 +38,11 @@ const AmenitiesRoute = AmenitiesRouteImport.update({
 const ContactUsRoute = ContactUsRouteImport.update({
   id: '/contact-us',
   path: '/contact-us',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
+  id: '/privacy-policy',
+  path: '/privacy-policy',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
@@ -70,6 +76,7 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/amenities': typeof AmenitiesRoute
   '/contact-us': typeof ContactUsRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/floor-plan/3-bhk': typeof FloorPlan3BhkRoute
   '/floor-plan/4-bhk': typeof FloorPlan4BhkRoute
@@ -81,6 +88,7 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/amenities': typeof AmenitiesRoute
   '/contact-us': typeof ContactUsRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/floor-plan/3-bhk': typeof FloorPlan3BhkRoute
   '/floor-plan/4-bhk': typeof FloorPlan4BhkRoute
@@ -93,6 +101,7 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/amenities': typeof AmenitiesRoute
   '/contact-us': typeof ContactUsRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/floor-plan/3-bhk': typeof FloorPlan3BhkRoute
   '/floor-plan/4-bhk': typeof FloorPlan4BhkRoute
@@ -106,6 +115,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/amenities'
     | '/contact-us'
+    | '/privacy-policy'
     | '/sitemap.xml'
     | '/floor-plan/3-bhk'
     | '/floor-plan/4-bhk'
@@ -117,6 +127,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/amenities'
     | '/contact-us'
+    | '/privacy-policy'
     | '/sitemap.xml'
     | '/floor-plan/3-bhk'
     | '/floor-plan/4-bhk'
@@ -128,6 +139,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/amenities'
     | '/contact-us'
+    | '/privacy-policy'
     | '/sitemap.xml'
     | '/floor-plan/3-bhk'
     | '/floor-plan/4-bhk'
@@ -140,6 +152,7 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   AmenitiesRoute: typeof AmenitiesRoute
   ContactUsRoute: typeof ContactUsRoute
+  PrivacyPolicyRoute: typeof PrivacyPolicyRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   FloorPlan3BhkRoute: typeof FloorPlan3BhkRoute
   FloorPlan4BhkRoute: typeof FloorPlan4BhkRoute
@@ -175,6 +188,13 @@ declare module '@tanstack/react-router' {
       path: '/contact-us'
       fullPath: '/contact-us'
       preLoaderRoute: typeof ContactUsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy-policy': {
+      id: '/privacy-policy'
+      path: '/privacy-policy'
+      fullPath: '/privacy-policy'
+      preLoaderRoute: typeof PrivacyPolicyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sitemap.xml': {
@@ -220,6 +240,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   AmenitiesRoute: AmenitiesRoute,
   ContactUsRoute: ContactUsRoute,
+  PrivacyPolicyRoute: PrivacyPolicyRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   FloorPlan3BhkRoute: FloorPlan3BhkRoute,
   FloorPlan4BhkRoute: FloorPlan4BhkRoute,
