@@ -76,21 +76,24 @@ function thankYouHtml(lead: Lead) {
 }
 
 async function sendBrevo(payload: Record<string, unknown>) {
+  const directKey = process.env["BREVO_DIRECT_API_KEY"];
   const lovableKey = process.env["LOVABLE_API_KEY"];
   const brevoKey = process.env["BREVO_API_KEY"];
-  if (!lovableKey || !brevoKey) {
+
+  const url = directKey ? "https://api.brevo.com/v3/smtp/email" : `${GATEWAY}/smtp/email`;
+  const headers: Record<string, string> = { "Content-Type": "application/json" };
+
+  if (directKey) {
+    headers["api-key"] = directKey;
+  } else if (lovableKey && brevoKey) {
+    headers["Authorization"] = `Bearer ${lovableKey}`;
+    headers["X-Connection-Api-Key"] = brevoKey;
+  } else {
     console.error("Brevo credentials are not configured");
     return false;
   }
-  const res = await fetch(`${GATEWAY}/smtp/email`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${lovableKey}`,
-      "X-Connection-Api-Key": brevoKey,
-    },
-    body: JSON.stringify(payload),
-  });
+
+  const res = await fetch(url, { method: "POST", headers, body: JSON.stringify(payload) });
   if (!res.ok) {
     console.error(`Brevo send failed [${res.status}]: ${await res.text()}`);
     return false;
