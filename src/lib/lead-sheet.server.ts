@@ -3,13 +3,13 @@ import type { leadSchema } from "@/lib/lead-schema";
 
 type Lead = z.infer<typeof leadSchema>;
 
-const SPREADSHEET_ID = "1uwuTYDPUSbW0yQ01MFoFynLL1nUTOdm0xf5J0HZ0yMo";
 const GATEWAY = "https://connector-gateway.lovable.dev/google_sheets/v4";
 
 export async function appendLeadToSheet(lead: Lead) {
   const lovableKey = process.env["LOVABLE_API_KEY"];
   const sheetsKey = process.env["GOOGLE_SHEETS_API_KEY"];
-  if (!lovableKey || !sheetsKey) {
+  const spreadsheetId = process.env["LEADS_SHEET_ID"];
+  if (!lovableKey || !sheetsKey || !spreadsheetId) {
     console.error("Google Sheets credentials are not configured");
     return false;
   }
