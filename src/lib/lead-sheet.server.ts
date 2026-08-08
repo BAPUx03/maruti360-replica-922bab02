@@ -28,7 +28,7 @@ export async function appendLeadToSheet(lead: Lead) {
   ];
 
   const res = await fetch(
-    `${GATEWAY}/spreadsheets/${SPREADSHEET_ID}/values/Leads!A:J:append?valueInputOption=USER_ENTERED&insertDataOption=INSERT_ROWS`,
+    `${GATEWAY}/spreadsheets/${spreadsheetId}/values/Leads!A:J:append?valueInputOption=USER_ENTERED&insertDataOption=INSERT_ROWS`,
     {
       method: "POST",
       headers: {
