@@ -198,7 +198,7 @@ export function EnquiryPopup() {
                   className="field-in mt-2 font-display text-[20px] sm:mt-2.5 leading-tight text-foreground sm:text-[26px] md:text-[30px]"
                   style={{ animationDelay: "140ms" }}
                 >
-                  Request Priority Access
+                  Private Residence Enquiry
                 </h3>
                 <p className="field-in mt-1.5 hidden text-[13px] text-muted-foreground sm:block" style={{ animationDelay: "200ms" }}>
                   Share your requirements &amp; get exclusive listings.

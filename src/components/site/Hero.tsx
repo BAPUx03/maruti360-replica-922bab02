@@ -35,9 +35,6 @@ export function Hero() {
           <span>Twin Towers</span>
         </div>
 
-        <a href="#contact" className="btn-gold reveal-up mt-10">
-          Request Priority Access
-        </a>
       </div>
 
       <div className="absolute inset-x-0 bottom-7 flex justify-center">
