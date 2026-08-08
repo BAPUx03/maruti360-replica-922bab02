@@ -13,7 +13,7 @@ const REQUIREMENTS = [
   "Investment",
 ];
 
-const BUDGETS = ["₹2 Cr – ₹3 Cr", "₹4 Cr – ₹5 Cr", "₹6 Cr – ₹7 Cr", "₹8 Cr – ₹10 Cr", "₹10 Cr – ₹11 Cr", "₹12 Cr – ₹13 Cr", "₹14 Cr – ₹15 Cr", "₹16 Cr – ₹20 Cr", "₹20 Cr+"];
+const BUDGETS = ["₹2 Cr – ₹3 Cr", "₹4 Cr – ₹5 Cr", "₹6 Cr – ₹7 Cr", "₹8 Cr – ₹10 Cr", "₹10 Cr – ₹11 Cr", "₹12 Cr – ₹13 Cr", "₹14 Cr – ₹15 Cr", "₹16 Cr – ₹17 Cr", "₹18 Cr – ₹19 Cr", "₹20 Cr+"];
 
 const COUNTRIES = [
   { code: "+91", label: "IN +91" },
