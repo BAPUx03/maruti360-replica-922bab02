@@ -71,9 +71,6 @@ export function ResidenceLayout({
             <p className="mx-auto mt-6 max-w-[640px] text-[13px] leading-[2] text-foreground/75">
               {intro}
             </p>
-            <a href="/#contact" className="btn-gold mt-9 inline-block">
-              Request Priority Access
-            </a>
           </div>
         </section>
         <Reveal>{children}</Reveal>

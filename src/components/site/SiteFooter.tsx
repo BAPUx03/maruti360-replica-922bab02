@@ -52,20 +52,6 @@ export function SiteFooter() {
           </a>
         </div>
 
-        <p className="mt-10 text-[11px] text-muted-foreground">
-          © Maruti 360. All Rights Reserved.
-        </p>
-        <p className="mt-1 text-[11px] text-muted-foreground">
-          Manage by{" "}
-          <a
-            href="https://thevitalmedia.com/"
-            target="_blank"
-            rel="noreferrer"
-            className="text-gold"
-          >
-            The Vital Media
-          </a>
-        </p>
       </div>
     </footer>
   );
