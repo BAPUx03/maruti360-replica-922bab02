@@ -2,10 +2,7 @@ import { createClient } from "@supabase/supabase-js";
 import type { Lead } from "@/lib/lead-schema";
 
 // Leads are stored in the project owner's own Supabase project.
-// Only the publishable (anon) key is used, and it never leaves the server.
-const LEADS_SUPABASE_URL = "https://qirenbzgbjkhujhpufin.supabase.co";
-const LEADS_SUPABASE_PUBLISHABLE_KEY = "sb_publishable_Yj2dNzW0Fe0WIMll0Nn3-Q_FY6i04er";
-const JOB_ID = "maruti360-website";
+// URL/key come from server-only env vars; nothing is hardcoded or shipped to the browser.
 
 function tenDigitPhone(raw: string) {
   const digits = raw.replace(/\D/g, "");
@@ -13,7 +10,15 @@ function tenDigitPhone(raw: string) {
 }
 
 export async function insertLead(lead: Lead) {
-  const supabase = createClient(LEADS_SUPABASE_URL, LEADS_SUPABASE_PUBLISHABLE_KEY, {
+  const url = process.env["LEADS_SUPABASE_URL"];
+  const key = process.env["LEADS_SUPABASE_PUBLISHABLE_KEY"];
+  const JOB_ID = process.env["LEADS_JOB_ID"] ?? "maruti360-website";
+  if (!url || !key) {
+    console.error("Leads database credentials are not configured");
+    return false;
+  }
+
+  const supabase = createClient(url, key, {
     auth: { persistSession: false, autoRefreshToken: false },
   });
 
