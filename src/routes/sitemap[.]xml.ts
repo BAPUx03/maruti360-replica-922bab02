@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
 
-const BASE_URL = "https://maruti360.lovable.app";
+const BASE_URL = "https://www.maruti-360.com";
 
 const PATHS = [
   { path: "/", changefreq: "weekly", priority: "1.0" },

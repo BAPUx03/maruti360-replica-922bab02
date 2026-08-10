@@ -13,4 +13,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://maruti360.lovable.app/sitemap.xml
+Sitemap: https://www.maruti-360.com/sitemap.xml

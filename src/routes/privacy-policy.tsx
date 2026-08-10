@@ -6,7 +6,7 @@ import { WhatsAppButton } from "@/components/site/WhatsAppButton";
 const TITLE = "Privacy Policy | Sky Residences Off SG Highway, Ahmedabad";
 const DESCRIPTION =
   "How we collect, use, store and protect the personal information you share through enquiry forms, WhatsApp and site-visit bookings on this website.";
-const URL = "https://maruti360.lovable.app/privacy-policy";
+const URL = "https://www.maruti-360.com/privacy-policy";
 
 const SECTIONS = [
   {

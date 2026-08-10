@@ -10,7 +10,7 @@ import bedroom from "@/assets/Maruti_360_bedroom_2.webp";
 const TITLE = "Floor Plans — 4 & 5 BHK Sky Residences Off SG Highway, Ahmedabad";
 const DESCRIPTION =
   "Explore 4 BHK and 5 BHK luxury floor plans in 41-storey twin towers off SG Highway, Ahmedabad — carpet areas, layouts, sky decks and FAQs.";
-const URL = "https://maruti360.lovable.app/floor-plan";
+const URL = "https://www.maruti-360.com/floor-plan";
 
 const FAQS = [
   {

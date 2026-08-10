@@ -10,7 +10,7 @@ import { Toaster } from "@/components/ui/sonner";
 const TITLE = "Contact Us — Book A Site Visit Off SG Highway, Ahmedabad";
 const DESCRIPTION =
   "Speak to a residence advisor about 4 & 5 BHK sky residences off SG Highway, Ahmedabad. Call +91 99099 23456, message on WhatsApp, or request pricing, floor plans and a private site-visit slot.";
-const URL = "https://maruti360.lovable.app/contact-us";
+const URL = "https://www.maruti-360.com/contact-us";
 const WA = "https://wa.me/919909923456?text=Hi%2C%20I%20would%20like%20details%20about%20the%20sky%20residences.";
 
 const FAQS = [
