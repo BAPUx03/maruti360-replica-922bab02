@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ResidenceLayout, Faqs } from "@/components/site/ResidencePage";
-import bedroom from "@/assets/Maruti_360_bedroom_2.webp.asset.json";
+import bedroom from "@/assets/Maruti_360_bedroom_2.webp";
 
 const TITLE = "4 BHK Sky Residences Off SG Highway, Ahmedabad — Floor Plan";
 const DESCRIPTION =
@@ -87,7 +87,7 @@ function FourBhk() {
       eyebrow="4 BHK · Available"
       title="The 4 BHK Sky Residence"
       intro="Four bedrooms, a wide skyline frontage and a deck deep enough to live on — planned for families who measure luxury in horizons, not square feet."
-      image={bedroom.url}
+      image={bedroom}
       imageAlt="Interior of a 4 BHK sky residence bedroom"
     >
       <section className="bg-surface px-5 py-16 md:px-10 md:py-24">

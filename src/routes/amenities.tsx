@@ -14,9 +14,9 @@ import {
   ShieldCheck,
 } from "lucide-react";
 import { ResidenceLayout, Faqs } from "@/components/site/ResidencePage";
-import hero from "@/assets/Maruti_360_POOL_3.webp.asset.json";
-import play from "@/assets/Maruti360_PLAY_AREA_4.webp.asset.json";
-import view from "@/assets/Maruti_360_view.webp.asset.json";
+import hero from "@/assets/Maruti_360_POOL_3.webp";
+import play from "@/assets/Maruti360_PLAY_AREA_4.webp";
+import view from "@/assets/Maruti_360_view.webp";
 
 const TITLE = "Amenities — Sky Deck, Pool, Clubhouse & Wellness | 41-Storey Towers";
 const DESCRIPTION =
@@ -122,7 +122,7 @@ function AmenitiesPage() {
       eyebrow="Amenities"
       title="Live A Life Above It All"
       intro="Over thirty curated amenities across the podium, the clubhouse and the sky — designed so the building gives back time rather than taking it."
-      image={hero.url}
+      image={hero}
       imageAlt="A long luxury lap pool surrounded by trees"
     >
       {GROUPS.map((g, gi) => (
@@ -152,7 +152,7 @@ function AmenitiesPage() {
       <section className="bg-surface px-5 py-16 md:px-10 md:py-24">
         <div className="mx-auto grid max-w-[1150px] gap-6 md:grid-cols-2">
           <img
-            src={play.url}
+            src={play}
             alt="Indoor games arena with pool tables and foosball"
             loading="lazy"
             width={1200}
@@ -160,7 +160,7 @@ function AmenitiesPage() {
             className="h-full w-full object-cover"
           />
           <img
-            src={view.url}
+            src={view}
             alt="Observation deck with a telescope overlooking the city"
             loading="lazy"
             width={1200}

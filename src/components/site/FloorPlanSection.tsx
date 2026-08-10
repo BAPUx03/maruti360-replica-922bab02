@@ -1,5 +1,5 @@
 import { useState } from "react";
-import blueprint from "@/assets/Maruti-Buildings-01.png.asset.json";
+import blueprint from "@/assets/Maruti-Buildings-01.png";
 import { Reveal } from "./Reveal";
 
 export function FloorPlanSection() {
@@ -56,7 +56,7 @@ export function FloorPlanSection() {
             </div>
 
             <img
-              src={blueprint.url}
+              src={blueprint}
               alt="Architect drafting the Maruti 360 floor plan"
               loading="lazy"
               width={900}

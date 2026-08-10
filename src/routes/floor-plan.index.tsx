@@ -4,8 +4,8 @@ import { SiteFooter } from "@/components/site/SiteFooter";
 import { WhatsAppButton } from "@/components/site/WhatsAppButton";
 import { Reveal } from "@/components/site/Reveal";
 import { Faqs } from "@/components/site/ResidencePage";
-import blueprint from "@/assets/Maruti-Buildings-01.png.asset.json";
-import bedroom from "@/assets/Maruti_360_bedroom_2.webp.asset.json";
+import blueprint from "@/assets/Maruti-Buildings-01.png";
+import bedroom from "@/assets/Maruti_360_bedroom_2.webp";
 
 const TITLE = "Floor Plans — 4 & 5 BHK Sky Residences Off SG Highway, Ahmedabad";
 const DESCRIPTION =
@@ -83,7 +83,7 @@ function FloorPlanIndex() {
       <main>
         <section className="over-media relative flex min-h-[58vh] items-center justify-center overflow-hidden px-5 pt-28 pb-16 text-center md:px-10">
           <img
-            src={bedroom.url}
+            src={bedroom}
             alt="Master bedroom interior of a sky residence"
             width={1920}
             height={1080}
@@ -131,7 +131,7 @@ function FloorPlanIndex() {
 
             <Reveal delay={120}>
               <img
-                src={blueprint.url}
+                src={blueprint}
                 alt="Line drawing of the twin residential towers"
                 loading="lazy"
                 width={900}

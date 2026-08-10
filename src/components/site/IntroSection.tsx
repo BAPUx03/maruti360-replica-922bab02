@@ -1,4 +1,4 @@
-import twinTowers from "@/assets/Maruti_360_1.webp.asset.json";
+import twinTowers from "@/assets/Maruti_360_1.webp";
 import { Reveal } from "./Reveal";
 
 export function IntroSection() {
@@ -7,7 +7,7 @@ export function IntroSection() {
       <div className="mx-auto grid max-w-[1200px] items-center gap-12 md:grid-cols-2 md:gap-20">
         <Reveal>
           <img
-            src={twinTowers.url}
+            src={twinTowers}
             alt="Maruti 360 twin residential towers render"
             loading="lazy"
             width={912}

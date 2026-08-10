@@ -1,10 +1,10 @@
-import heroNight from "@/assets/main-banner-scaled.webp.asset.json";
+import heroNight from "@/assets/main-banner-scaled.webp";
 
 export function Hero() {
   return (
     <section className="over-media relative h-screen min-h-[640px] w-full overflow-hidden">
       <img
-        src={heroNight.url}
+        src={heroNight}
         alt="Rooftop observation deck overlooking the Ahmedabad skyline at sunset"
         width={1920}
         height={1088}

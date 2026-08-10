@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ResidenceLayout, Faqs } from "@/components/site/ResidencePage";
-import view from "@/assets/Maruti_360_view.webp.asset.json";
+import view from "@/assets/Maruti_360_view.webp";
 
 const TITLE = "5 BHK Luxury Apartments Off SG Highway, Ahmedabad — Floor Plan";
 const DESCRIPTION =
@@ -87,7 +87,7 @@ function FiveBhk() {
       eyebrow="5 BHK · Available"
       title="The 5 BHK Signature Residence"
       intro="A corner home with two open faces, a private family lounge and a wrap-around deck — the most generous format in the towers."
-      image={view.url}
+      image={view}
       imageAlt="Panoramic skyline view from a high-floor residence"
     >
       <section className="bg-surface px-5 py-16 md:px-10 md:py-24">

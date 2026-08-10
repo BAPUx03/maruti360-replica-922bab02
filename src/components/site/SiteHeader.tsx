@@ -1,4 +1,4 @@
-import logo from "@/assets/Group-35-2.png.asset.json";
+import logo from "@/assets/Group-35-2.png";
 import { useEffect, useState } from "react";
 import { Menu, X, Phone } from "lucide-react";
 import { ThemeToggle } from "@/components/site/ThemeToggle";
@@ -31,7 +31,7 @@ export function SiteHeader() {
     >
       <div className="mx-auto flex max-w-[1400px] items-center justify-between px-5 md:px-10">
         <a href="/" className="flex items-center">
-          <img src={logo.url} data-brand-logo
+          <img src={logo} data-brand-logo
             alt="Maruti 360 logo" className="h-9 w-auto md:h-11" />
         </a>
 

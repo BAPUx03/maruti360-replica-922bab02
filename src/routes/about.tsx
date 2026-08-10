@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ResidenceLayout, Faqs } from "@/components/site/ResidencePage";
-import hero from "@/assets/adasd-1.webp.asset.json";
+import hero from "@/assets/adasd-1.webp";
 import groupImg from "@/assets/maruti-group.jpg";
 
 const TITLE = "About The Developer — 40 Years Of Inspiring Realty In Ahmedabad";
@@ -92,7 +92,7 @@ function AboutPage() {
       eyebrow="Since 1985"
       title="Inspiring Realty, Built On Promises"
       intro="Four decades of building homes in Ahmedabad — and one address that finally puts the whole city in the frame."
-      image={hero.url}
+      image={hero}
       imageAlt="Twin luxury residential towers at twilight"
     >
       <section className="bg-surface px-5 py-16 md:px-10 md:py-24">
