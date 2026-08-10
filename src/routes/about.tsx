@@ -6,7 +6,7 @@ import groupImg from "@/assets/maruti-group.jpg";
 const TITLE = "About The Developer — 40 Years Of Inspiring Realty In Ahmedabad";
 const DESCRIPTION =
   "Since 1985, our team has delivered residential and commercial landmarks across Ahmedabad. Learn about the vision, design partners and construction standards behind the 41-storey twin towers off SG Highway.";
-const URL = "https://maruti360.lovable.app/about";
+const URL = "https://www.maruti-360.com/about";
 
 const MILESTONES = [
   { year: "1985", text: "Foundation laid — the first residential development delivered in Ahmedabad." },

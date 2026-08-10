@@ -19,7 +19,7 @@ import { WhatsAppButton } from "@/components/site/WhatsAppButton";
 import { SeoSection } from "@/components/site/SeoSection";
 import { Toaster } from "@/components/ui/sonner";
 
-const SITE = "https://maruti360.lovable.app";
+const SITE = "https://www.maruti-360.com";
 const TITLE = "4 & 5 BHK Luxury Apartments on S.G. Highway, Ahmedabad | MARUTI 360";
 const DESCRIPTION =
   "Maruti 360 offers 4 & 5 BHK luxury sky residences in twin 41-storey towers on S.G. Highway, Ahmedabad — 501 ft tall, resort amenities, 360° city views. Book a site visit.";

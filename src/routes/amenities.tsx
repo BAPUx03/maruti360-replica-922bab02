@@ -21,7 +21,7 @@ import view from "@/assets/Maruti_360_view.webp";
 const TITLE = "Amenities — Sky Deck, Pool, Clubhouse & Wellness | 41-Storey Towers";
 const DESCRIPTION =
   "Explore the amenities of our 41-storey twin towers off SG Highway, Ahmedabad: a 360° viewing gallery, lap pool, clubhouse, theatre, gym, yoga deck, indoor games arena and landscaped gardens.";
-const URL = "https://maruti360.lovable.app/amenities";
+const URL = "https://www.maruti-360.com/amenities";
 
 const GROUPS = [
   {
