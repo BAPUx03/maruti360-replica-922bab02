@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Expand, Loader2 } from "lucide-react";
-import landscape from "@/assets/Maruti_360_view.webp.asset.json";
+import landscape from "@/assets/Maruti_360_view.webp";
 import { Reveal } from "./Reveal";
 
 const TOUR_URL = "https://view.pixeldo.com/Maruti360/";
@@ -11,7 +11,7 @@ export function ViewSection() {
   return (
     <section className="bg-surface">
       <img
-        src={landscape.url}
+        src={landscape}
         alt="Panoramic observation deck view from Maruti 360"
         loading="lazy"
         width={1920}

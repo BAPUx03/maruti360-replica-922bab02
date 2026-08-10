@@ -1,4 +1,4 @@
-import logo from "@/assets/Group-35-2.png.asset.json";
+import logo from "@/assets/Group-35-2.png";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { ChevronDown, Phone, ShieldCheck } from "lucide-react";
 import { useServerFn } from "@tanstack/react-start";
@@ -182,7 +182,7 @@ export function EnquiryPopup() {
           <div className="logo-in flex justify-center">
             <img
               data-brand-logo
-              src={logo.url}
+              src={logo}
               alt="Above It All logo"
               className="h-8 w-auto sm:h-10 md:h-12"
             />

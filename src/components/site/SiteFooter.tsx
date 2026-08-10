@@ -1,4 +1,4 @@
-import logo from "@/assets/Group-35-2.png.asset.json";
+import logo from "@/assets/Group-35-2.png";
 import { Facebook, Instagram, Linkedin } from "lucide-react";
 
 export function SiteFooter() {
@@ -7,7 +7,7 @@ export function SiteFooter() {
       <div className="mx-auto max-w-[1400px]">
         <div className="flex flex-col items-center gap-2">
           <img data-brand-logo
-              src={logo.url} alt="Maruti 360 logo" className="h-14 w-auto" />
+              src={logo} alt="Maruti 360 logo" className="h-14 w-auto" />
           <span className="text-[10px] uppercase tracking-[0.35em] text-muted-foreground">
             Above It All
           </span>
