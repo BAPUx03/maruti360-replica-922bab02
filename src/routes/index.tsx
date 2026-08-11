@@ -1,4 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { getSeo } from "@/lib/seo.functions";
+import { seoHead } from "@/lib/seo-defaults";
+
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { Hero } from "@/components/site/Hero";
@@ -26,24 +29,11 @@ const DESCRIPTION =
 
 export const Route = createFileRoute("/")({
   component: Index,
-  head: () => ({
-    meta: [
-      { title: TITLE },
-      { name: "description", content: DESCRIPTION },
-      { property: "og:title", content: TITLE },
-      { property: "og:description", content: DESCRIPTION },
-      { property: "og:type", content: "website" },
-      { property: "og:url", content: `${SITE}/` },
-      {
-        name: "keywords",
-        content:
-          "4 BHK apartments Ahmedabad, 5 BHK luxury flats SG Highway, Maruti 360, luxury apartments Ahmedabad, sky residences Ahmedabad, penthouse Ahmedabad",
-      },
-      { name: "robots", content: "index, follow" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-    links: [{ rel: "canonical", href: `${SITE}/` }],
+  loader: () => getSeo({ data: { path: "/" } }),
+  head: ({ loaderData }) => ({
+    ...seoHead("/", loaderData),
     scripts: [
+
       {
         type: "application/ld+json",
         children: JSON.stringify({
