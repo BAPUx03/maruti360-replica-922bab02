@@ -51,7 +51,7 @@ export function SiteHeader() {
         <div className="hidden items-center gap-4 md:flex">
           <ThemeToggle />
           <a
-            href="tel:+919909923456"
+            href="tel:+919904969298"
             className="group flex items-center gap-3 border-l border-gold/25 pl-5"
           >
             <span className="flex h-8 w-8 items-center justify-center rounded-full border border-gold/40 text-gold transition-colors group-hover:bg-gold group-hover:text-surface">
@@ -62,7 +62,7 @@ export function SiteHeader() {
                 Sales Enquiry
               </span>
               <span className="block text-[13px] tracking-[0.06em] text-foreground transition-colors group-hover:text-gold">
-                +91 99099 23456
+                +91 99049 69298
               </span>
             </span>
           </a>
@@ -92,10 +92,10 @@ export function SiteHeader() {
             </a>
           ))}
           <a
-            href="tel:+919909923456"
+            href="tel:+919904969298"
             className="mt-2 flex items-center gap-2 border-t border-border pt-4 text-[13px] tracking-[0.06em] text-gold"
           >
-            <Phone size={14} /> +91 99099 23456
+            <Phone size={14} /> +91 99049 69298
           </a>
         </nav>
       )}

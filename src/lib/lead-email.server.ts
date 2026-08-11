@@ -19,7 +19,7 @@ const shell = (inner: string) => `<!doctype html>
           ${inner}
         </td></tr>
         <tr><td style="padding:18px 34px 26px 34px;border-top:1px solid #262626;color:#8c8579;font-size:11px;line-height:1.8;">
-          ${BRAND} &nbsp;·&nbsp; S.G. Highway, Ahmedabad &nbsp;·&nbsp; +91 99099 23456
+          ${BRAND} &nbsp;·&nbsp; S.G. Highway, Ahmedabad &nbsp;·&nbsp; +91 99049 69298
         </td></tr>
       </table>
     </td></tr>
@@ -72,7 +72,7 @@ function thankYouHtml(lead: Lead) {
     <p style="margin:26px 0 20px 0;font-size:13px;line-height:1.9;color:#c8c2b7;">
       For anything urgent, reach us directly.
     </p>
-    <a href="tel:+919909923456" style="display:inline-block;padding:12px 26px;border-radius:6px;background:linear-gradient(90deg,#8a6b1f,#e8c874);color:#141005;font-size:12px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;">Call +91 99099 23456</a>
+    <a href="tel:+919904969298" style="display:inline-block;padding:12px 26px;border-radius:6px;background:linear-gradient(90deg,#8a6b1f,#e8c874);color:#141005;font-size:12px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;">Call +91 99049 69298</a>
   `);
 }
 

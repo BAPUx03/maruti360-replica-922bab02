@@ -4,7 +4,7 @@ import { Reveal } from "./Reveal";
 import { saveLead } from "@/lib/leads";
 
 
-const WA_NUMBER = "919909923456";
+const WA_NUMBER = "919904969298";
 
 export function ContactSection() {
   const [sending, setSending] = useState(false);
@@ -132,8 +132,8 @@ export function ContactSection() {
             </button>
             <p className="text-center text-[10px] leading-relaxed text-muted-foreground">
               Or call us directly at{" "}
-              <a href="tel:+919909923456" className="text-gold">
-                +91 99099 23456
+              <a href="tel:+919904969298" className="text-gold">
+                +91 99049 69298
               </a>
             </p>
           </form>
