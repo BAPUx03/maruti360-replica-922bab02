@@ -56,6 +56,42 @@ export type Database = {
         }
         Relationships: []
       }
+      seo_pages: {
+        Row: {
+          created_at: string
+          description: string
+          id: string
+          keywords: string | null
+          noindex: boolean
+          og_image: string | null
+          path: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          description: string
+          id?: string
+          keywords?: string | null
+          noindex?: boolean
+          og_image?: string | null
+          path: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          description?: string
+          id?: string
+          keywords?: string | null
+          noindex?: boolean
+          og_image?: string | null
+          path?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
