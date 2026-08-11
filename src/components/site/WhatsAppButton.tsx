@@ -1,4 +1,4 @@
-const PHONE = "919909923456";
+const PHONE = "919904969298";
 const MESSAGE =
   "Hi, I'd like to know more about the sky residences — pricing, floor plans and site visit slots.";
 

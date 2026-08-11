@@ -35,7 +35,7 @@ const SECTIONS = [
   },
   {
     h: "Your Choices",
-    p: "You may ask us to correct or delete your details, or to stop contacting you, at any time by writing to sales@maruti360.com or messaging +91 99099 23456. We action such requests promptly.",
+    p: "You may ask us to correct or delete your details, or to stop contacting you, at any time by writing to sales@maruti360.com or messaging +91 99049 69298. We action such requests promptly.",
   },
   {
     h: "Disclaimer",
@@ -94,8 +94,8 @@ function PrivacyPage() {
                 sales@maruti360.com
               </a>{" "}
               or call{" "}
-              <a href="tel:+919909923456" className="text-gold">
-                +91 99099 23456
+              <a href="tel:+919904969298" className="text-gold">
+                +91 99049 69298
               </a>
               .
             </p>

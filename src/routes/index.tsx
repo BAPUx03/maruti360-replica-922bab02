@@ -97,7 +97,7 @@ export const Route = createFileRoute("/")({
               name: "How can I get the brochure and price list?",
               acceptedAnswer: {
                 "@type": "Answer",
-                text: "Request it on WhatsApp at +91 99099 23456 or submit the enquiry form on this page and our advisor will share it the same working day.",
+                text: "Request it on WhatsApp at +91 99049 69298 or submit the enquiry form on this page and our advisor will share it the same working day.",
               },
             },
           ],

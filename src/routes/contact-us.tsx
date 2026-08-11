@@ -9,9 +9,9 @@ import { Toaster } from "@/components/ui/sonner";
 
 const TITLE = "Contact Us — Book A Site Visit Off SG Highway, Ahmedabad";
 const DESCRIPTION =
-  "Speak to a residence advisor about 4 & 5 BHK sky residences off SG Highway, Ahmedabad. Call +91 99099 23456, message on WhatsApp, or request pricing, floor plans and a private site-visit slot.";
+  "Speak to a residence advisor about 4 & 5 BHK sky residences off SG Highway, Ahmedabad. Call +91 99049 69298, message on WhatsApp, or request pricing, floor plans and a private site-visit slot.";
 const URL = "https://www.maruti-360.com/contact-us";
-const WA = "https://wa.me/919909923456?text=Hi%2C%20I%20would%20like%20details%20about%20the%20sky%20residences.";
+const WA = "https://wa.me/919904969298?text=Hi%2C%20I%20would%20like%20details%20about%20the%20sky%20residences.";
 
 const FAQS = [
   {
@@ -20,7 +20,7 @@ const FAQS = [
   },
   {
     q: "Can I get the brochure and price list on WhatsApp?",
-    a: "Yes. Message +91 99099 23456 on WhatsApp and the brochure, floor plates and current price list are shared directly in chat.",
+    a: "Yes. Message +91 99049 69298 on WhatsApp and the brochure, floor plates and current price list are shared directly in chat.",
   },
   {
     q: "Do I need an appointment to visit?",
@@ -81,8 +81,8 @@ const CARDS = [
   {
     icon: Phone,
     label: "Call Sales",
-    value: "+91 99099 23456",
-    href: "tel:+919909923456",
+    value: "+91 99049 69298",
+    href: "tel:+919904969298",
   },
   {
     icon: MessageCircle,
