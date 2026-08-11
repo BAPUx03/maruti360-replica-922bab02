@@ -1,4 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { getSeo } from "@/lib/seo.functions";
+import { seoHead } from "@/lib/seo-defaults";
 import { ResidenceLayout, Faqs } from "@/components/site/ResidencePage";
 import bedroom from "@/assets/Maruti_360_bedroom_2.webp";
 
@@ -36,17 +38,9 @@ const FAQS = [
 
 export const Route = createFileRoute("/floor-plan/4-bhk")({
   component: FourBhk,
-  head: () => ({
-    meta: [
-      { title: TITLE },
-      { name: "description", content: DESCRIPTION },
-      { property: "og:title", content: TITLE },
-      { property: "og:description", content: DESCRIPTION },
-      { property: "og:type", content: "article" },
-      { property: "og:url", content: URL },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-    links: [{ rel: "canonical", href: URL }],
+  loader: () => getSeo({ data: { path: "/floor-plan/4-bhk" } }),
+  head: ({ loaderData }) => ({
+    ...seoHead("/floor-plan/4-bhk", loaderData),
     scripts: [
       {
         type: "application/ld+json",

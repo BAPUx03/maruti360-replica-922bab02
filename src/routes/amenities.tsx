@@ -1,4 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { getSeo } from "@/lib/seo.functions";
+import { seoHead } from "@/lib/seo-defaults";
 import {
   Eye,
   Building2,
@@ -83,22 +85,9 @@ const FAQS = [
 
 export const Route = createFileRoute("/amenities")({
   component: AmenitiesPage,
-  head: () => ({
-    meta: [
-      { title: TITLE },
-      { name: "description", content: DESCRIPTION },
-      { property: "og:title", content: TITLE },
-      { property: "og:description", content: DESCRIPTION },
-      { property: "og:type", content: "website" },
-      { property: "og:url", content: URL },
-      { name: "twitter:card", content: "summary_large_image" },
-      {
-        name: "keywords",
-        content:
-          "luxury apartment amenities Ahmedabad, sky deck SG Highway, clubhouse swimming pool Ahmedabad, high rise amenities Gujarat",
-      },
-    ],
-    links: [{ rel: "canonical", href: URL }],
+  loader: () => getSeo({ data: { path: "/amenities" } }),
+  head: ({ loaderData }) => ({
+    ...seoHead("/amenities", loaderData),
     scripts: [
       {
         type: "application/ld+json",

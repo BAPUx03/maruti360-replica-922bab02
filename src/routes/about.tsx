@@ -1,4 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { getSeo } from "@/lib/seo.functions";
+import { seoHead } from "@/lib/seo-defaults";
 import { ResidenceLayout, Faqs } from "@/components/site/ResidencePage";
 import hero from "@/assets/adasd-1.webp";
 import groupImg from "@/assets/maruti-group.jpg";
@@ -43,22 +45,9 @@ const FAQS = [
 
 export const Route = createFileRoute("/about")({
   component: AboutPage,
-  head: () => ({
-    meta: [
-      { title: TITLE },
-      { name: "description", content: DESCRIPTION },
-      { property: "og:title", content: TITLE },
-      { property: "og:description", content: DESCRIPTION },
-      { property: "og:type", content: "website" },
-      { property: "og:url", content: URL },
-      { name: "twitter:card", content: "summary_large_image" },
-      {
-        name: "keywords",
-        content:
-          "luxury builder Ahmedabad, real estate developer SG Highway, RERA registered project Ahmedabad, high rise developer Gujarat",
-      },
-    ],
-    links: [{ rel: "canonical", href: URL }],
+  loader: () => getSeo({ data: { path: "/about" } }),
+  head: ({ loaderData }) => ({
+    ...seoHead("/about", loaderData),
     scripts: [
       {
         type: "application/ld+json",
