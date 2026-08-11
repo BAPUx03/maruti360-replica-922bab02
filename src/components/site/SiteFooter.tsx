@@ -52,6 +52,18 @@ export function SiteFooter() {
           </a>
         </div>
 
+        {/* Discreet admin entry — unlabelled, not indexed, credentials verified server-side */}
+        <div className="mt-8">
+          <a
+            href="/secure-login"
+            aria-label="Staff access"
+            rel="nofollow noindex"
+            className="inline-block h-2 w-2 rounded-full bg-muted-foreground/20 align-middle transition-colors hover:bg-gold"
+          >
+            <span className="sr-only">Staff access</span>
+          </a>
+        </div>
+
       </div>
     </footer>
   );

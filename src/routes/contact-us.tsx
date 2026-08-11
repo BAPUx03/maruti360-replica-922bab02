@@ -1,4 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { getSeo } from "@/lib/seo.functions";
+import { seoHead } from "@/lib/seo-defaults";
 import { Phone, MessageCircle, Mail, MapPin, Clock } from "lucide-react";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
@@ -34,22 +36,9 @@ const FAQS = [
 
 export const Route = createFileRoute("/contact-us")({
   component: ContactPage,
-  head: () => ({
-    meta: [
-      { title: TITLE },
-      { name: "description", content: DESCRIPTION },
-      { property: "og:title", content: TITLE },
-      { property: "og:description", content: DESCRIPTION },
-      { property: "og:type", content: "website" },
-      { property: "og:url", content: URL },
-      { name: "twitter:card", content: "summary_large_image" },
-      {
-        name: "keywords",
-        content:
-          "book site visit Ahmedabad, luxury apartment enquiry SG Highway, 4 BHK price Ahmedabad, contact real estate developer Ahmedabad",
-      },
-    ],
-    links: [{ rel: "canonical", href: URL }],
+  loader: () => getSeo({ data: { path: "/contact-us" } }),
+  head: ({ loaderData }) => ({
+    ...seoHead("/contact-us", loaderData),
     scripts: [
       {
         type: "application/ld+json",

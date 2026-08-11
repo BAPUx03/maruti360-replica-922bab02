@@ -1,4 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { getSeo } from "@/lib/seo.functions";
+import { seoHead } from "@/lib/seo-defaults";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { WhatsAppButton } from "@/components/site/WhatsAppButton";
@@ -49,18 +51,9 @@ const SECTIONS = [
 
 export const Route = createFileRoute("/privacy-policy")({
   component: PrivacyPage,
-  head: () => ({
-    meta: [
-      { title: TITLE },
-      { name: "description", content: DESCRIPTION },
-      { property: "og:title", content: TITLE },
-      { property: "og:description", content: DESCRIPTION },
-      { property: "og:type", content: "website" },
-      { property: "og:url", content: URL },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "robots", content: "index, follow" },
-    ],
-    links: [{ rel: "canonical", href: URL }],
+  loader: () => getSeo({ data: { path: "/privacy-policy" } }),
+  head: ({ loaderData }) => ({
+    ...seoHead("/privacy-policy", loaderData),
   }),
 });
 
