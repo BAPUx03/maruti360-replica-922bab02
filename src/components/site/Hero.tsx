@@ -5,7 +5,7 @@ export function Hero() {
     <section className="over-media relative h-screen min-h-[640px] w-full overflow-hidden">
       <img
         src={heroNight}
-        alt="Rooftop observation deck overlooking the Ahmedabad skyline at sunset"
+        alt="Maruti 360 luxury twin tower apartments on SG Highway, Ahmedabad"
         width={1920}
         height={1088}
         className="absolute inset-0 h-full w-full object-cover"
@@ -18,8 +18,8 @@ export function Hero() {
         </span>
 
         <h1 className="reveal-up mt-6 max-w-[16ch] font-display text-[36px] leading-[1.12] tracking-[0.04em] text-foreground sm:text-[54px] md:text-[76px]">
-          A Life Written
-          <span className="block text-gold">In The Sky</span>
+          Maruti 360
+          <span className="block text-gold">Luxury 4 &amp; 5 BHK Apartments</span>
         </h1>
 
         <p className="reveal-up mt-6 max-w-[560px] text-[13px] leading-[2] text-foreground/75 sm:text-[14px]">

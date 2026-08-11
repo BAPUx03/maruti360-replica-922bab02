@@ -20,6 +20,12 @@ import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as FloorPlanIndexRouteImport } from './routes/floor-plan.index'
 import { Route as FloorPlan4BhkRouteImport } from './routes/floor-plan.4-bhk'
 import { Route as FloorPlan5BhkRouteImport } from './routes/floor-plan.5-bhk'
+import { Route as PriceRouteImport } from './routes/price'
+import { Route as LocationRouteImport } from './routes/location'
+import { Route as ReraLegalRouteImport } from './routes/rera-legal'
+import { Route as FaqRouteImport } from './routes/faq'
+import { Route as GalleryRouteImport } from './routes/gallery'
+import { Route as BlogRouteImport } from './routes/blog'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -76,6 +82,12 @@ const FloorPlan5BhkRoute = FloorPlan5BhkRouteImport.update({
   path: '/floor-plan/5-bhk',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PriceRoute = PriceRouteImport.update({ id: '/price', path: '/price', getParentRoute: () => rootRouteImport } as any)
+const LocationRoute = LocationRouteImport.update({ id: '/location', path: '/location', getParentRoute: () => rootRouteImport } as any)
+const ReraLegalRoute = ReraLegalRouteImport.update({ id: '/rera-legal', path: '/rera-legal', getParentRoute: () => rootRouteImport } as any)
+const FaqRoute = FaqRouteImport.update({ id: '/faq', path: '/faq', getParentRoute: () => rootRouteImport } as any)
+const GalleryRoute = GalleryRouteImport.update({ id: '/gallery', path: '/gallery', getParentRoute: () => rootRouteImport } as any)
+const BlogRoute = BlogRouteImport.update({ id: '/blog', path: '/blog', getParentRoute: () => rootRouteImport } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -89,6 +101,12 @@ export interface FileRoutesByFullPath {
   '/floor-plan/4-bhk': typeof FloorPlan4BhkRoute
   '/floor-plan/5-bhk': typeof FloorPlan5BhkRoute
   '/floor-plan/': typeof FloorPlanIndexRoute
+  '/price': typeof PriceRoute
+  '/location': typeof LocationRoute
+  '/rera-legal': typeof ReraLegalRoute
+  '/faq': typeof FaqRoute
+  '/gallery': typeof GalleryRoute
+  '/blog': typeof BlogRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -102,6 +120,12 @@ export interface FileRoutesByTo {
   '/floor-plan/4-bhk': typeof FloorPlan4BhkRoute
   '/floor-plan/5-bhk': typeof FloorPlan5BhkRoute
   '/floor-plan': typeof FloorPlanIndexRoute
+  '/price': typeof PriceRoute
+  '/location': typeof LocationRoute
+  '/rera-legal': typeof ReraLegalRoute
+  '/faq': typeof FaqRoute
+  '/gallery': typeof GalleryRoute
+  '/blog': typeof BlogRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -131,6 +155,12 @@ export interface FileRouteTypes {
     | '/floor-plan/4-bhk'
     | '/floor-plan/5-bhk'
     | '/floor-plan/'
+    | '/price'
+    | '/location'
+    | '/rera-legal'
+    | '/faq'
+    | '/gallery'
+    | '/blog'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -144,6 +174,12 @@ export interface FileRouteTypes {
     | '/floor-plan/4-bhk'
     | '/floor-plan/5-bhk'
     | '/floor-plan'
+    | '/price'
+    | '/location'
+    | '/rera-legal'
+    | '/faq'
+    | '/gallery'
+    | '/blog'
   id:
     | '__root__'
     | '/'
@@ -157,6 +193,12 @@ export interface FileRouteTypes {
     | '/floor-plan/4-bhk'
     | '/floor-plan/5-bhk'
     | '/floor-plan/'
+    | '/price'
+    | '/location'
+    | '/rera-legal'
+    | '/faq'
+    | '/gallery'
+    | '/blog'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -171,6 +213,12 @@ export interface RootRouteChildren {
   FloorPlan4BhkRoute: typeof FloorPlan4BhkRoute
   FloorPlan5BhkRoute: typeof FloorPlan5BhkRoute
   FloorPlanIndexRoute: typeof FloorPlanIndexRoute
+  PriceRoute: typeof PriceRoute
+  LocationRoute: typeof LocationRoute
+  ReraLegalRoute: typeof ReraLegalRoute
+  FaqRoute: typeof FaqRoute
+  GalleryRoute: typeof GalleryRoute
+  BlogRoute: typeof BlogRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -252,6 +300,12 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FloorPlan5BhkRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/price': { id: '/price'; path: '/price'; fullPath: '/price'; preLoaderRoute: typeof PriceRouteImport; parentRoute: typeof rootRouteImport }
+    '/location': { id: '/location'; path: '/location'; fullPath: '/location'; preLoaderRoute: typeof LocationRouteImport; parentRoute: typeof rootRouteImport }
+    '/rera-legal': { id: '/rera-legal'; path: '/rera-legal'; fullPath: '/rera-legal'; preLoaderRoute: typeof ReraLegalRouteImport; parentRoute: typeof rootRouteImport }
+    '/faq': { id: '/faq'; path: '/faq'; fullPath: '/faq'; preLoaderRoute: typeof FaqRouteImport; parentRoute: typeof rootRouteImport }
+    '/gallery': { id: '/gallery'; path: '/gallery'; fullPath: '/gallery'; preLoaderRoute: typeof GalleryRouteImport; parentRoute: typeof rootRouteImport }
+    '/blog': { id: '/blog'; path: '/blog'; fullPath: '/blog'; preLoaderRoute: typeof BlogRouteImport; parentRoute: typeof rootRouteImport }
   }
 }
 
@@ -267,6 +321,12 @@ const rootRouteChildren: RootRouteChildren = {
   FloorPlan4BhkRoute: FloorPlan4BhkRoute,
   FloorPlan5BhkRoute: FloorPlan5BhkRoute,
   FloorPlanIndexRoute: FloorPlanIndexRoute,
+  PriceRoute,
+  LocationRoute,
+  ReraLegalRoute,
+  FaqRoute,
+  GalleryRoute,
+  BlogRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

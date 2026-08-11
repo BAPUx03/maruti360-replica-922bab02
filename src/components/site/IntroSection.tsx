@@ -8,7 +8,7 @@ export function IntroSection() {
         <Reveal>
           <img
             src={twinTowers}
-            alt="Maruti 360 twin residential towers render"
+            alt="Maruti 360 twin tower luxury apartments on SG Highway, Ahmedabad"
             loading="lazy"
             width={912}
             height={1200}

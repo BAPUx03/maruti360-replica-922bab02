@@ -11,6 +11,12 @@ const PATHS = [
   { path: "/floor-plan/4-bhk", changefreq: "monthly", priority: "0.8" },
   { path: "/floor-plan/5-bhk", changefreq: "monthly", priority: "0.8" },
   { path: "/contact-us", changefreq: "monthly", priority: "0.7" },
+  { path: "/price", changefreq: "monthly", priority: "0.8" },
+  { path: "/location", changefreq: "monthly", priority: "0.8" },
+  { path: "/rera-legal", changefreq: "yearly", priority: "0.6" },
+  { path: "/faq", changefreq: "monthly", priority: "0.7" },
+  { path: "/gallery", changefreq: "monthly", priority: "0.7" },
+  { path: "/blog", changefreq: "weekly", priority: "0.6" },
   { path: "/privacy-policy", changefreq: "yearly", priority: "0.3" },
 ];
 

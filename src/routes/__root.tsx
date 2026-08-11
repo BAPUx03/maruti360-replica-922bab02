@@ -99,6 +99,35 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { rel: "icon", href: "/favicon.png", type: "image/png" },
     ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          name: "Maruti 360",
+          url: "https://www.maruti-360.com/",
+          logo: "https://www.maruti-360.com/favicon.png",
+          telephone: "+91-99049-69298",
+          email: "sales@maruti360.com",
+          address: {
+            "@type": "PostalAddress",
+            addressLocality: "Ahmedabad",
+            addressRegion: "Gujarat",
+            addressCountry: "IN",
+          },
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          name: "Maruti 360",
+          url: "https://www.maruti-360.com/",
+        }),
+      },
+    ],
   }),
   shellComponent: RootShell,
   component: RootComponent,
