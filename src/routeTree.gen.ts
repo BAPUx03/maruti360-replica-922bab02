@@ -14,6 +14,7 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as AmenitiesRouteImport } from './routes/amenities'
 import { Route as ContactUsRouteImport } from './routes/contact-us'
 import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
+import { Route as SecureLoginRouteImport } from './routes/secure-login'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as FloorPlanIndexRouteImport } from './routes/floor-plan.index'
 import { Route as FloorPlan4BhkRouteImport } from './routes/floor-plan.4-bhk'
@@ -44,6 +45,11 @@ const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
   path: '/privacy-policy',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SecureLoginRoute = SecureLoginRouteImport.update({
+  id: '/secure-login',
+  path: '/secure-login',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
@@ -71,6 +77,7 @@ export interface FileRoutesByFullPath {
   '/amenities': typeof AmenitiesRoute
   '/contact-us': typeof ContactUsRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
+  '/secure-login': typeof SecureLoginRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/floor-plan/4-bhk': typeof FloorPlan4BhkRoute
   '/floor-plan/5-bhk': typeof FloorPlan5BhkRoute
@@ -82,6 +89,7 @@ export interface FileRoutesByTo {
   '/amenities': typeof AmenitiesRoute
   '/contact-us': typeof ContactUsRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
+  '/secure-login': typeof SecureLoginRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/floor-plan/4-bhk': typeof FloorPlan4BhkRoute
   '/floor-plan/5-bhk': typeof FloorPlan5BhkRoute
@@ -94,6 +102,7 @@ export interface FileRoutesById {
   '/amenities': typeof AmenitiesRoute
   '/contact-us': typeof ContactUsRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
+  '/secure-login': typeof SecureLoginRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/floor-plan/4-bhk': typeof FloorPlan4BhkRoute
   '/floor-plan/5-bhk': typeof FloorPlan5BhkRoute
@@ -107,6 +116,7 @@ export interface FileRouteTypes {
     | '/amenities'
     | '/contact-us'
     | '/privacy-policy'
+    | '/secure-login'
     | '/sitemap.xml'
     | '/floor-plan/4-bhk'
     | '/floor-plan/5-bhk'
@@ -118,6 +128,7 @@ export interface FileRouteTypes {
     | '/amenities'
     | '/contact-us'
     | '/privacy-policy'
+    | '/secure-login'
     | '/sitemap.xml'
     | '/floor-plan/4-bhk'
     | '/floor-plan/5-bhk'
@@ -129,6 +140,7 @@ export interface FileRouteTypes {
     | '/amenities'
     | '/contact-us'
     | '/privacy-policy'
+    | '/secure-login'
     | '/sitemap.xml'
     | '/floor-plan/4-bhk'
     | '/floor-plan/5-bhk'
@@ -141,6 +153,7 @@ export interface RootRouteChildren {
   AmenitiesRoute: typeof AmenitiesRoute
   ContactUsRoute: typeof ContactUsRoute
   PrivacyPolicyRoute: typeof PrivacyPolicyRoute
+  SecureLoginRoute: typeof SecureLoginRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   FloorPlan4BhkRoute: typeof FloorPlan4BhkRoute
   FloorPlan5BhkRoute: typeof FloorPlan5BhkRoute
@@ -184,6 +197,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PrivacyPolicyRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/secure-login': {
+      id: '/secure-login'
+      path: '/secure-login'
+      fullPath: '/secure-login'
+      preLoaderRoute: typeof SecureLoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sitemap.xml': {
       id: '/sitemap.xml'
       path: '/sitemap.xml'
@@ -221,6 +241,7 @@ const rootRouteChildren: RootRouteChildren = {
   AmenitiesRoute: AmenitiesRoute,
   ContactUsRoute: ContactUsRoute,
   PrivacyPolicyRoute: PrivacyPolicyRoute,
+  SecureLoginRoute: SecureLoginRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   FloorPlan4BhkRoute: FloorPlan4BhkRoute,
   FloorPlan5BhkRoute: FloorPlan5BhkRoute,
@@ -229,13 +250,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
