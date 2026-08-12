@@ -115,11 +115,9 @@ export function ContactSection() {
               {sending ? "Sending…" : "Submit Request"}
             </button>
             <p className="text-center text-[10px] leading-relaxed text-muted-foreground">
-              Or call us directly at{" "}
-              <a href="tel:+919904969298" className="text-gold">
-                +91 99049 69298
-              </a>
+              Our residence advisor responds to every enquiry the same working day.
             </p>
+
           </form>
         </Reveal>
       </div>
