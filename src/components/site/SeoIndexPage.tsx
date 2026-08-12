@@ -3,6 +3,7 @@ import { Link } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { Faqs, type Faq } from "@/components/site/ResidencePage";
+import { EnquiryCta } from "@/components/site/EnquiryCta";
 
 export function SeoIndexPage({
   eyebrow,
@@ -31,6 +32,7 @@ export function SeoIndexPage({
           </div>
         </section>
         {children}
+        <EnquiryCta />
       </main>
       <SiteFooter />
     </div>
