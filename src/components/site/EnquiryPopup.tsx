@@ -125,8 +125,18 @@ export function EnquiryPopup() {
 
   useEffect(() => {
     const t = setTimeout(() => setOpen(true), 7000);
-    return () => clearTimeout(t);
+    const onOpen = () => {
+      setStep("form");
+      setError("");
+      setOpen(true);
+    };
+    window.addEventListener(ENQUIRY_EVENT, onOpen);
+    return () => {
+      clearTimeout(t);
+      window.removeEventListener(ENQUIRY_EVENT, onOpen);
+    };
   }, []);
+
 
   useEffect(() => {
     if (seconds <= 0) return;
