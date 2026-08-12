@@ -3,7 +3,6 @@ import { getSeo } from "@/lib/seo.functions";
 import { seoHead } from "@/lib/seo-defaults";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
-import { WhatsAppButton } from "@/components/site/WhatsAppButton";
 import { Reveal } from "@/components/site/Reveal";
 import { Faqs } from "@/components/site/ResidencePage";
 import blueprint from "@/assets/Maruti-Buildings-01.png";
@@ -147,7 +146,6 @@ function FloorPlanIndex() {
         </section>
       </main>
       <SiteFooter />
-      <WhatsAppButton />
     </div>
   );
 }

@@ -17,10 +17,7 @@ import { AboutGroupSection } from "@/components/site/AboutGroupSection";
 import { ContactSection } from "@/components/site/ContactSection";
 import { BrochureSection } from "@/components/site/BrochureSection";
 import { InstagramSection } from "@/components/site/InstagramSection";
-import { EnquiryPopup } from "@/components/site/EnquiryPopup";
-import { WhatsAppButton } from "@/components/site/WhatsAppButton";
 import { SeoSection } from "@/components/site/SeoSection";
-import { Toaster } from "@/components/ui/sonner";
 
 const SITE = "https://www.maruti-360.com";
 const TITLE = "4 & 5 BHK Luxury Apartments on S.G. Highway, Ahmedabad | MARUTI 360";
@@ -49,7 +46,6 @@ export const Route = createFileRoute("/")({
             addressRegion: "Gujarat",
             addressCountry: "IN",
           },
-          telephone: "+91-99099-23456",
         }),
       },
       {
@@ -87,7 +83,7 @@ export const Route = createFileRoute("/")({
               name: "How can I get the brochure and price list?",
               acceptedAnswer: {
                 "@type": "Answer",
-                text: "Request it on WhatsApp at +91 99049 69298 or submit the enquiry form on this page and our advisor will share it the same working day.",
+                text: "Submit the enquiry form on this page and our advisor will share the brochure and floor plans the same working day.",
               },
             },
           ],
@@ -118,9 +114,6 @@ function Index() {
         <SeoSection />
       </main>
       <SiteFooter />
-      <EnquiryPopup />
-      <WhatsAppButton />
-      <Toaster position="top-center" richColors />
     </div>
   );
 }

@@ -3,7 +3,6 @@ import { getSeo } from "@/lib/seo.functions";
 import { seoHead } from "@/lib/seo-defaults";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
-import { WhatsAppButton } from "@/components/site/WhatsAppButton";
 
 const TITLE = "Privacy Policy | Sky Residences Off SG Highway, Ahmedabad";
 const DESCRIPTION =
@@ -96,7 +95,6 @@ function PrivacyPage() {
         </section>
       </main>
       <SiteFooter />
-      <WhatsAppButton />
     </div>
   );
 }

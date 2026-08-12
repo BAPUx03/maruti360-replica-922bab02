@@ -2,7 +2,6 @@ import type { ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
-import { WhatsAppButton } from "@/components/site/WhatsAppButton";
 import { Faqs, type Faq } from "@/components/site/ResidencePage";
 
 export function SeoIndexPage({
@@ -34,7 +33,6 @@ export function SeoIndexPage({
         {children}
       </main>
       <SiteFooter />
-      <WhatsAppButton />
     </div>
   );
 }

@@ -4,7 +4,6 @@ import { seoHead } from "@/lib/seo-defaults";
 import { Phone, MessageCircle, Mail, MapPin, Clock } from "lucide-react";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
-import { WhatsAppButton } from "@/components/site/WhatsAppButton";
 import { ContactSection } from "@/components/site/ContactSection";
 import { Faqs } from "@/components/site/ResidencePage";
 import { Toaster } from "@/components/ui/sonner";
@@ -158,7 +157,6 @@ function ContactPage() {
         </section>
       </main>
       <SiteFooter />
-      <WhatsAppButton />
       <Toaster position="top-center" richColors />
     </div>
   );
