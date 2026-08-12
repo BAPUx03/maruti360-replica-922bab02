@@ -4,6 +4,8 @@ import { ChevronDown, Phone, ShieldCheck } from "lucide-react";
 import { useServerFn } from "@tanstack/react-start";
 import { sendPhoneOtp, verifyPhoneOtp } from "@/lib/otp.functions";
 import { saveLead } from "@/lib/leads";
+import { ENQUIRY_EVENT } from "@/components/site/EnquiryCta";
+
 
 
 const REQUIREMENTS = [
@@ -18,9 +20,48 @@ const BUDGETS = ["₹2 Cr – ₹3 Cr", "₹4 Cr – ₹5 Cr", "₹6 Cr – ₹7
 const COUNTRIES = [
   { code: "+91", label: "IN +91" },
   { code: "+971", label: "AE +971" },
-  { code: "+44", label: "UK +44" },
+  { code: "+966", label: "SA +966" },
+  { code: "+974", label: "QA +974" },
+  { code: "+965", label: "KW +965" },
+  { code: "+968", label: "OM +968" },
+  { code: "+973", label: "BH +973" },
   { code: "+1", label: "US +1" },
+  { code: "+1", label: "CA +1" },
+  { code: "+44", label: "UK +44" },
+  { code: "+61", label: "AU +61" },
+  { code: "+64", label: "NZ +64" },
+  { code: "+65", label: "SG +65" },
+  { code: "+60", label: "MY +60" },
+  { code: "+66", label: "TH +66" },
+  { code: "+62", label: "ID +62" },
+  { code: "+81", label: "JP +81" },
+  { code: "+82", label: "KR +82" },
+  { code: "+86", label: "CN +86" },
+  { code: "+852", label: "HK +852" },
+  { code: "+49", label: "DE +49" },
+  { code: "+33", label: "FR +33" },
+  { code: "+39", label: "IT +39" },
+  { code: "+34", label: "ES +34" },
+  { code: "+31", label: "NL +31" },
+  { code: "+41", label: "CH +41" },
+  { code: "+46", label: "SE +46" },
+  { code: "+47", label: "NO +47" },
+  { code: "+45", label: "DK +45" },
+  { code: "+353", label: "IE +353" },
+  { code: "+351", label: "PT +351" },
+  { code: "+90", label: "TR +90" },
+  { code: "+7", label: "RU +7" },
+  { code: "+27", label: "ZA +27" },
+  { code: "+254", label: "KE +254" },
+  { code: "+234", label: "NG +234" },
+  { code: "+20", label: "EG +20" },
+  { code: "+55", label: "BR +55" },
+  { code: "+52", label: "MX +52" },
+  { code: "+94", label: "LK +94" },
+  { code: "+977", label: "NP +977" },
+  { code: "+880", label: "BD +880" },
 ];
+
 
 const fieldClass =
   "w-full appearance-none rounded-md border border-border bg-surface-2 px-3.5 py-2.5 text-[13px] text-foreground outline-none transition-colors placeholder:text-muted-foreground focus:border-gold md:px-4 md:py-3";
@@ -85,9 +126,21 @@ export function EnquiryPopup() {
   const fullPhone = useMemo(() => `${dial}${phone.replace(/\D/g, "")}`, [dial, phone]);
 
   useEffect(() => {
-    const t = setTimeout(() => setOpen(true), 7000);
-    return () => clearTimeout(t);
+    const path = typeof window !== "undefined" ? window.location.pathname : "";
+    const blocked = path.startsWith("/admin") || path.startsWith("/secure-login");
+    const t = blocked ? undefined : setTimeout(() => setOpen(true), 7000);
+    const onOpen = () => {
+      setStep("form");
+      setError("");
+      setOpen(true);
+    };
+    window.addEventListener(ENQUIRY_EVENT, onOpen);
+    return () => {
+      if (t) clearTimeout(t);
+      window.removeEventListener(ENQUIRY_EVENT, onOpen);
+    };
   }, []);
+
 
   useEffect(() => {
     if (seconds <= 0) return;
@@ -125,14 +178,43 @@ export function EnquiryPopup() {
     }
   };
 
+  const saveAndClose = async () => {
+    setError("");
+    setBusy(true);
+    try {
+      await saveLead({
+        first_name: firstName,
+        last_name: lastName,
+        email,
+        phone: fullPhone,
+        requirement,
+        budget,
+        source: "enquiry_popup",
+        phone_verified: false,
+      });
+      setOpen(false);
+      setStep("form");
+    } catch {
+      setError("Something went wrong. Please try again.");
+    } finally {
+      setBusy(false);
+    }
+  };
+
   const submitForm = (e: React.FormEvent) => {
     e.preventDefault();
     if (!/^\+\d{7,15}$/.test(fullPhone)) {
       setError("Enter a valid phone number.");
       return;
     }
+    // Only Indian numbers go through SMS OTP; other countries save directly.
+    if (dial !== "+91") {
+      void saveAndClose();
+      return;
+    }
     void requestOtp();
   };
+
 
   const submitOtp = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -279,7 +361,7 @@ export function EnquiryPopup() {
                           className={`${fieldClass} px-3 pr-8 text-[12px]`}
                         >
                           {COUNTRIES.map((c) => (
-                            <option key={c.code} value={c.code} className="bg-surface-2">
+                            <option key={c.label} value={c.code} className="bg-surface-2">
                               {c.label}
                             </option>
                           ))}
@@ -310,7 +392,7 @@ export function EnquiryPopup() {
                 {error && <p className="text-center text-[12px] text-red-400">{error}</p>}
 
                 <button type="submit" disabled={busy} className="btn-gold w-full disabled:opacity-60">
-                  {busy ? "Sending Code…" : "Get Exclusive Access"}
+                  {busy ? "Please wait…" : "Get Exclusive Access"}
                 </button>
 
                 <p className="text-center text-[10px] leading-relaxed text-muted-foreground sm:text-[11px]">

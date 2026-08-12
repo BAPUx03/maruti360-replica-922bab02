@@ -3,11 +3,9 @@ import { toast } from "sonner";
 import { Reveal } from "./Reveal";
 import { saveLead } from "@/lib/leads";
 
-
-const WA_NUMBER = "919904969298";
-
 export function ContactSection() {
   const [sending, setSending] = useState(false);
+
 
   return (
     <section id="contact" className="bg-surface px-5 py-16 md:px-10 md:py-28">
@@ -43,16 +41,6 @@ export function ContactSection() {
               }
 
               setSending(true);
-              const text = [
-                "New enquiry from the website",
-                `Name: ${first} ${last}`,
-                `Phone: ${phone}`,
-                `Email: ${email}`,
-                `Interested in: ${config || "Not specified"}`,
-                message ? `Message: ${message}` : "",
-              ]
-                .filter(Boolean)
-                .join("\n");
 
               void saveLead({
                 first_name: first,
@@ -64,11 +52,7 @@ export function ContactSection() {
                 source: "contact_form",
               });
 
-              window.open(
-                `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`,
-                "_blank",
-                "noopener,noreferrer",
-              );
+
               toast.success("Thank you! Our advisor will connect with you shortly.");
               form.reset();
               setSending(false);
@@ -131,11 +115,9 @@ export function ContactSection() {
               {sending ? "Sending…" : "Submit Request"}
             </button>
             <p className="text-center text-[10px] leading-relaxed text-muted-foreground">
-              Or call us directly at{" "}
-              <a href="tel:+919904969298" className="text-gold">
-                +91 99049 69298
-              </a>
+              Our residence advisor responds to every enquiry the same working day.
             </p>
+
           </form>
         </Reveal>
       </div>

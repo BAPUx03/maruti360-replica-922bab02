@@ -13,19 +13,19 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as AmenitiesRouteImport } from './routes/amenities'
+import { Route as BlogRouteImport } from './routes/blog'
 import { Route as ContactUsRouteImport } from './routes/contact-us'
+import { Route as FaqRouteImport } from './routes/faq'
+import { Route as GalleryRouteImport } from './routes/gallery'
+import { Route as LocationRouteImport } from './routes/location'
+import { Route as PriceRouteImport } from './routes/price'
 import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
+import { Route as ReraLegalRouteImport } from './routes/rera-legal'
 import { Route as SecureLoginRouteImport } from './routes/secure-login'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as FloorPlanIndexRouteImport } from './routes/floor-plan.index'
 import { Route as FloorPlan4BhkRouteImport } from './routes/floor-plan.4-bhk'
 import { Route as FloorPlan5BhkRouteImport } from './routes/floor-plan.5-bhk'
-import { Route as PriceRouteImport } from './routes/price'
-import { Route as LocationRouteImport } from './routes/location'
-import { Route as ReraLegalRouteImport } from './routes/rera-legal'
-import { Route as FaqRouteImport } from './routes/faq'
-import { Route as GalleryRouteImport } from './routes/gallery'
-import { Route as BlogRouteImport } from './routes/blog'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -47,14 +47,44 @@ const AmenitiesRoute = AmenitiesRouteImport.update({
   path: '/amenities',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BlogRoute = BlogRouteImport.update({
+  id: '/blog',
+  path: '/blog',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ContactUsRoute = ContactUsRouteImport.update({
   id: '/contact-us',
   path: '/contact-us',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FaqRoute = FaqRouteImport.update({
+  id: '/faq',
+  path: '/faq',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GalleryRoute = GalleryRouteImport.update({
+  id: '/gallery',
+  path: '/gallery',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LocationRoute = LocationRouteImport.update({
+  id: '/location',
+  path: '/location',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PriceRoute = PriceRouteImport.update({
+  id: '/price',
+  path: '/price',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
   id: '/privacy-policy',
   path: '/privacy-policy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReraLegalRoute = ReraLegalRouteImport.update({
+  id: '/rera-legal',
+  path: '/rera-legal',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SecureLoginRoute = SecureLoginRouteImport.update({
@@ -82,50 +112,44 @@ const FloorPlan5BhkRoute = FloorPlan5BhkRouteImport.update({
   path: '/floor-plan/5-bhk',
   getParentRoute: () => rootRouteImport,
 } as any)
-const PriceRoute = PriceRouteImport.update({ id: '/price', path: '/price', getParentRoute: () => rootRouteImport } as any)
-const LocationRoute = LocationRouteImport.update({ id: '/location', path: '/location', getParentRoute: () => rootRouteImport } as any)
-const ReraLegalRoute = ReraLegalRouteImport.update({ id: '/rera-legal', path: '/rera-legal', getParentRoute: () => rootRouteImport } as any)
-const FaqRoute = FaqRouteImport.update({ id: '/faq', path: '/faq', getParentRoute: () => rootRouteImport } as any)
-const GalleryRoute = GalleryRouteImport.update({ id: '/gallery', path: '/gallery', getParentRoute: () => rootRouteImport } as any)
-const BlogRoute = BlogRouteImport.update({ id: '/blog', path: '/blog', getParentRoute: () => rootRouteImport } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/admin': typeof AdminRoute
   '/amenities': typeof AmenitiesRoute
+  '/blog': typeof BlogRoute
   '/contact-us': typeof ContactUsRoute
+  '/faq': typeof FaqRoute
+  '/gallery': typeof GalleryRoute
+  '/location': typeof LocationRoute
+  '/price': typeof PriceRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
+  '/rera-legal': typeof ReraLegalRoute
   '/secure-login': typeof SecureLoginRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/floor-plan/4-bhk': typeof FloorPlan4BhkRoute
   '/floor-plan/5-bhk': typeof FloorPlan5BhkRoute
   '/floor-plan/': typeof FloorPlanIndexRoute
-  '/price': typeof PriceRoute
-  '/location': typeof LocationRoute
-  '/rera-legal': typeof ReraLegalRoute
-  '/faq': typeof FaqRoute
-  '/gallery': typeof GalleryRoute
-  '/blog': typeof BlogRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/admin': typeof AdminRoute
   '/amenities': typeof AmenitiesRoute
+  '/blog': typeof BlogRoute
   '/contact-us': typeof ContactUsRoute
+  '/faq': typeof FaqRoute
+  '/gallery': typeof GalleryRoute
+  '/location': typeof LocationRoute
+  '/price': typeof PriceRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
+  '/rera-legal': typeof ReraLegalRoute
   '/secure-login': typeof SecureLoginRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/floor-plan/4-bhk': typeof FloorPlan4BhkRoute
   '/floor-plan/5-bhk': typeof FloorPlan5BhkRoute
   '/floor-plan': typeof FloorPlanIndexRoute
-  '/price': typeof PriceRoute
-  '/location': typeof LocationRoute
-  '/rera-legal': typeof ReraLegalRoute
-  '/faq': typeof FaqRoute
-  '/gallery': typeof GalleryRoute
-  '/blog': typeof BlogRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -133,8 +157,14 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/admin': typeof AdminRoute
   '/amenities': typeof AmenitiesRoute
+  '/blog': typeof BlogRoute
   '/contact-us': typeof ContactUsRoute
+  '/faq': typeof FaqRoute
+  '/gallery': typeof GalleryRoute
+  '/location': typeof LocationRoute
+  '/price': typeof PriceRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
+  '/rera-legal': typeof ReraLegalRoute
   '/secure-login': typeof SecureLoginRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/floor-plan/4-bhk': typeof FloorPlan4BhkRoute
@@ -148,57 +178,57 @@ export interface FileRouteTypes {
     | '/about'
     | '/admin'
     | '/amenities'
+    | '/blog'
     | '/contact-us'
+    | '/faq'
+    | '/gallery'
+    | '/location'
+    | '/price'
     | '/privacy-policy'
+    | '/rera-legal'
     | '/secure-login'
     | '/sitemap.xml'
     | '/floor-plan/4-bhk'
     | '/floor-plan/5-bhk'
     | '/floor-plan/'
-    | '/price'
-    | '/location'
-    | '/rera-legal'
-    | '/faq'
-    | '/gallery'
-    | '/blog'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
     | '/admin'
     | '/amenities'
+    | '/blog'
     | '/contact-us'
+    | '/faq'
+    | '/gallery'
+    | '/location'
+    | '/price'
     | '/privacy-policy'
+    | '/rera-legal'
     | '/secure-login'
     | '/sitemap.xml'
     | '/floor-plan/4-bhk'
     | '/floor-plan/5-bhk'
     | '/floor-plan'
-    | '/price'
-    | '/location'
-    | '/rera-legal'
-    | '/faq'
-    | '/gallery'
-    | '/blog'
   id:
     | '__root__'
     | '/'
     | '/about'
     | '/admin'
     | '/amenities'
+    | '/blog'
     | '/contact-us'
+    | '/faq'
+    | '/gallery'
+    | '/location'
+    | '/price'
     | '/privacy-policy'
+    | '/rera-legal'
     | '/secure-login'
     | '/sitemap.xml'
     | '/floor-plan/4-bhk'
     | '/floor-plan/5-bhk'
     | '/floor-plan/'
-    | '/price'
-    | '/location'
-    | '/rera-legal'
-    | '/faq'
-    | '/gallery'
-    | '/blog'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -206,19 +236,19 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   AdminRoute: typeof AdminRoute
   AmenitiesRoute: typeof AmenitiesRoute
+  BlogRoute: typeof BlogRoute
   ContactUsRoute: typeof ContactUsRoute
+  FaqRoute: typeof FaqRoute
+  GalleryRoute: typeof GalleryRoute
+  LocationRoute: typeof LocationRoute
+  PriceRoute: typeof PriceRoute
   PrivacyPolicyRoute: typeof PrivacyPolicyRoute
+  ReraLegalRoute: typeof ReraLegalRoute
   SecureLoginRoute: typeof SecureLoginRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   FloorPlan4BhkRoute: typeof FloorPlan4BhkRoute
   FloorPlan5BhkRoute: typeof FloorPlan5BhkRoute
   FloorPlanIndexRoute: typeof FloorPlanIndexRoute
-  PriceRoute: typeof PriceRoute
-  LocationRoute: typeof LocationRoute
-  ReraLegalRoute: typeof ReraLegalRoute
-  FaqRoute: typeof FaqRoute
-  GalleryRoute: typeof GalleryRoute
-  BlogRoute: typeof BlogRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -251,6 +281,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AmenitiesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/blog': {
+      id: '/blog'
+      path: '/blog'
+      fullPath: '/blog'
+      preLoaderRoute: typeof BlogRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/contact-us': {
       id: '/contact-us'
       path: '/contact-us'
@@ -258,11 +295,46 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactUsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/faq': {
+      id: '/faq'
+      path: '/faq'
+      fullPath: '/faq'
+      preLoaderRoute: typeof FaqRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gallery': {
+      id: '/gallery'
+      path: '/gallery'
+      fullPath: '/gallery'
+      preLoaderRoute: typeof GalleryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/location': {
+      id: '/location'
+      path: '/location'
+      fullPath: '/location'
+      preLoaderRoute: typeof LocationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/price': {
+      id: '/price'
+      path: '/price'
+      fullPath: '/price'
+      preLoaderRoute: typeof PriceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/privacy-policy': {
       id: '/privacy-policy'
       path: '/privacy-policy'
       fullPath: '/privacy-policy'
       preLoaderRoute: typeof PrivacyPolicyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/rera-legal': {
+      id: '/rera-legal'
+      path: '/rera-legal'
+      fullPath: '/rera-legal'
+      preLoaderRoute: typeof ReraLegalRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/secure-login': {
@@ -300,12 +372,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FloorPlan5BhkRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/price': { id: '/price'; path: '/price'; fullPath: '/price'; preLoaderRoute: typeof PriceRouteImport; parentRoute: typeof rootRouteImport }
-    '/location': { id: '/location'; path: '/location'; fullPath: '/location'; preLoaderRoute: typeof LocationRouteImport; parentRoute: typeof rootRouteImport }
-    '/rera-legal': { id: '/rera-legal'; path: '/rera-legal'; fullPath: '/rera-legal'; preLoaderRoute: typeof ReraLegalRouteImport; parentRoute: typeof rootRouteImport }
-    '/faq': { id: '/faq'; path: '/faq'; fullPath: '/faq'; preLoaderRoute: typeof FaqRouteImport; parentRoute: typeof rootRouteImport }
-    '/gallery': { id: '/gallery'; path: '/gallery'; fullPath: '/gallery'; preLoaderRoute: typeof GalleryRouteImport; parentRoute: typeof rootRouteImport }
-    '/blog': { id: '/blog'; path: '/blog'; fullPath: '/blog'; preLoaderRoute: typeof BlogRouteImport; parentRoute: typeof rootRouteImport }
   }
 }
 
@@ -314,19 +380,19 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   AdminRoute: AdminRoute,
   AmenitiesRoute: AmenitiesRoute,
+  BlogRoute: BlogRoute,
   ContactUsRoute: ContactUsRoute,
+  FaqRoute: FaqRoute,
+  GalleryRoute: GalleryRoute,
+  LocationRoute: LocationRoute,
+  PriceRoute: PriceRoute,
   PrivacyPolicyRoute: PrivacyPolicyRoute,
+  ReraLegalRoute: ReraLegalRoute,
   SecureLoginRoute: SecureLoginRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   FloorPlan4BhkRoute: FloorPlan4BhkRoute,
   FloorPlan5BhkRoute: FloorPlan5BhkRoute,
   FloorPlanIndexRoute: FloorPlanIndexRoute,
-  PriceRoute,
-  LocationRoute,
-  ReraLegalRoute,
-  FaqRoute,
-  GalleryRoute,
-  BlogRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

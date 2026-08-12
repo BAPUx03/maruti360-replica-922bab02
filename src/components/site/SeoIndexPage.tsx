@@ -2,8 +2,8 @@ import type { ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
-import { WhatsAppButton } from "@/components/site/WhatsAppButton";
 import { Faqs, type Faq } from "@/components/site/ResidencePage";
+import { EnquiryCta } from "@/components/site/EnquiryCta";
 
 export function SeoIndexPage({
   eyebrow,
@@ -32,9 +32,9 @@ export function SeoIndexPage({
           </div>
         </section>
         {children}
+        <EnquiryCta />
       </main>
       <SiteFooter />
-      <WhatsAppButton />
     </div>
   );
 }

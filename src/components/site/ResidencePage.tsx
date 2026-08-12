@@ -2,8 +2,8 @@ import { useState, type ReactNode } from "react";
 import { ChevronDown } from "lucide-react";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
-import { WhatsAppButton } from "@/components/site/WhatsAppButton";
 import { Reveal } from "@/components/site/Reveal";
+import { EnquiryCta } from "@/components/site/EnquiryCta";
 
 export type Faq = { q: string; a: string };
 
@@ -74,9 +74,9 @@ export function ResidenceLayout({
           </div>
         </section>
         <Reveal>{children}</Reveal>
+        <EnquiryCta />
       </main>
       <SiteFooter />
-      <WhatsAppButton />
     </div>
   );
 }

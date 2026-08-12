@@ -1,4 +1,6 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { EnquiryPopup } from "@/components/site/EnquiryPopup";
+import { Toaster } from "@/components/ui/sonner";
 import {
   Outlet,
   Link,
@@ -108,8 +110,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           name: "Maruti 360",
           url: "https://www.maruti-360.com/",
           logo: "https://www.maruti-360.com/favicon.png",
-          telephone: "+91-99049-69298",
-          email: "sales@maruti360.com",
           address: {
             "@type": "PostalAddress",
             addressLocality: "Ahmedabad",
@@ -156,6 +156,8 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
+      <EnquiryPopup />
+      <Toaster position="top-center" richColors />
     </QueryClientProvider>
   );
 }

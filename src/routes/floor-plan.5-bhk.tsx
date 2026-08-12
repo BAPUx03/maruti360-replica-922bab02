@@ -27,8 +27,8 @@ const FAQS = [
     a: "Corner planning gives these homes two open faces — the SG Highway skyline on one side and open western horizons on the other.",
   },
   {
-    q: "What is the price range for a 5 BHK?",
-    a: "Pricing varies with floor zone, tower and format. Live price sheets are shared after a short verification call.",
+    q: "How do I get costing for a 5 BHK?",
+    a: "Costing varies with floor zone, tower and format. Details are shared privately after you submit the enquiry form.",
   },
   {
     q: "Is a site visit possible before booking?",
