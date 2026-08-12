@@ -1,7 +1,8 @@
 import logo from "@/assets/Group-35-2.png";
 import { useEffect, useState } from "react";
-import { Menu, X, Phone } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { ThemeToggle } from "@/components/site/ThemeToggle";
+import { EnquiryButton, openEnquiry } from "@/components/site/EnquiryCta";
 
 
 const NAV = [
@@ -53,22 +54,7 @@ export function SiteHeader() {
 
         <div className="hidden items-center gap-4 md:flex">
           <ThemeToggle />
-          <a
-            href="tel:+919904969298"
-            className="group flex items-center gap-3 border-l border-gold/25 pl-5"
-          >
-            <span className="flex h-8 w-8 items-center justify-center rounded-full border border-gold/40 text-gold transition-colors group-hover:bg-gold group-hover:text-surface">
-              <Phone size={13} />
-            </span>
-            <span className="leading-tight">
-              <span className="block text-[9px] uppercase tracking-[0.22em] text-foreground/55">
-                Sales Enquiry
-              </span>
-              <span className="block text-[13px] tracking-[0.06em] text-foreground transition-colors group-hover:text-gold">
-                +91 99049 69298
-              </span>
-            </span>
-          </a>
+          <EnquiryButton className="text-[11px]">Enquire Now</EnquiryButton>
         </div>
 
         <div className="flex items-center gap-3 lg:hidden">
@@ -94,12 +80,16 @@ export function SiteHeader() {
               {item.label}
             </a>
           ))}
-          <a
-            href="tel:+919904969298"
-            className="mt-2 flex items-center gap-2 border-t border-border pt-4 text-[13px] tracking-[0.06em] text-gold"
+          <button
+            type="button"
+            onClick={() => {
+              setOpen(false);
+              openEnquiry();
+            }}
+            className="mt-3 block w-full border-t border-border pt-4 text-left text-[12px] uppercase tracking-[0.16em] text-gold"
           >
-            <Phone size={14} /> +91 99049 69298
-          </a>
+            Enquire Now
+          </button>
         </nav>
       )}
 

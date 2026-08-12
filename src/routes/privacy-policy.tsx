@@ -3,6 +3,7 @@ import { getSeo } from "@/lib/seo.functions";
 import { seoHead } from "@/lib/seo-defaults";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
+import { EnquiryCta } from "@/components/site/EnquiryCta";
 
 const TITLE = "Privacy Policy | Sky Residences Off SG Highway, Ahmedabad";
 const DESCRIPTION =
@@ -36,7 +37,7 @@ const SECTIONS = [
   },
   {
     h: "Your Choices",
-    p: "You may ask us to correct or delete your details, or to stop contacting you, at any time by writing to sales@maruti360.com or messaging +91 99049 69298. We action such requests promptly.",
+    p: "You may ask us to correct or delete your details, or to stop contacting you, at any time by using the enquiry form or through the enquiry form. We action such requests promptly.",
   },
   {
     h: "Disclaimer",
@@ -81,18 +82,12 @@ function PrivacyPage() {
               </article>
             ))}
             <p className="border-t border-border pt-8 text-[12px] leading-[2] text-muted-foreground">
-              Questions about this policy? Write to{" "}
-              <a href="mailto:sales@maruti360.com" className="text-gold">
-                sales@maruti360.com
-              </a>{" "}
-              or call{" "}
-              <a href="tel:+919904969298" className="text-gold">
-                +91 99049 69298
-              </a>
-              .
+              Questions about this policy? Submit the enquiry form and our team will
+              respond.
             </p>
           </div>
         </section>
+        <EnquiryCta />
       </main>
       <SiteFooter />
     </div>

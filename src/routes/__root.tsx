@@ -1,4 +1,6 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { EnquiryPopup } from "@/components/site/EnquiryPopup";
+import { Toaster } from "@/components/ui/sonner";
 import {
   Outlet,
   Link,
