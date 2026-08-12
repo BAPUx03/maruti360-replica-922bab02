@@ -359,7 +359,7 @@ export function EnquiryPopup() {
                           className={`${fieldClass} px-3 pr-8 text-[12px]`}
                         >
                           {COUNTRIES.map((c) => (
-                            <option key={c.code} value={c.code} className="bg-surface-2">
+                            <option key={c.label} value={c.code} className="bg-surface-2">
                               {c.label}
                             </option>
                           ))}
@@ -390,7 +390,7 @@ export function EnquiryPopup() {
                 {error && <p className="text-center text-[12px] text-red-400">{error}</p>}
 
                 <button type="submit" disabled={busy} className="btn-gold w-full disabled:opacity-60">
-                  {busy ? "Sending Code…" : "Get Exclusive Access"}
+                  {busy ? "Please wait…" : "Get Exclusive Access"}
                 </button>
 
                 <p className="text-center text-[10px] leading-relaxed text-muted-foreground sm:text-[11px]">
