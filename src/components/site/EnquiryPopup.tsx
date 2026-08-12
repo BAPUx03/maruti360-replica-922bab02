@@ -126,7 +126,9 @@ export function EnquiryPopup() {
   const fullPhone = useMemo(() => `${dial}${phone.replace(/\D/g, "")}`, [dial, phone]);
 
   useEffect(() => {
-    const t = setTimeout(() => setOpen(true), 7000);
+    const path = typeof window !== "undefined" ? window.location.pathname : "";
+    const blocked = path.startsWith("/admin") || path.startsWith("/secure-login");
+    const t = blocked ? undefined : setTimeout(() => setOpen(true), 7000);
     const onOpen = () => {
       setStep("form");
       setError("");
@@ -134,7 +136,7 @@ export function EnquiryPopup() {
     };
     window.addEventListener(ENQUIRY_EVENT, onOpen);
     return () => {
-      clearTimeout(t);
+      if (t) clearTimeout(t);
       window.removeEventListener(ENQUIRY_EVENT, onOpen);
     };
   }, []);
