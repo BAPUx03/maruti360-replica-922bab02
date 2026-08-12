@@ -22,6 +22,6 @@ export const Route = createFileRoute("/faq")({
 function FaqPage() {
   return <SeoIndexPage eyebrow="FAQ" title="Maruti 360 FAQ | Price, Floor Plans, Location & RERA" intro="Answers to common questions about Maruti 360 residences, floor plans, visits, documents and the buying process.">
     <FaqSection items={FAQS} />
-    <IndexSection title="Need a specific answer?"><p className="max-w-[700px] text-[13px] leading-[2] text-muted-foreground">For current prices, availability, approved documents and a personalised walkthrough, speak directly with the Maruti 360 sales team.</p><div className="mt-8"><IndexLinks /></div></IndexSection>
+    <IndexSection title="Need a specific answer?"><p className="max-w-[700px] text-[13px] leading-[2] text-muted-foreground">For current availability, approved documents and a personalised walkthrough, submit the enquiry form and our team will respond.</p><div className="mt-8"><IndexLinks /></div></IndexSection>
   </SeoIndexPage>;
 }

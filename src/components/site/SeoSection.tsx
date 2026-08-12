@@ -12,7 +12,7 @@ const BLOCKS = [
   },
   {
     h: "Configurations & Pricing",
-    p: "Choose from spacious 4 BHK residences and expansive 5 BHK sky homes, with jodi, duplex and penthouse formats available on select floors. Detailed carpet areas, layout drawings and current price bands are shared on request — our team responds the same working day.",
+    p: "Choose from spacious 4 BHK residences and expansive 5 BHK sky homes, with jodi, duplex and penthouse formats available on select floors. Detailed carpet areas and layout drawings are shared on request — our team responds the same working day.",
   },
 ];
 

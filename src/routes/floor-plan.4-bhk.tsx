@@ -27,8 +27,8 @@ const FAQS = [
     a: "Yes. The fourth bedroom is planned with a flexible wall position, so it converts easily into a study, home office or guest suite.",
   },
   {
-    q: "What is the price of a 4 BHK here?",
-    a: "Pricing depends on floor zone, tower and view. Current price sheets are shared after a short verification call so you receive live, accurate numbers.",
+    q: "How do I get costing for a 4 BHK?",
+    a: "Costing depends on floor zone, tower and view. Details are shared privately after you submit the enquiry form.",
   },
   {
     q: "Is parking included?",
