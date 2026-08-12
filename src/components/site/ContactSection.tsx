@@ -41,16 +41,6 @@ export function ContactSection() {
               }
 
               setSending(true);
-              const text = [
-                "New enquiry from the website",
-                `Name: ${first} ${last}`,
-                `Phone: ${phone}`,
-                `Email: ${email}`,
-                `Interested in: ${config || "Not specified"}`,
-                message ? `Message: ${message}` : "",
-              ]
-                .filter(Boolean)
-                .join("\n");
 
               void saveLead({
                 first_name: first,
@@ -62,11 +52,7 @@ export function ContactSection() {
                 source: "contact_form",
               });
 
-              window.open(
-                `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`,
-                "_blank",
-                "noopener,noreferrer",
-              );
+
               toast.success("Thank you! Our advisor will connect with you shortly.");
               form.reset();
               setSending(false);
