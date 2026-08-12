@@ -3,11 +3,9 @@ import { toast } from "sonner";
 import { Reveal } from "./Reveal";
 import { saveLead } from "@/lib/leads";
 
-
-const WA_NUMBER = "919904969298";
-
 export function ContactSection() {
   const [sending, setSending] = useState(false);
+
 
   return (
     <section id="contact" className="bg-surface px-5 py-16 md:px-10 md:py-28">
