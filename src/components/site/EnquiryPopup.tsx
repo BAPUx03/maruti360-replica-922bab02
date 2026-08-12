@@ -176,14 +176,43 @@ export function EnquiryPopup() {
     }
   };
 
+  const saveAndClose = async () => {
+    setError("");
+    setBusy(true);
+    try {
+      await saveLead({
+        first_name: firstName,
+        last_name: lastName,
+        email,
+        phone: fullPhone,
+        requirement,
+        budget,
+        source: "enquiry_popup",
+        phone_verified: false,
+      });
+      setOpen(false);
+      setStep("form");
+    } catch {
+      setError("Something went wrong. Please try again.");
+    } finally {
+      setBusy(false);
+    }
+  };
+
   const submitForm = (e: React.FormEvent) => {
     e.preventDefault();
     if (!/^\+\d{7,15}$/.test(fullPhone)) {
       setError("Enter a valid phone number.");
       return;
     }
+    // Only Indian numbers go through SMS OTP; other countries save directly.
+    if (dial !== "+91") {
+      void saveAndClose();
+      return;
+    }
     void requestOtp();
   };
+
 
   const submitOtp = async (e: React.FormEvent) => {
     e.preventDefault();
