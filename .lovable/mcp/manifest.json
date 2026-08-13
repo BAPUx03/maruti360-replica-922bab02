@@ -1,0 +1,87 @@
+{
+  "version": 1,
+  "sdk_version": "0.26.2",
+  "path": "/mcp",
+  "auth": {
+    "type": "none"
+  },
+  "mcp": {
+    "server": {
+      "name": "maruti360",
+      "version": "0.1.0",
+      "title": "Maruti360"
+    },
+    "tools": [
+      {
+        "name": "get_project_overview",
+        "title": "Get project overview",
+        "description": "Public overview of the Maruti 360 luxury residential project in Ahmedabad: developer, location, configurations, possession and highlights.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "list_residences",
+        "title": "List residences",
+        "description": "List the publicly published Maruti 360 residence configurations (4 BHK and 5 BHK) with their summaries and website paths.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "list_faqs",
+        "title": "List FAQs",
+        "description": "Public frequently asked questions and answers published on the Maruti 360 website.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "get_page_seo",
+        "title": "Get page SEO",
+        "description": "Get the live public title, description and keywords for one page of the Maruti 360 website. Omit `path` to list every available page path.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "path": {
+              "description": "Website path such as '/' or '/floor-plan/5-bhk'. Omit to list all paths.",
+              "type": "string",
+              "maxLength": 120
+            }
+          }
+        },
+        "outputSchema": null
+      }
+    ]
+  }
+}
