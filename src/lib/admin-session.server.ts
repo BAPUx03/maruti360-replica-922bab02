@@ -21,18 +21,28 @@ function matches(input: string, expected: string) {
 }
 
 /** Verify credentials against server-only env vars. Nothing is ever sent to the browser. */
-export async function signInAdmin(username: string, password: string) {
+export async function signInAdmin(
+  username: string,
+  password: string,
+): Promise<{ ok: boolean; reason?: "unconfigured" | "invalid" | "error" }> {
   const user = process.env["ADMIN_USERNAME"];
   const pass = process.env["ADMIN_PASSWORD"];
-  if (!user || !pass) {
+  if (!user || !pass || !process.env["ADMIN_SESSION_SECRET"]) {
     console.error("Admin credentials are not configured");
-    return false;
+    return { ok: false, reason: "unconfigured" };
   }
-  if (!matches(username.trim(), user) || !matches(password, pass)) return false;
+  if (!matches(username.trim(), user) || !matches(password, pass)) {
+    return { ok: false, reason: "invalid" };
+  }
 
-  const session = await useSession<AdminSession>(sessionConfig());
-  await session.update({ admin: true, user: username.trim() });
-  return true;
+  try {
+    const session = await useSession<AdminSession>(sessionConfig());
+    await session.update({ admin: true, user: username.trim() });
+    return { ok: true };
+  } catch (e) {
+    console.error("Admin session could not be created", e);
+    return { ok: false, reason: "error" };
+  }
 }
 
 export async function signOutAdmin() {
