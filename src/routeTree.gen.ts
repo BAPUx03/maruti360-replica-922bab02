@@ -18,14 +18,18 @@ import { Route as ContactUsRouteImport } from './routes/contact-us'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as LocationRouteImport } from './routes/location'
+import { Route as McpRouteImport } from './routes/mcp'
 import { Route as PriceRouteImport } from './routes/price'
 import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
 import { Route as ReraLegalRouteImport } from './routes/rera-legal'
 import { Route as SecureLoginRouteImport } from './routes/secure-login'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as Char91DotmcpChar93ListToolsRouteImport } from './routes/[.mcp]/list-tools'
+import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } from './routes/[.well-known]/oauth-protected-resource'
 import { Route as FloorPlanIndexRouteImport } from './routes/floor-plan.index'
 import { Route as FloorPlan4BhkRouteImport } from './routes/floor-plan.4-bhk'
 import { Route as FloorPlan5BhkRouteImport } from './routes/floor-plan.5-bhk'
+import { Route as Char91DotmcpChar93InvokeToolToolRouteImport } from './routes/[.mcp]/invoke-tool/$tool'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -72,6 +76,11 @@ const LocationRoute = LocationRouteImport.update({
   path: '/location',
   getParentRoute: () => rootRouteImport,
 } as any)
+const McpRoute = McpRouteImport.update({
+  id: '/mcp',
+  path: '/mcp',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PriceRoute = PriceRouteImport.update({
   id: '/price',
   path: '/price',
@@ -97,6 +106,18 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
+const Char91DotmcpChar93ListToolsRoute =
+  Char91DotmcpChar93ListToolsRouteImport.update({
+    id: '/.mcp/list-tools',
+    path: '/.mcp/list-tools',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const Char91DotwellKnownChar93OauthProtectedResourceRoute =
+  Char91DotwellKnownChar93OauthProtectedResourceRouteImport.update({
+    id: '/.well-known/oauth-protected-resource',
+    path: '/.well-known/oauth-protected-resource',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const FloorPlanIndexRoute = FloorPlanIndexRouteImport.update({
   id: '/floor-plan/',
   path: '/floor-plan/',
@@ -112,6 +133,12 @@ const FloorPlan5BhkRoute = FloorPlan5BhkRouteImport.update({
   path: '/floor-plan/5-bhk',
   getParentRoute: () => rootRouteImport,
 } as any)
+const Char91DotmcpChar93InvokeToolToolRoute =
+  Char91DotmcpChar93InvokeToolToolRouteImport.update({
+    id: '/.mcp/invoke-tool/$tool',
+    path: '/.mcp/invoke-tool/$tool',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -123,14 +150,18 @@ export interface FileRoutesByFullPath {
   '/faq': typeof FaqRoute
   '/gallery': typeof GalleryRoute
   '/location': typeof LocationRoute
+  '/mcp': typeof McpRoute
   '/price': typeof PriceRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/rera-legal': typeof ReraLegalRoute
   '/secure-login': typeof SecureLoginRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
+  '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/floor-plan/4-bhk': typeof FloorPlan4BhkRoute
   '/floor-plan/5-bhk': typeof FloorPlan5BhkRoute
   '/floor-plan/': typeof FloorPlanIndexRoute
+  '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -142,14 +173,18 @@ export interface FileRoutesByTo {
   '/faq': typeof FaqRoute
   '/gallery': typeof GalleryRoute
   '/location': typeof LocationRoute
+  '/mcp': typeof McpRoute
   '/price': typeof PriceRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/rera-legal': typeof ReraLegalRoute
   '/secure-login': typeof SecureLoginRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
+  '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/floor-plan/4-bhk': typeof FloorPlan4BhkRoute
   '/floor-plan/5-bhk': typeof FloorPlan5BhkRoute
   '/floor-plan': typeof FloorPlanIndexRoute
+  '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -162,14 +197,18 @@ export interface FileRoutesById {
   '/faq': typeof FaqRoute
   '/gallery': typeof GalleryRoute
   '/location': typeof LocationRoute
+  '/mcp': typeof McpRoute
   '/price': typeof PriceRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/rera-legal': typeof ReraLegalRoute
   '/secure-login': typeof SecureLoginRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
+  '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/floor-plan/4-bhk': typeof FloorPlan4BhkRoute
   '/floor-plan/5-bhk': typeof FloorPlan5BhkRoute
   '/floor-plan/': typeof FloorPlanIndexRoute
+  '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -183,14 +222,18 @@ export interface FileRouteTypes {
     | '/faq'
     | '/gallery'
     | '/location'
+    | '/mcp'
     | '/price'
     | '/privacy-policy'
     | '/rera-legal'
     | '/secure-login'
     | '/sitemap.xml'
+    | '/.mcp/list-tools'
+    | '/.well-known/oauth-protected-resource'
     | '/floor-plan/4-bhk'
     | '/floor-plan/5-bhk'
     | '/floor-plan/'
+    | '/.mcp/invoke-tool/$tool'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -202,14 +245,18 @@ export interface FileRouteTypes {
     | '/faq'
     | '/gallery'
     | '/location'
+    | '/mcp'
     | '/price'
     | '/privacy-policy'
     | '/rera-legal'
     | '/secure-login'
     | '/sitemap.xml'
+    | '/.mcp/list-tools'
+    | '/.well-known/oauth-protected-resource'
     | '/floor-plan/4-bhk'
     | '/floor-plan/5-bhk'
     | '/floor-plan'
+    | '/.mcp/invoke-tool/$tool'
   id:
     | '__root__'
     | '/'
@@ -221,14 +268,18 @@ export interface FileRouteTypes {
     | '/faq'
     | '/gallery'
     | '/location'
+    | '/mcp'
     | '/price'
     | '/privacy-policy'
     | '/rera-legal'
     | '/secure-login'
     | '/sitemap.xml'
+    | '/.mcp/list-tools'
+    | '/.well-known/oauth-protected-resource'
     | '/floor-plan/4-bhk'
     | '/floor-plan/5-bhk'
     | '/floor-plan/'
+    | '/.mcp/invoke-tool/$tool'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -241,14 +292,18 @@ export interface RootRouteChildren {
   FaqRoute: typeof FaqRoute
   GalleryRoute: typeof GalleryRoute
   LocationRoute: typeof LocationRoute
+  McpRoute: typeof McpRoute
   PriceRoute: typeof PriceRoute
   PrivacyPolicyRoute: typeof PrivacyPolicyRoute
   ReraLegalRoute: typeof ReraLegalRoute
   SecureLoginRoute: typeof SecureLoginRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  Char91DotmcpChar93ListToolsRoute: typeof Char91DotmcpChar93ListToolsRoute
+  Char91DotwellKnownChar93OauthProtectedResourceRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   FloorPlan4BhkRoute: typeof FloorPlan4BhkRoute
   FloorPlan5BhkRoute: typeof FloorPlan5BhkRoute
   FloorPlanIndexRoute: typeof FloorPlanIndexRoute
+  Char91DotmcpChar93InvokeToolToolRoute: typeof Char91DotmcpChar93InvokeToolToolRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -316,6 +371,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LocationRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/mcp': {
+      id: '/mcp'
+      path: '/mcp'
+      fullPath: '/mcp'
+      preLoaderRoute: typeof McpRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/price': {
       id: '/price'
       path: '/price'
@@ -351,6 +413,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/.mcp/list-tools': {
+      id: '/.mcp/list-tools'
+      path: '/.mcp/list-tools'
+      fullPath: '/.mcp/list-tools'
+      preLoaderRoute: typeof Char91DotmcpChar93ListToolsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/.well-known/oauth-protected-resource': {
+      id: '/.well-known/oauth-protected-resource'
+      path: '/.well-known/oauth-protected-resource'
+      fullPath: '/.well-known/oauth-protected-resource'
+      preLoaderRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/floor-plan/': {
       id: '/floor-plan/'
       path: '/floor-plan'
@@ -372,6 +448,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FloorPlan5BhkRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/.mcp/invoke-tool/$tool': {
+      id: '/.mcp/invoke-tool/$tool'
+      path: '/.mcp/invoke-tool/$tool'
+      fullPath: '/.mcp/invoke-tool/$tool'
+      preLoaderRoute: typeof Char91DotmcpChar93InvokeToolToolRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -385,14 +468,19 @@ const rootRouteChildren: RootRouteChildren = {
   FaqRoute: FaqRoute,
   GalleryRoute: GalleryRoute,
   LocationRoute: LocationRoute,
+  McpRoute: McpRoute,
   PriceRoute: PriceRoute,
   PrivacyPolicyRoute: PrivacyPolicyRoute,
   ReraLegalRoute: ReraLegalRoute,
   SecureLoginRoute: SecureLoginRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  Char91DotmcpChar93ListToolsRoute: Char91DotmcpChar93ListToolsRoute,
+  Char91DotwellKnownChar93OauthProtectedResourceRoute:
+    Char91DotwellKnownChar93OauthProtectedResourceRoute,
   FloorPlan4BhkRoute: FloorPlan4BhkRoute,
   FloorPlan5BhkRoute: FloorPlan5BhkRoute,
   FloorPlanIndexRoute: FloorPlanIndexRoute,
+  Char91DotmcpChar93InvokeToolToolRoute: Char91DotmcpChar93InvokeToolToolRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
