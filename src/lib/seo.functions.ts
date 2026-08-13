@@ -19,9 +19,14 @@ export const adminLogin = createServerFn({ method: "POST" })
   )
   .handler(async ({ data }) => {
     const { signInAdmin } = await import("@/lib/admin-session.server");
-    const ok = await signInAdmin(data.username, data.password);
-    return { ok };
+    return await signInAdmin(data.username, data.password);
   });
+
+/** Is the current visitor already signed in as admin? */
+export const adminStatus = createServerFn({ method: "GET" }).handler(async () => {
+  const { isAdmin } = await import("@/lib/admin-session.server");
+  return { authed: await isAdmin() };
+});
 
 export const adminLogout = createServerFn({ method: "POST" }).handler(async () => {
   const { signOutAdmin } = await import("@/lib/admin-session.server");
