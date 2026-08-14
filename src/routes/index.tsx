@@ -19,6 +19,7 @@ import { BrochureSection } from "@/components/site/BrochureSection";
 import { InstagramSection } from "@/components/site/InstagramSection";
 import { SeoSection } from "@/components/site/SeoSection";
 import { EnquiryCta } from "@/components/site/EnquiryCta";
+import { SampleApartmentSection } from "@/components/site/SampleApartmentSection";
 
 const SITE = "https://www.maruti-360.com";
 const TITLE = "4 & 5 BHK Luxury Apartments on S.G. Highway, Ahmedabad | MARUTI 360";
@@ -104,6 +105,7 @@ function Index() {
         <VideoSection />
         <StatsSection />
         <ViewSection />
+        <SampleApartmentSection />
         <LocationSection />
         <FloorPlanSection />
         <AmenitiesSection />
