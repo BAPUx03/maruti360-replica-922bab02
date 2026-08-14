@@ -2,7 +2,9 @@ import { createFileRoute } from "@tanstack/react-router";
 import { getSeo } from "@/lib/seo.functions";
 import { seoHead } from "@/lib/seo-defaults";
 import { ResidenceLayout, Faqs } from "@/components/site/ResidencePage";
+import { IndexLinks } from "@/components/site/SeoIndexPage";
 import bedroom from "@/assets/Maruti_360_bedroom_2.webp";
+import { FACTUAL_DISCLAIMER } from "@/lib/project-facts";
 
 const TITLE = "4 BHK Sky Residences Off SG Highway, Ahmedabad — Floor Plan";
 const DESCRIPTION =
@@ -78,8 +80,8 @@ const HIGHLIGHTS = [
 function FourBhk() {
   return (
     <ResidenceLayout
-      eyebrow="4 BHK · Available"
-      title="The 4 BHK Sky Residence"
+      eyebrow="4 BHK Sky Residence"
+      title="Maruti 360 4 BHK Sky Residence"
       intro="Four bedrooms, a wide skyline frontage and a deck deep enough to live on — planned for families who measure luxury in horizons, not square feet."
       image={bedroom}
       imageAlt="Interior of a 4 BHK sky residence bedroom"
@@ -125,6 +127,23 @@ function FourBhk() {
             >
               Explore 5 BHK
             </a>
+          </div>
+
+          <p className="mt-8 max-w-[760px] text-[12px] leading-[1.9] text-muted-foreground">
+            {FACTUAL_DISCLAIMER}
+          </p>
+
+          <div className="mt-8">
+            <IndexLinks
+              links={[
+                { label: "All Floor Plans", to: "/floor-plan" },
+                { label: "5 BHK Floor Plan", to: "/floor-plan/5-bhk" },
+                { label: "View Price & Payment Plan", to: "/price" },
+                { label: "Explore Amenities", to: "/amenities" },
+                { label: "View Location", to: "/location" },
+                { label: "Request This Plan", to: "/contact-us" },
+              ]}
+            />
           </div>
 
           <div className="mt-16 text-center">

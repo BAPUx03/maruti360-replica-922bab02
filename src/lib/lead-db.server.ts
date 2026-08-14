@@ -24,9 +24,10 @@ export async function insertLead(lead: Lead) {
 
   const phone = tenDigitPhone(lead.phone);
   const fullName = [lead.first_name, lead.last_name].filter(Boolean).join(" ").trim();
-  const email = lead.email && /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(lead.email)
-    ? lead.email
-    : `no-email.${phone || "unknown"}@maruti360.leads`;
+  const email =
+    lead.email && /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(lead.email)
+      ? lead.email
+      : `no-email.${phone || "unknown"}@maruti360.leads`;
 
   const { error } = await supabase.from("microsite_leads").insert({
     job_id: JOB_ID,

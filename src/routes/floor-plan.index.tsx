@@ -6,8 +6,10 @@ import { SiteFooter } from "@/components/site/SiteFooter";
 import { EnquiryCta } from "@/components/site/EnquiryCta";
 import { Reveal } from "@/components/site/Reveal";
 import { Faqs } from "@/components/site/ResidencePage";
+import { IndexLinks } from "@/components/site/SeoIndexPage";
 import blueprint from "@/assets/Maruti-Buildings-01.png";
 import bedroom from "@/assets/Maruti_360_bedroom_2.webp";
+import { FACTUAL_DISCLAIMER } from "@/lib/project-facts";
 
 const TITLE = "Floor Plans — 4 & 5 BHK Sky Residences Off SG Highway, Ahmedabad";
 const DESCRIPTION =
@@ -37,13 +39,13 @@ const PLANS = [
   {
     href: "/floor-plan/4-bhk",
     name: "4 BHK",
-    note: "Available in this project",
+    note: "Offered in this project",
     copy: "Wide-frontage four-bedroom sky residences with deep decks and skyline-facing living rooms.",
   },
   {
     href: "/floor-plan/5-bhk",
     name: "5 BHK",
-    note: "Available in this project",
+    note: "Offered in this project",
     copy: "Signature five-bedroom residences with private lounge, family deck and staff quarters.",
   },
 ];
@@ -89,7 +91,7 @@ function FloorPlanIndex() {
               Our Floor Plans
             </p>
             <h1 className="mt-5 font-display text-[32px] leading-[1.15] text-foreground sm:text-[46px] md:text-[60px]">
-              An Engineering Perfection
+              Maruti 360 Floor Plans
             </h1>
             <p className="mx-auto mt-6 max-w-[660px] text-[13px] leading-[2] text-foreground/75">
               Choose the configuration that fits your life — every plan is the outcome of years of
@@ -132,6 +134,21 @@ function FloorPlanIndex() {
                 height={600}
                 className="mx-auto mt-16 w-full max-w-[560px] object-contain"
               />
+              <p className="mx-auto mt-6 max-w-[700px] text-center text-[12px] leading-[1.9] text-muted-foreground">
+                {FACTUAL_DISCLAIMER}
+              </p>
+              <div className="mt-10 flex justify-center">
+                <IndexLinks
+                  links={[
+                    { label: "4 BHK Floor Plan", to: "/floor-plan/4-bhk" },
+                    { label: "5 BHK Floor Plan", to: "/floor-plan/5-bhk" },
+                    { label: "View Price & Payment Plan", to: "/price" },
+                    { label: "Explore Amenities", to: "/amenities" },
+                    { label: "View Location", to: "/location" },
+                    { label: "RERA Details", to: "/rera-legal" },
+                  ]}
+                />
+              </div>
             </Reveal>
 
             <Reveal delay={160}>

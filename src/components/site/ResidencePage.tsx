@@ -18,7 +18,9 @@ export function Faqs({ items }: { items: Faq[] }) {
             className="flex w-full items-center justify-between gap-6 py-5 text-left"
             aria-expanded={open === i}
           >
-            <span className="text-[13px] leading-relaxed text-foreground md:text-[15px]">{f.q}</span>
+            <span className="text-[13px] leading-relaxed text-foreground md:text-[15px]">
+              {f.q}
+            </span>
             <ChevronDown
               size={16}
               className={`shrink-0 text-gold transition-transform ${open === i ? "rotate-180" : ""}`}

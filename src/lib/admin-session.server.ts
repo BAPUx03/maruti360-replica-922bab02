@@ -1,4 +1,6 @@
-import { useSession } from "@tanstack/react-start/server";
+// Aliased: the linter's react-hooks rule treats any `use*`-named function as a
+// React hook and flags calls outside components/hooks otherwise.
+import { useSession as getServerSession } from "@tanstack/react-start/server";
 import { createHash, timingSafeEqual } from "node:crypto";
 
 export type AdminSession = { admin?: boolean; user?: string };
@@ -10,7 +12,14 @@ function sessionConfig() {
     password,
     name: "m360-admin",
     maxAge: 60 * 60 * 8, // 8 hours
-    cookie: { httpOnly: true, secure: true, sameSite: "lax" as const, path: "/" },
+    cookie: {
+      httpOnly: true,
+      // Browsers drop `secure` cookies on plain http://localhost, which would
+      // block admin sign-in in local dev. Only require it once actually served over HTTPS.
+      secure: process.env["NODE_ENV"] === "production",
+      sameSite: "lax" as const,
+      path: "/",
+    },
   };
 }
 
@@ -36,7 +45,7 @@ export async function signInAdmin(
   }
 
   try {
-    const session = await useSession<AdminSession>(sessionConfig());
+    const session = await getServerSession<AdminSession>(sessionConfig());
     await session.update({ admin: true, user: username.trim() });
     return { ok: true };
   } catch (e) {
@@ -46,13 +55,13 @@ export async function signInAdmin(
 }
 
 export async function signOutAdmin() {
-  const session = await useSession<AdminSession>(sessionConfig());
+  const session = await getServerSession<AdminSession>(sessionConfig());
   await session.clear();
 }
 
 export async function isAdmin() {
   try {
-    const session = await useSession<AdminSession>(sessionConfig());
+    const session = await getServerSession<AdminSession>(sessionConfig());
     return session.data.admin === true;
   } catch {
     return false;

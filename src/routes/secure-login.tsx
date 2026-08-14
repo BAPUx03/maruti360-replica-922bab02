@@ -9,10 +9,7 @@ export const Route = createFileRoute("/secure-login")({
   ssr: false,
   component: SecureLogin,
   head: () => ({
-    meta: [
-      { title: "Sign In" },
-      { name: "robots", content: "noindex, nofollow" },
-    ],
+    meta: [{ title: "Sign In" }, { name: "robots", content: "noindex, nofollow" }],
   }),
 });
 
@@ -142,7 +139,10 @@ function SecureLogin() {
         </div>
 
         {error && (
-          <p role="alert" className="mt-4 border border-red-500/30 bg-red-500/5 px-3 py-2 text-[12px] text-red-400">
+          <p
+            role="alert"
+            className="mt-4 border border-red-500/30 bg-red-500/5 px-3 py-2 text-[12px] text-red-400"
+          >
             {error}
           </p>
         )}

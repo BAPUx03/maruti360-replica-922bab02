@@ -97,6 +97,9 @@
 }
 
 
+
+
+
 @layer base {
   * {
     border-color: var(--color-border);
@@ -144,7 +147,6 @@
     font-weight: 400;
   }
 }
-
 
 @utility eyebrow {
   font-family: var(--font-body);

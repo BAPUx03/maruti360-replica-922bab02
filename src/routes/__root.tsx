@@ -13,8 +13,14 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { PROJECT_FACTS } from "../lib/project-facts";
 
 function NotFoundComponent() {
+  // The root no longer sets a fallback <title> (it would duplicate every
+  // route's own title), so the unmatched-route case needs its own.
+  useEffect(() => {
+    document.title = "Page Not Found | Maruti 360";
+  }, []);
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
@@ -75,18 +81,16 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
 }
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
+  // Title, description, canonical, robots, Open Graph and Twitter tags are
+  // route-specific and come entirely from each route's seoHead() call
+  // (src/lib/seo-defaults.ts) — kept out of the root so they never duplicate
+  // or compete with a page's own tags. Only genuinely site-wide, non-duplicated
+  // concerns (charset, viewport, fonts, favicon) and the shared
+  // Organization/WebSite graph live here.
   head: () => ({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "MARUTI360 — A Life Written In The Sky" },
-      {
-        name: "description",
-        content: "Luxurious 4 & 5 BHK suites in Ahmedabad by Maruti Buildcon.",
-      },
-      { property: "og:site_name", content: "MARUTI360" },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
       {
@@ -107,9 +111,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "Organization",
-          name: "Maruti 360",
-          url: "https://www.maruti-360.com/",
-          logo: "https://www.maruti-360.com/favicon.png",
+          name: PROJECT_FACTS.brand,
+          url: `${PROJECT_FACTS.canonicalBase}/`,
+          logo: `${PROJECT_FACTS.canonicalBase}/favicon.png`,
+          telephone: PROJECT_FACTS.phoneHref.replace("tel:", ""),
+          email: PROJECT_FACTS.email,
           address: {
             "@type": "PostalAddress",
             addressLocality: "Ahmedabad",
@@ -123,8 +129,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "WebSite",
-          name: "Maruti 360",
-          url: "https://www.maruti-360.com/",
+          name: PROJECT_FACTS.brand,
+          url: `${PROJECT_FACTS.canonicalBase}/`,
         }),
       },
     ],

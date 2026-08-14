@@ -23,7 +23,10 @@ export function SampleApartmentSection() {
           </p>
           <ul className="mt-7 space-y-3">
             {POINTS.map((p) => (
-              <li key={p} className="flex items-start gap-3 text-[13px] leading-[1.9] text-foreground/85">
+              <li
+                key={p}
+                className="flex items-start gap-3 text-[13px] leading-[1.9] text-foreground/85"
+              >
                 <CheckCircle2 size={15} className="mt-1 shrink-0 text-gold" />
                 {p}
               </li>
@@ -35,7 +38,9 @@ export function SampleApartmentSection() {
           <p className="text-[9px] uppercase tracking-[0.28em] text-muted-foreground">
             Viewing Status
           </p>
-          <p className="mt-4 font-display text-[34px] leading-none text-gold md:text-[48px]">Ready</p>
+          <p className="mt-4 font-display text-[34px] leading-none text-gold md:text-[48px]">
+            Ready
+          </p>
           <p className="mt-4 text-[12px] leading-[1.9] text-muted-foreground">
             Sample apartment viewings are strictly by prior appointment. Share your details and our
             residence advisor will confirm a slot.

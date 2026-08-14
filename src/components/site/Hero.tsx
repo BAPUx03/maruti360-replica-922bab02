@@ -17,14 +17,14 @@ export function Hero() {
           Sanidhya &middot; Off SG Highway, Ahmedabad
         </span>
 
-        <h1 className="reveal-up mt-6 max-w-[16ch] font-display text-[36px] leading-[1.12] tracking-[0.04em] text-foreground sm:text-[54px] md:text-[76px]">
+        <h1 className="reveal-up mt-6 max-w-[18ch] font-display text-[36px] leading-[1.12] tracking-[0.04em] text-foreground sm:text-[54px] md:text-[76px]">
           Maruti 360
-          <span className="block text-gold">Luxury 4 &amp; 5 BHK Apartments</span>
+          <span className="block text-gold">Luxury 4 &amp; 5 BHK Apartments on SG Highway</span>
         </h1>
 
         <p className="reveal-up mt-6 max-w-[560px] text-[13px] leading-[2] text-foreground/75 sm:text-[14px]">
-          501 feet of considered living — twin 41-storey towers crafted for those who measure
-          luxury in horizons, not square feet.
+          501 feet of considered living — twin 41-storey towers crafted for those who measure luxury
+          in horizons, not square feet.
         </p>
 
         <div className="reveal-up mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-[10px] uppercase tracking-[0.22em] text-foreground/65 sm:text-[11px]">
@@ -34,7 +34,6 @@ export function Hero() {
           <span className="hidden h-3 w-px bg-gold/50 sm:block" />
           <span>Twin Towers</span>
         </div>
-
       </div>
 
       <div className="absolute inset-x-0 bottom-7 flex justify-center">

@@ -29,33 +29,81 @@ const GROUPS = [
   {
     title: "Sky & Leisure",
     items: [
-      { icon: Eye, label: "360° Viewing Gallery", copy: "A telescope-fitted observation deck framing the entire city skyline." },
-      { icon: Waves, label: "Lap Pool", copy: "A tree-lined swimming pool with a separate kids' pool and deck seating." },
-      { icon: Clapperboard, label: "Private Theatre", copy: "An acoustically treated screening room for family evenings." },
+      {
+        icon: Eye,
+        label: "360° Viewing Gallery",
+        copy: "A telescope-fitted observation deck framing the entire city skyline.",
+      },
+      {
+        icon: Waves,
+        label: "Lap Pool",
+        copy: "A tree-lined swimming pool with a separate kids' pool and deck seating.",
+      },
+      {
+        icon: Clapperboard,
+        label: "Private Theatre",
+        copy: "An acoustically treated screening room for family evenings.",
+      },
     ],
   },
   {
     title: "Fitness & Wellness",
     items: [
-      { icon: Dumbbell, label: "Gymnasium", copy: "Cardio and strength zones with natural light and skyline-facing glazing." },
-      { icon: HeartPulse, label: "Wellness Centre", copy: "Spa, steam and massage rooms for recovery days." },
-      { icon: Flower2, label: "Yoga & Meditation Deck", copy: "A quiet open-air deck oriented for sunrise practice." },
+      {
+        icon: Dumbbell,
+        label: "Gymnasium",
+        copy: "Cardio and strength zones with natural light and skyline-facing glazing.",
+      },
+      {
+        icon: HeartPulse,
+        label: "Wellness Centre",
+        copy: "Spa, steam and massage rooms for recovery days.",
+      },
+      {
+        icon: Flower2,
+        label: "Yoga & Meditation Deck",
+        copy: "A quiet open-air deck oriented for sunrise practice.",
+      },
     ],
   },
   {
     title: "Family & Community",
     items: [
-      { icon: Building2, label: "Grand Clubhouse", copy: "Banquet, lounge and co-working corners for residents and guests." },
-      { icon: Gamepad2, label: "Indoor Games Arena", copy: "Pool, foosball, table tennis and a dedicated board-game lounge." },
-      { icon: Baby, label: "Children's Play Area", copy: "Soft-surface play zones with shaded seating for parents." },
-      { icon: Trees, label: "Landscaped Gardens", copy: "Walking loops, lawns and seating pockets across the podium." },
+      {
+        icon: Building2,
+        label: "Grand Clubhouse",
+        copy: "Banquet, lounge and co-working corners for residents and guests.",
+      },
+      {
+        icon: Gamepad2,
+        label: "Indoor Games Arena",
+        copy: "Pool, foosball, table tennis and a dedicated board-game lounge.",
+      },
+      {
+        icon: Baby,
+        label: "Children's Play Area",
+        copy: "Soft-surface play zones with shaded seating for parents.",
+      },
+      {
+        icon: Trees,
+        label: "Landscaped Gardens",
+        copy: "Walking loops, lawns and seating pockets across the podium.",
+      },
     ],
   },
   {
     title: "Everyday Convenience",
     items: [
-      { icon: Car, label: "Multi-Level Parking", copy: "Covered parking with EV-ready provisioning on select levels." },
-      { icon: ShieldCheck, label: "24×7 Security", copy: "Perimeter CCTV, controlled lobby access and trained staff." },
+      {
+        icon: Car,
+        label: "Multi-Level Parking",
+        copy: "Covered parking with EV-ready provisioning on select levels.",
+      },
+      {
+        icon: ShieldCheck,
+        label: "24×7 Security",
+        copy: "Perimeter CCTV, controlled lobby access and trained staff.",
+      },
     ],
   },
 ];
@@ -109,7 +157,7 @@ function AmenitiesPage() {
   return (
     <ResidenceLayout
       eyebrow="Amenities"
-      title="Live A Life Above It All"
+      title="Maruti 360 Amenities"
       intro="Over thirty curated amenities across the podium, the clubhouse and the sky — designed so the building gives back time rather than taking it."
       image={hero}
       imageAlt="A long luxury lap pool surrounded by trees"
@@ -125,12 +173,8 @@ function AmenitiesPage() {
               {g.items.map(({ icon: Icon, label, copy }) => (
                 <div key={label} className="border-t border-gold/25 pt-6">
                   <Icon size={28} strokeWidth={1} className="text-gold" />
-                  <h3 className="mt-4 font-display text-[19px] text-foreground">
-                    {label}
-                  </h3>
-                  <p className="mt-2 text-[12.5px] leading-[1.95] text-muted-foreground">
-                    {copy}
-                  </p>
+                  <h3 className="mt-4 font-display text-[19px] text-foreground">{label}</h3>
+                  <p className="mt-2 text-[12.5px] leading-[1.95] text-muted-foreground">{copy}</p>
                 </div>
               ))}
             </div>

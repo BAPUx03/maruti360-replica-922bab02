@@ -13,7 +13,6 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as AmenitiesRouteImport } from './routes/amenities'
-import { Route as BlogRouteImport } from './routes/blog'
 import { Route as ContactUsRouteImport } from './routes/contact-us'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as GalleryRouteImport } from './routes/gallery'
@@ -26,6 +25,8 @@ import { Route as SecureLoginRouteImport } from './routes/secure-login'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as Char91DotmcpChar93ListToolsRouteImport } from './routes/[.mcp]/list-tools'
 import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } from './routes/[.well-known]/oauth-protected-resource'
+import { Route as BlogIndexRouteImport } from './routes/blog.index'
+import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 import { Route as FloorPlanIndexRouteImport } from './routes/floor-plan.index'
 import { Route as FloorPlan4BhkRouteImport } from './routes/floor-plan.4-bhk'
 import { Route as FloorPlan5BhkRouteImport } from './routes/floor-plan.5-bhk'
@@ -49,11 +50,6 @@ const AdminRoute = AdminRouteImport.update({
 const AmenitiesRoute = AmenitiesRouteImport.update({
   id: '/amenities',
   path: '/amenities',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const BlogRoute = BlogRouteImport.update({
-  id: '/blog',
-  path: '/blog',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactUsRoute = ContactUsRouteImport.update({
@@ -118,6 +114,16 @@ const Char91DotwellKnownChar93OauthProtectedResourceRoute =
     path: '/.well-known/oauth-protected-resource',
     getParentRoute: () => rootRouteImport,
   } as any)
+const BlogIndexRoute = BlogIndexRouteImport.update({
+  id: '/blog/',
+  path: '/blog/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogSlugRoute = BlogSlugRouteImport.update({
+  id: '/blog/$slug',
+  path: '/blog/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const FloorPlanIndexRoute = FloorPlanIndexRouteImport.update({
   id: '/floor-plan/',
   path: '/floor-plan/',
@@ -145,7 +151,6 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/admin': typeof AdminRoute
   '/amenities': typeof AmenitiesRoute
-  '/blog': typeof BlogRoute
   '/contact-us': typeof ContactUsRoute
   '/faq': typeof FaqRoute
   '/gallery': typeof GalleryRoute
@@ -158,8 +163,10 @@ export interface FileRoutesByFullPath {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/floor-plan/4-bhk': typeof FloorPlan4BhkRoute
   '/floor-plan/5-bhk': typeof FloorPlan5BhkRoute
+  '/blog/': typeof BlogIndexRoute
   '/floor-plan/': typeof FloorPlanIndexRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
 }
@@ -168,7 +175,6 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/admin': typeof AdminRoute
   '/amenities': typeof AmenitiesRoute
-  '/blog': typeof BlogRoute
   '/contact-us': typeof ContactUsRoute
   '/faq': typeof FaqRoute
   '/gallery': typeof GalleryRoute
@@ -181,8 +187,10 @@ export interface FileRoutesByTo {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/floor-plan/4-bhk': typeof FloorPlan4BhkRoute
   '/floor-plan/5-bhk': typeof FloorPlan5BhkRoute
+  '/blog': typeof BlogIndexRoute
   '/floor-plan': typeof FloorPlanIndexRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
 }
@@ -192,7 +200,6 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/admin': typeof AdminRoute
   '/amenities': typeof AmenitiesRoute
-  '/blog': typeof BlogRoute
   '/contact-us': typeof ContactUsRoute
   '/faq': typeof FaqRoute
   '/gallery': typeof GalleryRoute
@@ -205,8 +212,10 @@ export interface FileRoutesById {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/floor-plan/4-bhk': typeof FloorPlan4BhkRoute
   '/floor-plan/5-bhk': typeof FloorPlan5BhkRoute
+  '/blog/': typeof BlogIndexRoute
   '/floor-plan/': typeof FloorPlanIndexRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
 }
@@ -217,7 +226,6 @@ export interface FileRouteTypes {
     | '/about'
     | '/admin'
     | '/amenities'
-    | '/blog'
     | '/contact-us'
     | '/faq'
     | '/gallery'
@@ -230,8 +238,10 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
+    | '/blog/$slug'
     | '/floor-plan/4-bhk'
     | '/floor-plan/5-bhk'
+    | '/blog/'
     | '/floor-plan/'
     | '/.mcp/invoke-tool/$tool'
   fileRoutesByTo: FileRoutesByTo
@@ -240,7 +250,6 @@ export interface FileRouteTypes {
     | '/about'
     | '/admin'
     | '/amenities'
-    | '/blog'
     | '/contact-us'
     | '/faq'
     | '/gallery'
@@ -253,8 +262,10 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
+    | '/blog/$slug'
     | '/floor-plan/4-bhk'
     | '/floor-plan/5-bhk'
+    | '/blog'
     | '/floor-plan'
     | '/.mcp/invoke-tool/$tool'
   id:
@@ -263,7 +274,6 @@ export interface FileRouteTypes {
     | '/about'
     | '/admin'
     | '/amenities'
-    | '/blog'
     | '/contact-us'
     | '/faq'
     | '/gallery'
@@ -276,8 +286,10 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
+    | '/blog/$slug'
     | '/floor-plan/4-bhk'
     | '/floor-plan/5-bhk'
+    | '/blog/'
     | '/floor-plan/'
     | '/.mcp/invoke-tool/$tool'
   fileRoutesById: FileRoutesById
@@ -287,7 +299,6 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   AdminRoute: typeof AdminRoute
   AmenitiesRoute: typeof AmenitiesRoute
-  BlogRoute: typeof BlogRoute
   ContactUsRoute: typeof ContactUsRoute
   FaqRoute: typeof FaqRoute
   GalleryRoute: typeof GalleryRoute
@@ -300,8 +311,10 @@ export interface RootRouteChildren {
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   Char91DotmcpChar93ListToolsRoute: typeof Char91DotmcpChar93ListToolsRoute
   Char91DotwellKnownChar93OauthProtectedResourceRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
+  BlogSlugRoute: typeof BlogSlugRoute
   FloorPlan4BhkRoute: typeof FloorPlan4BhkRoute
   FloorPlan5BhkRoute: typeof FloorPlan5BhkRoute
+  BlogIndexRoute: typeof BlogIndexRoute
   FloorPlanIndexRoute: typeof FloorPlanIndexRoute
   Char91DotmcpChar93InvokeToolToolRoute: typeof Char91DotmcpChar93InvokeToolToolRoute
 }
@@ -334,13 +347,6 @@ declare module '@tanstack/react-router' {
       path: '/amenities'
       fullPath: '/amenities'
       preLoaderRoute: typeof AmenitiesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/blog': {
-      id: '/blog'
-      path: '/blog'
-      fullPath: '/blog'
-      preLoaderRoute: typeof BlogRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact-us': {
@@ -427,6 +433,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/blog/': {
+      id: '/blog/'
+      path: '/blog'
+      fullPath: '/blog/'
+      preLoaderRoute: typeof BlogIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog/$slug': {
+      id: '/blog/$slug'
+      path: '/blog/$slug'
+      fullPath: '/blog/$slug'
+      preLoaderRoute: typeof BlogSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/floor-plan/': {
       id: '/floor-plan/'
       path: '/floor-plan'
@@ -463,7 +483,6 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   AdminRoute: AdminRoute,
   AmenitiesRoute: AmenitiesRoute,
-  BlogRoute: BlogRoute,
   ContactUsRoute: ContactUsRoute,
   FaqRoute: FaqRoute,
   GalleryRoute: GalleryRoute,
@@ -477,8 +496,10 @@ const rootRouteChildren: RootRouteChildren = {
   Char91DotmcpChar93ListToolsRoute: Char91DotmcpChar93ListToolsRoute,
   Char91DotwellKnownChar93OauthProtectedResourceRoute:
     Char91DotwellKnownChar93OauthProtectedResourceRoute,
+  BlogSlugRoute: BlogSlugRoute,
   FloorPlan4BhkRoute: FloorPlan4BhkRoute,
   FloorPlan5BhkRoute: FloorPlan5BhkRoute,
+  BlogIndexRoute: BlogIndexRoute,
   FloorPlanIndexRoute: FloorPlanIndexRoute,
   Char91DotmcpChar93InvokeToolToolRoute: Char91DotmcpChar93InvokeToolToolRoute,
 }

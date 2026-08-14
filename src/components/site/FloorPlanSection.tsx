@@ -4,9 +4,14 @@ import { Reveal } from "./Reveal";
 
 export function FloorPlanSection() {
   const [plan, setPlan] = useState("4 BHK");
-  const PLANS = [{ label: "4 BHK", href: "/floor-plan/4-bhk" }, { label: "5 BHK", href: "/floor-plan/5-bhk" }];
-  const active = PLANS.find((p) => p.label === plan) ?? { label: "4 BHK", href: "/floor-plan/4-bhk" };
-
+  const PLANS = [
+    { label: "4 BHK", href: "/floor-plan/4-bhk" },
+    { label: "5 BHK", href: "/floor-plan/5-bhk" },
+  ];
+  const active = PLANS.find((p) => p.label === plan) ?? {
+    label: "4 BHK",
+    href: "/floor-plan/4-bhk",
+  };
 
   return (
     <section id="floor-plan" className="bg-surface px-5 py-16 md:px-10 md:py-28">
@@ -52,7 +57,6 @@ export function FloorPlanSection() {
               <a href={active.href} className="btn-gold mt-8">
                 Explore {active.label}
               </a>
-
             </div>
 
             <img

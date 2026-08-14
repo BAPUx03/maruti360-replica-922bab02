@@ -151,9 +151,7 @@ function AdminPanel() {
                     Google preview
                   </p>
                   <p className="mt-2 text-[15px] leading-snug text-gold">{row.title}</p>
-                  <p className="text-[11px] text-muted-foreground">
-                    www.maruti-360.com{row.path}
-                  </p>
+                  <p className="text-[11px] text-muted-foreground">www.maruti-360.com{row.path}</p>
                   <p className="mt-1 text-[12px] leading-[1.7] text-foreground/80">
                     {row.description}
                   </p>

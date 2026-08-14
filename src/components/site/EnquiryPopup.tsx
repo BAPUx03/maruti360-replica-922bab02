@@ -6,16 +6,20 @@ import { sendPhoneOtp, verifyPhoneOtp } from "@/lib/otp.functions";
 import { saveLead } from "@/lib/leads";
 import { ENQUIRY_EVENT } from "@/components/site/EnquiryCta";
 
+const REQUIREMENTS = ["4 BHK", "5 BHK", "Jodi / Duplex / Penthouse — if available", "Investment"];
 
-
-const REQUIREMENTS = [
-  "4 BHK",
-  "5 BHK",
-  "Jodi / Duplex / Penthouse — if available",
-  "Investment",
+const BUDGETS = [
+  "₹2 Cr – ₹3 Cr",
+  "₹4 Cr – ₹5 Cr",
+  "₹6 Cr – ₹7 Cr",
+  "₹8 Cr – ₹10 Cr",
+  "₹10 Cr – ₹11 Cr",
+  "₹12 Cr – ₹13 Cr",
+  "₹14 Cr – ₹15 Cr",
+  "₹16 Cr – ₹17 Cr",
+  "₹18 Cr – ₹19 Cr",
+  "₹20 Cr+",
 ];
-
-const BUDGETS = ["₹2 Cr – ₹3 Cr", "₹4 Cr – ₹5 Cr", "₹6 Cr – ₹7 Cr", "₹8 Cr – ₹10 Cr", "₹10 Cr – ₹11 Cr", "₹12 Cr – ₹13 Cr", "₹14 Cr – ₹15 Cr", "₹16 Cr – ₹17 Cr", "₹18 Cr – ₹19 Cr", "₹20 Cr+"];
 
 const COUNTRIES = [
   { code: "+91", label: "IN +91" },
@@ -61,7 +65,6 @@ const COUNTRIES = [
   { code: "+977", label: "NP +977" },
   { code: "+880", label: "BD +880" },
 ];
-
 
 const fieldClass =
   "w-full appearance-none rounded-md border border-border bg-surface-2 px-3.5 py-2.5 text-[13px] text-foreground outline-none transition-colors placeholder:text-muted-foreground focus:border-gold md:px-4 md:py-3";
@@ -141,7 +144,6 @@ export function EnquiryPopup() {
     };
   }, []);
 
-
   useEffect(() => {
     if (seconds <= 0) return;
     const t = setTimeout(() => setSeconds((s) => s - 1), 1000);
@@ -215,7 +217,6 @@ export function EnquiryPopup() {
     void requestOtp();
   };
 
-
   const submitOtp = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
@@ -238,8 +239,6 @@ export function EnquiryPopup() {
       });
       setOpen(false);
       setStep("form");
-
-
     } catch {
       setError("Verification failed. Please try again.");
     } finally {
@@ -282,7 +281,10 @@ export function EnquiryPopup() {
                 >
                   Private Residence Enquiry
                 </h3>
-                <p className="field-in mt-1.5 hidden text-[13px] text-muted-foreground sm:block" style={{ animationDelay: "200ms" }}>
+                <p
+                  className="field-in mt-1.5 hidden text-[13px] text-muted-foreground sm:block"
+                  style={{ animationDelay: "200ms" }}
+                >
                   Share your requirements &amp; get exclusive listings.
                 </p>
                 <span className="mt-4 hidden items-center gap-2 sm:inline-flex rounded-full border border-gold/40 px-3.5 py-1.5 text-[9px] sm:text-[10px] uppercase tracking-[0.18em] text-gold">
@@ -391,7 +393,11 @@ export function EnquiryPopup() {
 
                 {error && <p className="text-center text-[12px] text-red-400">{error}</p>}
 
-                <button type="submit" disabled={busy} className="btn-gold w-full disabled:opacity-60">
+                <button
+                  type="submit"
+                  disabled={busy}
+                  className="btn-gold w-full disabled:opacity-60"
+                >
                   {busy ? "Please wait…" : "Get Exclusive Access"}
                 </button>
 
@@ -410,8 +416,7 @@ export function EnquiryPopup() {
               <h3 className="mt-5 font-display text-[24px] text-foreground">Verify your mobile</h3>
               <p className="mt-2 flex items-center justify-center gap-2 text-[13px] text-muted-foreground">
                 <Phone size={13} className="text-gold" />
-                4-digit SMS OTP sent to{" "}
-                <span className="text-foreground">{fullPhone}</span>
+                4-digit SMS OTP sent to <span className="text-foreground">{fullPhone}</span>
               </p>
 
               <div className="mt-7 flex items-center justify-center gap-3">
@@ -470,7 +475,9 @@ export function EnquiryPopup() {
               <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full border border-gold/50 bg-surface-2">
                 <ShieldCheck size={22} className="text-gold" />
               </div>
-              <h3 className="mt-5 font-display text-[24px] text-foreground">You&apos;re on the list</h3>
+              <h3 className="mt-5 font-display text-[24px] text-foreground">
+                You&apos;re on the list
+              </h3>
               <p className="mx-auto mt-3 max-w-[400px] text-[13px] leading-[1.9] text-muted-foreground">
                 Thank you, {firstName || "there"}. Your number is verified — our residence advisor
                 will call you shortly with floor plans and priority visit slots.

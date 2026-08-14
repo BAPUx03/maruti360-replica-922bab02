@@ -96,11 +96,11 @@ function ContactPage() {
         <section className="bg-surface-2 px-5 pt-32 pb-14 text-center md:px-10 md:pt-40 md:pb-20">
           <p className="eyebrow">Contact Us</p>
           <h1 className="mx-auto mt-4 max-w-[820px] font-display text-[30px] leading-tight text-foreground md:text-[48px]">
-            Let&apos;s Plan Your Visit
+            Book a Private Visit to Maruti 360
           </h1>
           <p className="mx-auto mt-5 max-w-[620px] text-[13px] leading-[2] text-muted-foreground">
-            Floor plans, availability and a private walkthrough of
-            the sample residence — arranged around your calendar.
+            Floor plans, availability and a private walkthrough of the sample residence — arranged
+            around your calendar.
           </p>
         </section>
 
@@ -124,8 +124,8 @@ function ContactPage() {
             ))}
           </div>
           <p className="mx-auto mt-8 flex max-w-[1150px] items-center gap-2 text-[12px] text-muted-foreground">
-            <Clock size={14} className="text-gold" /> Experience centre open all
-            days, 10:00 AM – 7:00 PM
+            <Clock size={14} className="text-gold" /> Experience centre open all days, 10:00 AM –
+            7:00 PM
           </p>
         </section>
 

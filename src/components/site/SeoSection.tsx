@@ -43,17 +43,32 @@ export function SeoSection() {
         <Reveal delay={160}>
           <div className="mt-12 border-t border-border pt-8">
             <h3 className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
-              Explore Residences
+              Explore Maruti 360
             </h3>
             <div className="mt-4 flex flex-wrap gap-x-6 gap-y-3 text-[12px]">
               <Link to="/floor-plan" className="text-gold hover:underline">
-                All Floor Plans
+                View Maruti 360 Floor Plans
               </Link>
               <Link to="/floor-plan/4-bhk" className="text-gold hover:underline">
                 4 BHK Luxury Residences
               </Link>
               <Link to="/floor-plan/5-bhk" className="text-gold hover:underline">
                 5 BHK Sky Homes
+              </Link>
+              <Link to="/amenities" className="text-gold hover:underline">
+                Explore Amenities
+              </Link>
+              <Link to="/price" className="text-gold hover:underline">
+                Request the Current Price List
+              </Link>
+              <Link to="/location" className="text-gold hover:underline">
+                Check the Maruti 360 Location
+              </Link>
+              <Link to="/rera-legal" className="text-gold hover:underline">
+                RERA Details
+              </Link>
+              <Link to="/gallery" className="text-gold hover:underline">
+                View Gallery
               </Link>
               <a href="#contact" className="text-gold hover:underline">
                 Book a Site Visit
