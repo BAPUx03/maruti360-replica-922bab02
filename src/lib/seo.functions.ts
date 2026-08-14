@@ -23,7 +23,7 @@ export const adminLogin = createServerFn({ method: "POST" })
   });
 
 /** Is the current visitor already signed in as admin? */
-export const adminStatus = createServerFn({ method: "GET" }).handler(async () => {
+export const adminStatus = createServerFn({ method: "POST" }).handler(async () => {
   const { isAdmin } = await import("@/lib/admin-session.server");
   return { authed: await isAdmin() };
 });
@@ -35,7 +35,7 @@ export const adminLogout = createServerFn({ method: "POST" }).handler(async () =
 });
 
 /** Admin: list every page with its current SEO values. Returns authed:false when signed out. */
-export const adminGetSeoPages = createServerFn({ method: "GET" }).handler(async () => {
+export const adminGetSeoPages = createServerFn({ method: "POST" }).handler(async () => {
   const { isAdmin } = await import("@/lib/admin-session.server");
   if (!(await isAdmin())) {
     return { authed: false as const, pages: [] as SeoMeta[] };
