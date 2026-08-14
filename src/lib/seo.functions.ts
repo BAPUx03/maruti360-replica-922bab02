@@ -34,15 +34,14 @@ export const adminLogout = createServerFn({ method: "POST" }).handler(async () =
   return { ok: true };
 });
 
-/** Admin: list every page with its current SEO values. Redirects when not signed in. */
+/** Admin: list every page with its current SEO values. Returns authed:false when signed out. */
 export const adminGetSeoPages = createServerFn({ method: "GET" }).handler(async () => {
   const { isAdmin } = await import("@/lib/admin-session.server");
   if (!(await isAdmin())) {
-    const { redirect } = await import("@tanstack/react-router");
-    throw redirect({ to: "/secure-login" });
+    return { authed: false as const, pages: [] as SeoMeta[] };
   }
   const { readAllSeo } = await import("@/lib/seo.server");
-  return { pages: await readAllSeo() };
+  return { authed: true as const, pages: await readAllSeo() };
 });
 
 /** Admin: save one page's SEO values. */

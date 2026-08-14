@@ -1,4 +1,4 @@
-import { createFileRoute, useRouter } from "@tanstack/react-router";
+import { createFileRoute, redirect, useRouter } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import { useState } from "react";
 import { toast } from "sonner";
@@ -10,7 +10,11 @@ import logo from "@/assets/Group-35-2.png";
 
 export const Route = createFileRoute("/admin")({
   ssr: false,
-  loader: () => adminGetSeoPages(),
+  loader: async () => {
+    const res = await adminGetSeoPages();
+    if (!res.authed) throw redirect({ to: "/secure-login" });
+    return res;
+  },
   component: AdminPanel,
   head: () => ({
     meta: [{ title: "SEO Admin" }, { name: "robots", content: "noindex, nofollow" }],
