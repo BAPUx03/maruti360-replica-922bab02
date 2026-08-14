@@ -55,7 +55,7 @@ function SecureLogin() {
     try {
       const res = await login({ data: { username: username.trim(), password } });
       if (res.ok) {
-        await router.navigate({ to: "/admin", replace: true });
+        window.location.replace("/admin");
         return;
       }
       setError(
