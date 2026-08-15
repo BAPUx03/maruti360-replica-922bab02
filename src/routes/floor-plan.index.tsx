@@ -11,11 +11,6 @@ import blueprint from "@/assets/Maruti-Buildings-01.png";
 import bedroom from "@/assets/Maruti_360_bedroom_2.webp";
 import { FACTUAL_DISCLAIMER } from "@/lib/project-facts";
 
-const TITLE = "Floor Plans — 4 & 5 BHK Sky Residences Off SG Highway, Ahmedabad";
-const DESCRIPTION =
-  "Explore 4 BHK and 5 BHK luxury floor plans in 41-storey twin towers off SG Highway, Ahmedabad — carpet areas, layouts, sky decks and FAQs.";
-const URL = "https://www.maruti-360.com/floor-plan";
-
 const FAQS = [
   {
     q: "Which configurations are available in this project?",

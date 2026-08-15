@@ -6,11 +6,6 @@ import { IndexLinks } from "@/components/site/SeoIndexPage";
 import view from "@/assets/Maruti_360_view.webp";
 import { FACTUAL_DISCLAIMER } from "@/lib/project-facts";
 
-const TITLE = "5 BHK Luxury Apartments Off SG Highway, Ahmedabad — Floor Plan";
-const DESCRIPTION =
-  "5 BHK signature residences in 41-storey twin towers off SG Highway, Ahmedabad: private lounge, family deck, staff quarters, jodi and penthouse options, specifications and FAQs.";
-const URL = "https://www.maruti-360.com/floor-plan/5-bhk";
-
 const FAQS = [
   {
     q: "What makes the 5 BHK different from the 4 BHK?",

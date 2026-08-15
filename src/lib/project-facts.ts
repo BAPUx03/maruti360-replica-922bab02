@@ -10,8 +10,6 @@ export const PROJECT_FACTS = {
   configurations: ["4 BHK", "5 BHK"],
   priceDisplay: "Request current price list",
   possessionDisplay: "Confirm the current official RERA timeline",
-  phoneHref: "tel:+919904969298",
-  email: "luxuryrealestateahmedabad@gmail.com",
   ogImage: "/og/maruti-360-home.jpg",
   factualDisclaimer:
     "Information and availability are subject to the latest approved project documents and change without notice. Please request the current brochure and verify applicable details before making a decision.",
