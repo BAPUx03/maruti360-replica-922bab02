@@ -177,3 +177,37 @@ export function seoHead(path: string, override?: Partial<SeoMeta> | null) {
   if (seo.keywords) meta.push({ name: "keywords", content: seo.keywords });
   return { meta, links: [{ rel: "canonical", href: url }] };
 }
+
+export function pageSchema(path: string, type: "WebPage" | "CollectionPage" | "Blog" = "WebPage") {
+  const seo = getDefaultSeo(path);
+  const url = `${SITE}${path}`;
+  const crumbs = path.split("/").filter(Boolean);
+  return [
+    {
+      type: "application/ld+json",
+      children: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": type,
+        name: seo.title,
+        description: seo.description,
+        url,
+      }),
+    },
+    {
+      type: "application/ld+json",
+      children: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: `${SITE}/` },
+          ...crumbs.map((part, index) => ({
+            "@type": "ListItem",
+            position: index + 2,
+            name: index === crumbs.length - 1 ? seo.title : part.replaceAll("-", " "),
+            item: `${SITE}/${crumbs.slice(0, index + 1).join("/")}`,
+          })),
+        ],
+      }),
+    },
+  ];
+}

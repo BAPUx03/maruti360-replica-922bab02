@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { getSeo } from "@/lib/seo.functions";
-import { seoHead } from "@/lib/seo-defaults";
+import { pageSchema, seoHead } from "@/lib/seo-defaults";
 import { IndexLinks, IndexSection, SeoIndexPage } from "@/components/site/SeoIndexPage";
 
 // Qualitative proximity only — no specific distance/drive-time figures, since
@@ -20,7 +20,10 @@ const LANDMARKS = [
 export const Route = createFileRoute("/location")({
   component: LocationPage,
   loader: () => getSeo({ data: { path: "/location" } }),
-  head: ({ loaderData }) => ({ ...seoHead("/location", loaderData) }),
+  head: ({ loaderData }) => ({
+    ...seoHead("/location", loaderData),
+    scripts: pageSchema("/location"),
+  }),
 });
 
 function LocationPage() {

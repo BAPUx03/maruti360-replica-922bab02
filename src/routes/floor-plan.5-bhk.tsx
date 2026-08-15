@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { getSeo } from "@/lib/seo.functions";
-import { seoHead } from "@/lib/seo-defaults";
+import { pageSchema, seoHead } from "@/lib/seo-defaults";
 import { ResidenceLayout, Faqs } from "@/components/site/ResidencePage";
 import { IndexLinks } from "@/components/site/SeoIndexPage";
 import view from "@/assets/Maruti_360_view.webp";
@@ -39,6 +39,7 @@ export const Route = createFileRoute("/floor-plan/5-bhk")({
   head: ({ loaderData }) => ({
     ...seoHead("/floor-plan/5-bhk", loaderData),
     scripts: [
+      ...pageSchema("/floor-plan/5-bhk"),
       {
         type: "application/ld+json",
         children: JSON.stringify({

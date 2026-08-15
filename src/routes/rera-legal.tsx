@@ -1,13 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { getSeo } from "@/lib/seo.functions";
-import { seoHead } from "@/lib/seo-defaults";
+import { pageSchema, seoHead } from "@/lib/seo-defaults";
 import { IndexLinks, IndexSection, SeoIndexPage } from "@/components/site/SeoIndexPage";
 import { PROJECT_FACTS, FACTUAL_DISCLAIMER } from "@/lib/project-facts";
 
 export const Route = createFileRoute("/rera-legal")({
   component: ReraPage,
   loader: () => getSeo({ data: { path: "/rera-legal" } }),
-  head: ({ loaderData }) => ({ ...seoHead("/rera-legal", loaderData) }),
+  head: ({ loaderData }) => ({
+    ...seoHead("/rera-legal", loaderData),
+    scripts: pageSchema("/rera-legal"),
+  }),
 });
 
 function ReraPage() {

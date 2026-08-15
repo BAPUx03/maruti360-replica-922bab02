@@ -1,5 +1,5 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { seoHead } from "@/lib/seo-defaults";
+import { pageSchema, seoHead } from "@/lib/seo-defaults";
 import { PROJECT_FACTS } from "@/lib/project-facts";
 import { getBlogPost, BLOG_BYLINE } from "@/lib/blog-posts";
 import { SiteHeader } from "@/components/site/SiteHeader";
@@ -23,6 +23,7 @@ export const Route = createFileRoute("/blog/$slug")({
         description: loaderData.description,
       }),
       scripts: [
+        ...pageSchema(`/blog/${loaderData.slug}`),
         {
           type: "application/ld+json",
           children: JSON.stringify({

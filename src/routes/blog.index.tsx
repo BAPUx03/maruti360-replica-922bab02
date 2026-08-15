@@ -1,13 +1,16 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { getSeo } from "@/lib/seo.functions";
-import { seoHead } from "@/lib/seo-defaults";
+import { pageSchema, seoHead } from "@/lib/seo-defaults";
 import { IndexLinks, IndexSection, SeoIndexPage } from "@/components/site/SeoIndexPage";
 import { BLOG_POSTS, BLOG_BYLINE } from "@/lib/blog-posts";
 
 export const Route = createFileRoute("/blog/")({
   component: BlogPage,
   loader: () => getSeo({ data: { path: "/blog" } }),
-  head: ({ loaderData }) => ({ ...seoHead("/blog", loaderData) }),
+  head: ({ loaderData }) => ({
+    ...seoHead("/blog", loaderData),
+    scripts: pageSchema("/blog", "Blog"),
+  }),
 });
 
 function BlogPage() {

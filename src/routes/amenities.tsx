@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { getSeo } from "@/lib/seo.functions";
-import { seoHead } from "@/lib/seo-defaults";
+import { pageSchema, seoHead } from "@/lib/seo-defaults";
 import {
   Eye,
   Building2,
@@ -137,6 +137,7 @@ export const Route = createFileRoute("/amenities")({
   head: ({ loaderData }) => ({
     ...seoHead("/amenities", loaderData),
     scripts: [
+      ...pageSchema("/amenities"),
       {
         type: "application/ld+json",
         children: JSON.stringify({

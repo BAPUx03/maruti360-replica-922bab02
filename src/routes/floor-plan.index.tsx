@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { getSeo } from "@/lib/seo.functions";
-import { seoHead } from "@/lib/seo-defaults";
+import { pageSchema, seoHead } from "@/lib/seo-defaults";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { EnquiryCta } from "@/components/site/EnquiryCta";
@@ -51,6 +51,7 @@ export const Route = createFileRoute("/floor-plan/")({
   head: ({ loaderData }) => ({
     ...seoHead("/floor-plan", loaderData),
     scripts: [
+      ...pageSchema("/floor-plan"),
       {
         type: "application/ld+json",
         children: JSON.stringify({
@@ -143,6 +144,38 @@ function FloorPlanIndex() {
                     { label: "RERA Details", to: "/rera-legal" },
                   ]}
                 />
+              </div>
+            </Reveal>
+
+            <Reveal delay={140}>
+              <div className="mt-16 overflow-x-auto">
+                <h2 className="font-display text-[26px] text-foreground md:text-[38px]">
+                  Compare the configurations
+                </h2>
+                <table className="mt-8 w-full min-w-[620px] border-collapse text-left text-[13px]">
+                  <thead>
+                    <tr className="border-b border-gold/40 text-gold">
+                      <th className="p-4 font-normal">Configuration</th>
+                      <th className="p-4 font-normal">Bedrooms</th>
+                      <th className="p-4 font-normal">Planning focus</th>
+                      <th className="p-4 font-normal">Approved details</th>
+                    </tr>
+                  </thead>
+                  <tbody className="text-muted-foreground">
+                    <tr className="border-b border-border">
+                      <td className="p-4 text-foreground">4 BHK</td>
+                      <td className="p-4">Four</td>
+                      <td className="p-4">Family residence with skyline-facing living areas</td>
+                      <td className="p-4">Request the current approved plan</td>
+                    </tr>
+                    <tr className="border-b border-border">
+                      <td className="p-4 text-foreground">5 BHK</td>
+                      <td className="p-4">Five</td>
+                      <td className="p-4">Larger family format with additional private space</td>
+                      <td className="p-4">Request the current approved plan</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
             </Reveal>
 

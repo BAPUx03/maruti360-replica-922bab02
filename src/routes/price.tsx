@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { getSeo } from "@/lib/seo.functions";
-import { seoHead } from "@/lib/seo-defaults";
+import { pageSchema, seoHead } from "@/lib/seo-defaults";
 import { IndexLinks, IndexSection, SeoIndexPage, FaqSection } from "@/components/site/SeoIndexPage";
 import { PROJECT_FACTS, FACTUAL_DISCLAIMER } from "@/lib/project-facts";
 
@@ -25,6 +25,7 @@ export const Route = createFileRoute("/price")({
   head: ({ loaderData }) => ({
     ...seoHead("/price", loaderData),
     scripts: [
+      ...pageSchema("/price"),
       {
         type: "application/ld+json",
         children: JSON.stringify({

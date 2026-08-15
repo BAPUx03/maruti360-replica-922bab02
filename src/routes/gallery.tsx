@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { getSeo } from "@/lib/seo.functions";
-import { seoHead } from "@/lib/seo-defaults";
+import { pageSchema, seoHead } from "@/lib/seo-defaults";
 import { IndexLinks, IndexSection, SeoIndexPage } from "@/components/site/SeoIndexPage";
 import pool from "@/assets/Maruti_360_POOL_3.webp";
 import view from "@/assets/Maruti_360_view.webp";
@@ -9,7 +9,10 @@ import bedroom from "@/assets/Maruti_360_bedroom_2.webp";
 export const Route = createFileRoute("/gallery")({
   component: GalleryPage,
   loader: () => getSeo({ data: { path: "/gallery" } }),
-  head: ({ loaderData }) => ({ ...seoHead("/gallery", loaderData) }),
+  head: ({ loaderData }) => ({
+    ...seoHead("/gallery", loaderData),
+    scripts: pageSchema("/gallery", "CollectionPage"),
+  }),
 });
 
 function GalleryPage() {
