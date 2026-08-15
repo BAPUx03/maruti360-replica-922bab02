@@ -22,7 +22,7 @@ const FAQS = [
   },
   {
     q: "Which floors are available?",
-    a: "Inventory spans low, mid and high zones across both towers of 41 storeys. Higher zones command a premium for the uninterrupted skyline view.",
+    a: "Request the current inventory and floor availability through the enquiry form; verify the response against the latest approved sales documents.",
   },
   {
     q: "Is the fourth bedroom usable as a study or home office?",
@@ -34,7 +34,7 @@ const FAQS = [
   },
   {
     q: "Is parking included?",
-    a: "Covered car parking is allotted with every residence, with additional bays available on request subject to availability.",
+    a: "Request the current approved parking allocation and applicable terms before making a decision.",
   },
 ];
 

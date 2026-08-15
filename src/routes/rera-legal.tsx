@@ -29,7 +29,7 @@ function ReraPage() {
           </div>
           <div className="border border-border p-7">
             <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
-              Possession reference
+              Possession timeline
             </p>
             <p className="mt-4 font-display text-[19px] leading-snug text-foreground">
               {PROJECT_FACTS.possessionDisplay}

@@ -18,11 +18,11 @@ const FAQS = [
   },
   {
     q: "Are jodi, duplex or penthouse formats possible?",
-    a: "Yes. Select high-zone levels can be planned as jodi or duplex residences, and limited penthouse formats are available on request.",
+    a: "Ask the sales team which approved formats are currently offered and request the applicable plan before relying on availability.",
   },
   {
     q: "Can the layout be customised?",
-    a: "Internal non-structural changes can be discussed before the fit-out stage, subject to structural and statutory approvals.",
+    a: "Any permitted internal changes must be confirmed in writing against structural, statutory and project requirements.",
   },
   {
     q: "What views do the 5 BHK residences enjoy?",
@@ -65,8 +65,8 @@ const SPECS: [string, string][] = [
   ["Planning", "Corner homes, two open faces"],
   ["Extras", "Family lounge + staff quarters"],
   ["Deck", "Extended wrap-around deck"],
-  ["Formats", "Jodi / duplex / penthouse on request"],
-  ["Parking", "Multiple covered bays"],
+  ["Formats", "Request the approved configuration list"],
+  ["Parking", "Confirm the approved allocation"],
 ];
 
 const HIGHLIGHTS = [
@@ -74,7 +74,7 @@ const HIGHLIGHTS = [
   "Master suite with walk-in wardrobe and deck access",
   "Service entry and staff quarters kept fully independent",
   "Extended deck planned for outdoor dining",
-  "Priority allocation on high-zone levels",
+  "Current floor options shared on enquiry",
 ];
 
 function FiveBhk() {

@@ -2,7 +2,6 @@ import { createFileRoute } from "@tanstack/react-router";
 import { getSeo } from "@/lib/seo.functions";
 import { seoHead } from "@/lib/seo-defaults";
 import { FaqSection, IndexLinks, IndexSection, SeoIndexPage } from "@/components/site/SeoIndexPage";
-import { PROJECT_FACTS } from "@/lib/project-facts";
 
 const FAQS = [
   {
@@ -23,11 +22,11 @@ const FAQS = [
   },
   {
     q: "What is the expected possession date?",
-    a: `Possession is ${PROJECT_FACTS.possessionDisplay.toLowerCase()}. Construction status and the current RERA-declared timeline are shared with every site visit.`,
+    a: "Request the current official RERA timeline and construction status, then verify both against the latest approved project documents before booking.",
   },
   {
     q: "How do I book a site visit?",
-    a: "Contact the sales team through the contact page, phone or WhatsApp to request a convenient appointment.",
+    a: "Submit the enquiry form on the contact page to request a convenient private appointment.",
   },
   {
     q: "Where can I verify project documents?",

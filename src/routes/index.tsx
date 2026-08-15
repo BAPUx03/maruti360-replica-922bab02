@@ -46,7 +46,6 @@ export const Route = createFileRoute("/")({
             addressRegion: "Gujarat",
             addressCountry: "IN",
           },
-          telephone: PROJECT_FACTS.phoneHref.replace("tel:", ""),
         }),
       },
       // No FAQPage script here: the FAQs this page used to mark up were never

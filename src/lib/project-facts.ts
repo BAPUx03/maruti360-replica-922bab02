@@ -1,4 +1,4 @@
-export const projectFacts = {
+export const PROJECT_FACTS = {
   brand: "Maruti 360",
   developer: "Maruti Buildcon",
   canonicalBase: "https://www.maruti-360.com",
@@ -9,12 +9,17 @@ export const projectFacts = {
   reraPortalUrl: "https://gujrera.gujarat.gov.in/",
   configurations: ["4 BHK", "5 BHK"],
   priceDisplay: "Request current price list",
+  possessionDisplay: "Confirm the current official RERA timeline",
+  phoneHref: "tel:+919904969298",
+  email: "luxuryrealestateahmedabad@gmail.com",
   ogImage: "/og/maruti-360-home.jpg",
   factualDisclaimer:
     "Information and availability are subject to the latest approved project documents and change without notice. Please request the current brochure and verify applicable details before making a decision.",
 } as const;
 
-export const BLOG_SLUGS = [
+export const FACTUAL_DISCLAIMER = PROJECT_FACTS.factualDisclaimer;
+
+export const BLOG_ARTICLE_SLUGS = [
   "rera-checklist-buying-flat-gujarat",
   "4-bhk-vs-5-bhk-luxury-apartment-ahmedabad",
   "how-to-evaluate-luxury-apartment-floor-plan",
@@ -25,7 +30,7 @@ export const BLOG_SLUGS = [
   "how-to-evaluate-location-near-karnavati-club",
 ] as const;
 
-export const PUBLIC_PATHS = [
+export const PUBLIC_ROUTES = [
   "/",
   "/about",
   "/amenities",
@@ -39,6 +44,5 @@ export const PUBLIC_PATHS = [
   "/faq",
   "/gallery",
   "/blog",
-  ...BLOG_SLUGS.map((slug) => `/blog/${slug}`),
   "/privacy-policy",
 ] as const;

@@ -114,8 +114,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           name: PROJECT_FACTS.brand,
           url: `${PROJECT_FACTS.canonicalBase}/`,
           logo: `${PROJECT_FACTS.canonicalBase}/favicon.png`,
-          telephone: PROJECT_FACTS.phoneHref.replace("tel:", ""),
-          email: PROJECT_FACTS.email,
           address: {
             "@type": "PostalAddress",
             addressLocality: "Ahmedabad",

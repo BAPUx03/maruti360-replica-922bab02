@@ -17,7 +17,7 @@ const URL = "https://www.maruti-360.com/contact-us";
 const FAQS = [
   {
     q: "How soon will someone get back to me?",
-    a: "An advisor calls back within the same working day, and within a couple of hours for enquiries placed between 10 AM and 7 PM.",
+    a: "After you submit the enquiry form, the sales team will respond using the details you provided.",
   },
   {
     q: "How do I get the brochure and floor plans?",
@@ -25,11 +25,11 @@ const FAQS = [
   },
   {
     q: "Do I need an appointment to visit?",
-    a: "Walk-ins are welcome, but a scheduled slot means a dedicated advisor, a sample-layout walkthrough and no waiting.",
+    a: "Submit the enquiry form to request a private visit and confirm the current experience-centre schedule before travelling.",
   },
   {
     q: "Do you assist with home loans?",
-    a: "Yes. The team coordinates with leading banks and NBFCs for sanction, documentation and disbursement support.",
+    a: "Ask the sales team for the current lender and documentation process. Any financing decision and approval remains with the lender.",
   },
 ];
 
@@ -84,7 +84,7 @@ const CARDS = [
   {
     icon: Clock,
     label: "Visiting Hours",
-    value: "All days, 10:00 AM – 7:00 PM",
+    value: "Confirm through the enquiry form",
   },
 ];
 
@@ -123,10 +123,6 @@ function ContactPage() {
               </button>
             ))}
           </div>
-          <p className="mx-auto mt-8 flex max-w-[1150px] items-center gap-2 text-[12px] text-muted-foreground">
-            <Clock size={14} className="text-gold" /> Experience centre open all days, 10:00 AM –
-            7:00 PM
-          </p>
         </section>
 
         <ContactSection />
