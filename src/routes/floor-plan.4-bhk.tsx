@@ -1,13 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { getSeo } from "@/lib/seo.functions";
-import { seoHead } from "@/lib/seo-defaults";
+import { pageSchema, seoHead } from "@/lib/seo-defaults";
 import { ResidenceLayout, Faqs } from "@/components/site/ResidencePage";
+import { IndexLinks } from "@/components/site/SeoIndexPage";
 import bedroom from "@/assets/Maruti_360_bedroom_2.webp";
-
-const TITLE = "4 BHK Sky Residences Off SG Highway, Ahmedabad — Floor Plan";
-const DESCRIPTION =
-  "4 BHK luxury apartments in 41-storey twin towers off SG Highway, Ahmedabad: wide-frontage layout, deep sky deck, four homes per floor, premium specifications and FAQs.";
-const URL = "https://www.maruti-360.com/floor-plan/4-bhk";
+import { FACTUAL_DISCLAIMER } from "@/lib/project-facts";
 
 const FAQS = [
   {
@@ -20,7 +17,7 @@ const FAQS = [
   },
   {
     q: "Which floors are available?",
-    a: "Inventory spans low, mid and high zones across both towers of 41 storeys. Higher zones command a premium for the uninterrupted skyline view.",
+    a: "Request the current inventory and floor availability through the enquiry form; verify the response against the latest approved sales documents.",
   },
   {
     q: "Is the fourth bedroom usable as a study or home office?",
@@ -32,7 +29,7 @@ const FAQS = [
   },
   {
     q: "Is parking included?",
-    a: "Covered car parking is allotted with every residence, with additional bays available on request subject to availability.",
+    a: "Request the current approved parking allocation and applicable terms before making a decision.",
   },
 ];
 
@@ -42,6 +39,7 @@ export const Route = createFileRoute("/floor-plan/4-bhk")({
   head: ({ loaderData }) => ({
     ...seoHead("/floor-plan/4-bhk", loaderData),
     scripts: [
+      ...pageSchema("/floor-plan/4-bhk"),
       {
         type: "application/ld+json",
         children: JSON.stringify({
@@ -78,8 +76,8 @@ const HIGHLIGHTS = [
 function FourBhk() {
   return (
     <ResidenceLayout
-      eyebrow="4 BHK · Available"
-      title="The 4 BHK Sky Residence"
+      eyebrow="4 BHK Sky Residence"
+      title="Maruti 360 4 BHK Sky Residence"
       intro="Four bedrooms, a wide skyline frontage and a deck deep enough to live on — planned for families who measure luxury in horizons, not square feet."
       image={bedroom}
       imageAlt="Interior of a 4 BHK sky residence bedroom"
@@ -125,6 +123,23 @@ function FourBhk() {
             >
               Explore 5 BHK
             </a>
+          </div>
+
+          <p className="mt-8 max-w-[760px] text-[12px] leading-[1.9] text-muted-foreground">
+            {FACTUAL_DISCLAIMER}
+          </p>
+
+          <div className="mt-8">
+            <IndexLinks
+              links={[
+                { label: "All Floor Plans", to: "/floor-plan" },
+                { label: "5 BHK Floor Plan", to: "/floor-plan/5-bhk" },
+                { label: "View Price & Payment Plan", to: "/price" },
+                { label: "Explore Amenities", to: "/amenities" },
+                { label: "View Location", to: "/location" },
+                { label: "Request This Plan", to: "/contact-us" },
+              ]}
+            />
           </div>
 
           <div className="mt-16 text-center">

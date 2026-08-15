@@ -1,18 +1,15 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { getSeo } from "@/lib/seo.functions";
-import { seoHead } from "@/lib/seo-defaults";
+import { pageSchema, seoHead } from "@/lib/seo-defaults";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { EnquiryCta } from "@/components/site/EnquiryCta";
 import { Reveal } from "@/components/site/Reveal";
 import { Faqs } from "@/components/site/ResidencePage";
+import { IndexLinks } from "@/components/site/SeoIndexPage";
 import blueprint from "@/assets/Maruti-Buildings-01.png";
 import bedroom from "@/assets/Maruti_360_bedroom_2.webp";
-
-const TITLE = "Floor Plans — 4 & 5 BHK Sky Residences Off SG Highway, Ahmedabad";
-const DESCRIPTION =
-  "Explore 4 BHK and 5 BHK luxury floor plans in 41-storey twin towers off SG Highway, Ahmedabad — carpet areas, layouts, sky decks and FAQs.";
-const URL = "https://www.maruti-360.com/floor-plan";
+import { FACTUAL_DISCLAIMER } from "@/lib/project-facts";
 
 const FAQS = [
   {
@@ -37,13 +34,13 @@ const PLANS = [
   {
     href: "/floor-plan/4-bhk",
     name: "4 BHK",
-    note: "Available in this project",
+    note: "Offered in this project",
     copy: "Wide-frontage four-bedroom sky residences with deep decks and skyline-facing living rooms.",
   },
   {
     href: "/floor-plan/5-bhk",
     name: "5 BHK",
-    note: "Available in this project",
+    note: "Offered in this project",
     copy: "Signature five-bedroom residences with private lounge, family deck and staff quarters.",
   },
 ];
@@ -54,6 +51,7 @@ export const Route = createFileRoute("/floor-plan/")({
   head: ({ loaderData }) => ({
     ...seoHead("/floor-plan", loaderData),
     scripts: [
+      ...pageSchema("/floor-plan"),
       {
         type: "application/ld+json",
         children: JSON.stringify({
@@ -89,7 +87,7 @@ function FloorPlanIndex() {
               Our Floor Plans
             </p>
             <h1 className="mt-5 font-display text-[32px] leading-[1.15] text-foreground sm:text-[46px] md:text-[60px]">
-              An Engineering Perfection
+              Maruti 360 Floor Plans
             </h1>
             <p className="mx-auto mt-6 max-w-[660px] text-[13px] leading-[2] text-foreground/75">
               Choose the configuration that fits your life — every plan is the outcome of years of
@@ -132,6 +130,53 @@ function FloorPlanIndex() {
                 height={600}
                 className="mx-auto mt-16 w-full max-w-[560px] object-contain"
               />
+              <p className="mx-auto mt-6 max-w-[700px] text-center text-[12px] leading-[1.9] text-muted-foreground">
+                {FACTUAL_DISCLAIMER}
+              </p>
+              <div className="mt-10 flex justify-center">
+                <IndexLinks
+                  links={[
+                    { label: "4 BHK Floor Plan", to: "/floor-plan/4-bhk" },
+                    { label: "5 BHK Floor Plan", to: "/floor-plan/5-bhk" },
+                    { label: "View Price & Payment Plan", to: "/price" },
+                    { label: "Explore Amenities", to: "/amenities" },
+                    { label: "View Location", to: "/location" },
+                    { label: "RERA Details", to: "/rera-legal" },
+                  ]}
+                />
+              </div>
+            </Reveal>
+
+            <Reveal delay={140}>
+              <div className="mt-16 overflow-x-auto">
+                <h2 className="font-display text-[26px] text-foreground md:text-[38px]">
+                  Compare the configurations
+                </h2>
+                <table className="mt-8 w-full min-w-[620px] border-collapse text-left text-[13px]">
+                  <thead>
+                    <tr className="border-b border-gold/40 text-gold">
+                      <th className="p-4 font-normal">Configuration</th>
+                      <th className="p-4 font-normal">Bedrooms</th>
+                      <th className="p-4 font-normal">Planning focus</th>
+                      <th className="p-4 font-normal">Approved details</th>
+                    </tr>
+                  </thead>
+                  <tbody className="text-muted-foreground">
+                    <tr className="border-b border-border">
+                      <td className="p-4 text-foreground">4 BHK</td>
+                      <td className="p-4">Four</td>
+                      <td className="p-4">Family residence with skyline-facing living areas</td>
+                      <td className="p-4">Request the current approved plan</td>
+                    </tr>
+                    <tr className="border-b border-border">
+                      <td className="p-4 text-foreground">5 BHK</td>
+                      <td className="p-4">Five</td>
+                      <td className="p-4">Larger family format with additional private space</td>
+                      <td className="p-4">Request the current approved plan</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </Reveal>
 
             <Reveal delay={160}>

@@ -2,8 +2,10 @@ import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
 import type { SeoMeta } from "@/lib/seo-defaults";
 
-/** Public: read stored SEO overrides for one page. */
-export const getSeo = createServerFn({ method: "GET" })
+/** Public: read stored SEO overrides for one page.
+ *  POST (not GET) so the hosting edge never caches this cookie/session-adjacent
+ *  RPC endpoint across deployments or between visitors. */
+export const getSeo = createServerFn({ method: "POST" })
   .inputValidator((data: { path: string }) => z.object({ path: z.string().max(120) }).parse(data))
   .handler(async ({ data }) => {
     const { readSeo } = await import("@/lib/seo.server");
@@ -34,7 +36,9 @@ export const adminLogout = createServerFn({ method: "POST" }).handler(async () =
   return { ok: true };
 });
 
-/** Admin: list every page with its current SEO values. Returns authed:false when signed out. */
+/** Admin: list every page with its current SEO values. Returns authed:false when signed out
+ *  (the route loader decides whether to redirect) — POST so this cookie-gated check is
+ *  never served from an edge cache. */
 export const adminGetSeoPages = createServerFn({ method: "POST" }).handler(async () => {
   const { isAdmin } = await import("@/lib/admin-session.server");
   if (!(await isAdmin())) {

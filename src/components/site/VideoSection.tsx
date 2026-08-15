@@ -35,10 +35,7 @@ export function VideoSection() {
   const showText = inView;
 
   return (
-    <section
-      ref={sectionRef}
-      className="over-media relative overflow-hidden bg-background"
-    >
+    <section ref={sectionRef} className="over-media relative overflow-hidden bg-background">
       <div className="relative h-[70vh] min-h-[420px] w-full">
         <video
           ref={videoRef}
@@ -62,9 +59,7 @@ export function VideoSection() {
         <div className="pointer-events-none relative flex h-full items-center justify-center px-6 text-center">
           <div
             className={`transition-all duration-[1100ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
-              showText
-                ? "translate-y-0 opacity-100 blur-0"
-                : "-translate-y-4 opacity-0 blur-[6px]"
+              showText ? "translate-y-0 opacity-100 blur-0" : "-translate-y-4 opacity-0 blur-[6px]"
             }`}
           >
             <p className="eyebrow">The Film</p>
@@ -72,8 +67,7 @@ export function VideoSection() {
               A Skyline Written In Light
             </h2>
             <p className="mx-auto mt-5 max-w-[640px] text-[13px] leading-[2] text-muted-foreground">
-              Twin towers, 41 storeys, and an address that turns every evening
-              into an occasion.
+              Twin towers, 41 storeys, and an address that turns every evening into an occasion.
             </p>
           </div>
         </div>

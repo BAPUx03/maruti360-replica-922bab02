@@ -6,7 +6,6 @@ import { saveLead } from "@/lib/leads";
 export function ContactSection() {
   const [sending, setSending] = useState(false);
 
-
   return (
     <section id="contact" className="bg-surface px-5 py-16 md:px-10 md:py-28">
       <div className="mx-auto max-w-[720px] text-center">
@@ -52,12 +51,10 @@ export function ContactSection() {
                 source: "contact_form",
               });
 
-
               toast.success("Thank you! Our advisor will connect with you shortly.");
               form.reset();
               setSending(false);
             }}
-
           >
             <div className="grid gap-4 sm:grid-cols-2">
               <input
@@ -111,13 +108,16 @@ export function ContactSection() {
               placeholder="Message (optional)"
               className="w-full border border-border bg-surface-2 px-4 py-3 text-[12px] outline-none placeholder:text-muted-foreground focus:border-gold"
             />
-            <button type="submit" disabled={sending} className="btn-gold w-full disabled:opacity-60">
+            <button
+              type="submit"
+              disabled={sending}
+              className="btn-gold w-full disabled:opacity-60"
+            >
               {sending ? "Sending…" : "Submit Request"}
             </button>
             <p className="text-center text-[10px] leading-relaxed text-muted-foreground">
               Our residence advisor responds to every enquiry the same working day.
             </p>
-
           </form>
         </Reveal>
       </div>

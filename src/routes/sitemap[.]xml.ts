@@ -1,25 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
+import { PROJECT_FACTS, PUBLIC_ROUTES, BLOG_ARTICLE_SLUGS } from "@/lib/project-facts";
 
-const BASE_URL = "https://www.maruti-360.com";
-
-const PATHS = [
-  { path: "/", changefreq: "weekly", priority: "1.0" },
-  { path: "/about", changefreq: "monthly", priority: "0.7" },
-  { path: "/amenities", changefreq: "monthly", priority: "0.8" },
-  { path: "/floor-plan", changefreq: "monthly", priority: "0.8" },
-  { path: "/floor-plan/4-bhk", changefreq: "monthly", priority: "0.8" },
-  { path: "/floor-plan/5-bhk", changefreq: "monthly", priority: "0.8" },
-  { path: "/contact-us", changefreq: "monthly", priority: "0.7" },
-  { path: "/price", changefreq: "monthly", priority: "0.8" },
-  { path: "/location", changefreq: "monthly", priority: "0.8" },
-  { path: "/rera-legal", changefreq: "yearly", priority: "0.6" },
-  { path: "/faq", changefreq: "monthly", priority: "0.7" },
-  { path: "/gallery", changefreq: "monthly", priority: "0.7" },
-  { path: "/blog", changefreq: "weekly", priority: "0.6" },
-  { path: "/privacy-policy", changefreq: "yearly", priority: "0.3" },
-];
-
+// Generated from the single public-route registry — no fabricated lastmod,
+// changefreq or priority. Every URL here must be a canonical, indexable 200
+// page; admin/login/thank-you/draft states are never added.
+const URLS: string[] = [...PUBLIC_ROUTES, ...BLOG_ARTICLE_SLUGS.map((slug) => `/blog/${slug}`)];
 
 export const Route = createFileRoute("/sitemap.xml")({
   server: {
@@ -28,14 +14,10 @@ export const Route = createFileRoute("/sitemap.xml")({
         const xml = [
           `<?xml version="1.0" encoding="UTF-8"?>`,
           `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">`,
-          ...PATHS.map((e) =>
-            [
-              `  <url>`,
-              `    <loc>${BASE_URL}${e.path}</loc>`,
-              `    <changefreq>${e.changefreq}</changefreq>`,
-              `    <priority>${e.priority}</priority>`,
-              `  </url>`,
-            ].join("\n"),
+          ...URLS.map((path) =>
+            [`  <url>`, `    <loc>${PROJECT_FACTS.canonicalBase}${path}</loc>`, `  </url>`].join(
+              "\n",
+            ),
           ),
           `</urlset>`,
         ].join("\n");

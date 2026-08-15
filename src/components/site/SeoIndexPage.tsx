@@ -50,12 +50,25 @@ export function IndexSection({ title, children }: { title: string; children: Rea
   );
 }
 
-export function IndexLinks() {
+export type ContextualLink = { label: string; to: string };
+
+const DEFAULT_LINKS: ContextualLink[] = [
+  { label: "View Floor Plans", to: "/floor-plan" },
+  { label: "Explore Amenities", to: "/amenities" },
+  { label: "Book a Site Visit", to: "/contact-us" },
+];
+
+/** Visible, crawlable "Explore Maruti 360" module — real <a href> links via
+ *  router Link, not button-only JS actions. Each page passes the specific
+ *  set called for by its row in the internal-linking plan. */
+export function IndexLinks({ links = DEFAULT_LINKS }: { links?: ContextualLink[] }) {
   return (
     <div className="flex flex-wrap gap-4 border-t border-border pt-8 text-[11px] uppercase tracking-[0.16em]">
-      <Link to="/floor-plan" className="text-gold hover:underline">View Floor Plans</Link>
-      <Link to="/amenities" className="text-gold hover:underline">Explore Amenities</Link>
-      <Link to="/contact-us" className="text-gold hover:underline">Book a Site Visit</Link>
+      {links.map((link) => (
+        <Link key={link.to} to={link.to} className="text-gold hover:underline">
+          {link.label}
+        </Link>
+      ))}
     </div>
   );
 }

@@ -23,7 +23,9 @@ export default defineTool({
       };
     }
     if (!SEO_PATHS.includes(path)) {
-      throw new ToolError(`Unknown page path "${path}". Call this tool without a path to list valid paths.`);
+      throw new ToolError(
+        `Unknown page path "${path}". Call this tool without a path to list valid paths.`,
+      );
     }
     const { readSeo } = await import("@/lib/seo.server");
     const override = await readSeo(path).catch(() => null);

@@ -1,13 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { getSeo } from "@/lib/seo.functions";
-import { seoHead } from "@/lib/seo-defaults";
+import { pageSchema, seoHead } from "@/lib/seo-defaults";
 import { ResidenceLayout, Faqs } from "@/components/site/ResidencePage";
+import { IndexLinks } from "@/components/site/SeoIndexPage";
 import view from "@/assets/Maruti_360_view.webp";
-
-const TITLE = "5 BHK Luxury Apartments Off SG Highway, Ahmedabad — Floor Plan";
-const DESCRIPTION =
-  "5 BHK signature residences in 41-storey twin towers off SG Highway, Ahmedabad: private lounge, family deck, staff quarters, jodi and penthouse options, specifications and FAQs.";
-const URL = "https://www.maruti-360.com/floor-plan/5-bhk";
+import { FACTUAL_DISCLAIMER } from "@/lib/project-facts";
 
 const FAQS = [
   {
@@ -16,11 +13,11 @@ const FAQS = [
   },
   {
     q: "Are jodi, duplex or penthouse formats possible?",
-    a: "Yes. Select high-zone levels can be planned as jodi or duplex residences, and limited penthouse formats are available on request.",
+    a: "Ask the sales team which approved formats are currently offered and request the applicable plan before relying on availability.",
   },
   {
     q: "Can the layout be customised?",
-    a: "Internal non-structural changes can be discussed before the fit-out stage, subject to structural and statutory approvals.",
+    a: "Any permitted internal changes must be confirmed in writing against structural, statutory and project requirements.",
   },
   {
     q: "What views do the 5 BHK residences enjoy?",
@@ -42,6 +39,7 @@ export const Route = createFileRoute("/floor-plan/5-bhk")({
   head: ({ loaderData }) => ({
     ...seoHead("/floor-plan/5-bhk", loaderData),
     scripts: [
+      ...pageSchema("/floor-plan/5-bhk"),
       {
         type: "application/ld+json",
         children: JSON.stringify({
@@ -63,8 +61,8 @@ const SPECS: [string, string][] = [
   ["Planning", "Corner homes, two open faces"],
   ["Extras", "Family lounge + staff quarters"],
   ["Deck", "Extended wrap-around deck"],
-  ["Formats", "Jodi / duplex / penthouse on request"],
-  ["Parking", "Multiple covered bays"],
+  ["Formats", "Request the approved configuration list"],
+  ["Parking", "Confirm the approved allocation"],
 ];
 
 const HIGHLIGHTS = [
@@ -72,14 +70,14 @@ const HIGHLIGHTS = [
   "Master suite with walk-in wardrobe and deck access",
   "Service entry and staff quarters kept fully independent",
   "Extended deck planned for outdoor dining",
-  "Priority allocation on high-zone levels",
+  "Current floor options shared on enquiry",
 ];
 
 function FiveBhk() {
   return (
     <ResidenceLayout
-      eyebrow="5 BHK · Available"
-      title="The 5 BHK Signature Residence"
+      eyebrow="5 BHK Signature Residence"
+      title="Maruti 360 5 BHK Sky Residence"
       intro="A corner home with two open faces, a private family lounge and a wrap-around deck — the most generous format in the towers."
       image={view}
       imageAlt="Panoramic skyline view from a high-floor residence"
@@ -125,6 +123,23 @@ function FiveBhk() {
             >
               Explore 4 BHK
             </a>
+          </div>
+
+          <p className="mt-8 max-w-[760px] text-[12px] leading-[1.9] text-muted-foreground">
+            {FACTUAL_DISCLAIMER}
+          </p>
+
+          <div className="mt-8">
+            <IndexLinks
+              links={[
+                { label: "All Floor Plans", to: "/floor-plan" },
+                { label: "4 BHK Floor Plan", to: "/floor-plan/4-bhk" },
+                { label: "View Price & Payment Plan", to: "/price" },
+                { label: "Explore Amenities", to: "/amenities" },
+                { label: "View Location", to: "/location" },
+                { label: "Request This Plan", to: "/contact-us" },
+              ]}
+            />
           </div>
 
           <div className="mt-16 text-center">

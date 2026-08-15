@@ -4,7 +4,6 @@ import { Menu, X } from "lucide-react";
 import { ThemeToggle } from "@/components/site/ThemeToggle";
 import { EnquiryButton, openEnquiry } from "@/components/site/EnquiryCta";
 
-
 const NAV = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
@@ -35,10 +34,8 @@ export function SiteHeader() {
     >
       <div className="mx-auto flex max-w-[1400px] items-center justify-between px-5 md:px-10">
         <a href="/" className="flex items-center">
-          <img src={logo} data-brand-logo
-            alt="Maruti 360 logo" className="h-9 w-auto md:h-11" />
+          <img src={logo} data-brand-logo alt="Maruti 360 logo" className="h-9 w-auto md:h-11" />
         </a>
-
 
         <nav className="hidden items-center gap-8 lg:flex">
           {NAV.map((item) => (
@@ -59,13 +56,13 @@ export function SiteHeader() {
 
         <div className="flex items-center gap-3 lg:hidden">
           <ThemeToggle className="md:hidden" />
-        <button
-          className="text-foreground"
-          aria-label="Toggle menu"
-          onClick={() => setOpen((v) => !v)}
-        >
-          {open ? <X size={22} /> : <Menu size={22} />}
-        </button>
+          <button
+            className="text-foreground"
+            aria-label="Toggle menu"
+            onClick={() => setOpen((v) => !v)}
+          >
+            {open ? <X size={22} /> : <Menu size={22} />}
+          </button>
         </div>
       </div>
 
@@ -92,7 +89,6 @@ export function SiteHeader() {
           </button>
         </nav>
       )}
-
     </header>
   );
 }

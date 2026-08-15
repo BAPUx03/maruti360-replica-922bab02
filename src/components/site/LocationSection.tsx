@@ -1,11 +1,13 @@
 import { Reveal } from "./Reveal";
 import { MapPin } from "lucide-react";
 
+// Qualitative proximity only — no specific drive-time figures, since none
+// are verified against an approved source.
 const PLACES = [
   { id: "01", name: "S.G. Highway", note: "Direct connectivity" },
-  { id: "02", name: "Karnavati Club", note: "Adjacent" },
-  { id: "03", name: "Iskcon–Ambli Road", note: "6 min drive" },
-  { id: "04", name: "Business District", note: "10 min drive" },
+  { id: "02", name: "Karnavati Club", note: "Nearby" },
+  { id: "03", name: "Iskcon–Ambli Road", note: "Short drive away" },
+  { id: "04", name: "Business District", note: "Well connected" },
 ];
 
 const MAP_QUERY = "Karnavati Club, S.G. Highway, Ahmedabad, Gujarat";

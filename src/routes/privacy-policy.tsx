@@ -73,17 +73,12 @@ function PrivacyPage() {
           <div className="mx-auto max-w-[860px] space-y-10">
             {SECTIONS.map((s) => (
               <article key={s.h}>
-                <h2 className="font-display text-[21px] text-foreground md:text-[25px]">
-                  {s.h}
-                </h2>
-                <p className="mt-3 text-[13px] leading-[2] text-muted-foreground">
-                  {s.p}
-                </p>
+                <h2 className="font-display text-[21px] text-foreground md:text-[25px]">{s.h}</h2>
+                <p className="mt-3 text-[13px] leading-[2] text-muted-foreground">{s.p}</p>
               </article>
             ))}
             <p className="border-t border-border pt-8 text-[12px] leading-[2] text-muted-foreground">
-              Questions about this policy? Submit the enquiry form and our team will
-              respond.
+              Questions about this policy? Submit the enquiry form and our team will respond.
             </p>
           </div>
         </section>

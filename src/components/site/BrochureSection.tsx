@@ -2,6 +2,7 @@ import brochureBg from "@/assets/brochure-bg.jpg";
 import { Download } from "lucide-react";
 import { EnquiryButton } from "./EnquiryCta";
 import { Reveal } from "./Reveal";
+import { PROJECT_FACTS } from "@/lib/project-facts";
 
 export function BrochureSection() {
   return (
@@ -23,17 +24,17 @@ export function BrochureSection() {
               The 360 Brochure
             </h2>
             <p className="mt-4 break-words text-[11px] leading-[1.9] text-muted-foreground">
-              RERA Number: PR/GJ/AHMEDABAD/AHMEDABAD CITY/AUDA/RAA12039/280623
+              RERA Number: {PROJECT_FACTS.reraNumber}
             </p>
             <p className="mt-1 break-all text-[11px] leading-[1.9] text-muted-foreground">
               RERA Website:{" "}
               <a
-                href="http://www.gujrera.gujarat.gov.in/"
+                href={PROJECT_FACTS.reraPortalUrl}
                 target="_blank"
                 rel="noreferrer"
                 className="text-gold"
               >
-                http://www.gujrera.gujarat.gov.in/
+                {PROJECT_FACTS.reraPortalUrl}
               </a>
             </p>
             <EnquiryButton className="mt-6 gap-2">

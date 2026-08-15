@@ -10,7 +10,10 @@ const SendSchema = z.object({
 
 const VerifySchema = z.object({
   sessionId: z.string().trim().min(6).max(120),
-  otp: z.string().trim().regex(/^\d{4}$/, "Enter the 4-digit code"),
+  otp: z
+    .string()
+    .trim()
+    .regex(/^\d{4}$/, "Enter the 4-digit code"),
 });
 
 export const sendPhoneOtp = createServerFn({ method: "POST" })
@@ -25,9 +28,10 @@ export const sendPhoneOtp = createServerFn({ method: "POST" })
     const res = await fetch(
       `https://2factor.in/API/V1/${apiKey}/SMS/${encodeURIComponent(to)}/${otp}/OTP1`,
     );
-    const body = (await res.json().catch(() => null)) as
-      | { Status?: string; Details?: string }
-      | null;
+    const body = (await res.json().catch(() => null)) as {
+      Status?: string;
+      Details?: string;
+    } | null;
 
     if (!res.ok || body?.Status !== "Success" || !body?.Details) {
       return { ok: false as const, error: "Could not send the verification code." };
@@ -46,9 +50,10 @@ export const verifyPhoneOtp = createServerFn({ method: "POST" })
         data.sessionId,
       )}/${encodeURIComponent(data.otp)}`,
     );
-    const body = (await res.json().catch(() => null)) as
-      | { Status?: string; Details?: string }
-      | null;
+    const body = (await res.json().catch(() => null)) as {
+      Status?: string;
+      Details?: string;
+    } | null;
 
     if (body?.Status === "Success") return { ok: true as const };
     return { ok: false as const, error: "Incorrect or expired code. Please try again." };

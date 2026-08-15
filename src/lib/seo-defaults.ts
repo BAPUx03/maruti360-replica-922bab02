@@ -1,6 +1,11 @@
-export const SITE = "https://www.maruti-360.com";
-export const SITE_NAME = "Maruti 360";
-export const DEFAULT_OG_IMAGE = `${SITE}/favicon.png`;
+import { PROJECT_FACTS, PUBLIC_ROUTES } from "@/lib/project-facts";
+
+export const SITE = PROJECT_FACTS.canonicalBase;
+export const SITE_NAME = PROJECT_FACTS.brand;
+// Dedicated social-preview images from the approved project photography —
+// never the favicon. Every listed route below gets one; unlisted routes
+// fall back to the home banner via getDefaultSeo().
+export const DEFAULT_OG_IMAGE = `${SITE}/og/maruti-360-home.jpg`;
 
 export type SeoMeta = {
   path: string;
@@ -14,88 +19,103 @@ export type SeoMeta = {
 export const SEO_DEFAULTS: Record<string, SeoMeta> = {
   "/": {
     path: "/",
-    title: "Maruti 360 | Luxury 4 & 5 BHK Apartments in Ahmedabad",
+    title: "Maruti 360 | Luxury 4 & 5 BHK Flats on SG Highway, Ahmedabad",
     description:
-      "Maruti 360 offers 4 and 5 BHK luxury sky residences on S.G. Highway, Ahmedabad. Explore amenities, floor plans and book a private site visit.",
-    keywords: "Maruti 360, 4 BHK apartments Ahmedabad, 5 BHK apartments SG Highway, luxury apartments Ahmedabad",
+      "Discover Maruti 360, luxury 4 and 5 BHK sky residences near Karnavati Club on SG Highway, Ahmedabad. Explore plans, amenities and private visits.",
+    keywords:
+      "Maruti 360, 4 BHK apartments Ahmedabad, 5 BHK apartments SG Highway, luxury apartments Ahmedabad",
+    og_image: `${SITE}/og/maruti-360-home.jpg`,
   },
   "/about": {
     path: "/about",
-    title: "About Maruti 360 | Maruti Buildcon Real Estate, Ahmedabad",
+    title: "About Maruti 360 | Maruti Buildcon Luxury Residences, Ahmedabad",
     description:
-      "Learn about Maruti Buildcon, the vision behind Maruti 360, and the design and construction standards of these luxury residences off SG Highway, Ahmedabad.",
+      "Learn about Maruti Buildcon and the vision, design approach and project standards behind Maruti 360 on SG Highway, Ahmedabad.",
     keywords: "Maruti Buildcon, real estate developer Ahmedabad, Maruti 360 developer",
   },
   "/amenities": {
     path: "/amenities",
-    title: "Maruti 360 Amenities | Pool, Clubhouse, Gym & Wellness Ahmedabad",
+    title: "Maruti 360 Amenities | Luxury Lifestyle Features in Ahmedabad",
     description:
-      "Explore Maruti 360 amenities off SG Highway, Ahmedabad: viewing gallery, pool, clubhouse, theatre, gym, yoga deck, indoor games and landscaped gardens.",
+      "Explore Maruti 360 amenities near SG Highway, Ahmedabad, including recreation, fitness, wellness and shared social spaces.",
     keywords: "Maruti 360 amenities, luxury apartment amenities Ahmedabad, clubhouse SG Highway",
+    og_image: `${SITE}/og/maruti-360-amenities.jpg`,
   },
   "/floor-plan": {
     path: "/floor-plan",
-    title: "Maruti 360 Floor Plans | 4 & 5 BHK Apartments Ahmedabad",
+    title: "Maruti 360 Floor Plans | 4 & 5 BHK Layouts, Ahmedabad",
     description:
-      "View Maruti 360 4 BHK and 5 BHK floor plans off SG Highway, Ahmedabad, including layouts, sky decks and configuration details.",
+      "Explore Maruti 360 4 BHK and 5 BHK floor plans on SG Highway, Ahmedabad. Request approved layouts, specifications and a private walkthrough.",
     keywords: "Maruti 360 floor plan, 4 BHK floor plan Ahmedabad, 5 BHK floor plan SG Highway",
+    og_image: `${SITE}/og/maruti-360-floor-plan.jpg`,
   },
   "/floor-plan/4-bhk": {
     path: "/floor-plan/4-bhk",
-    title: "Maruti 360 4 BHK Floor Plan | SG Highway Ahmedabad",
+    title: "Maruti 360 4 BHK Floor Plan | SG Highway, Ahmedabad",
     description:
-      "Explore the Maruti 360 4 BHK floor plan off SG Highway, Ahmedabad, with wide-frontage living spaces, a deep sky deck and premium specifications.",
+      "Explore the Maruti 360 4 BHK sky residence layout on SG Highway, Ahmedabad. Request the approved plan, specifications and current availability.",
     keywords: "Maruti 360 4 BHK, 4 BHK floor plan SG Highway, luxury 4 BHK Ahmedabad",
+    og_image: `${SITE}/og/maruti-360-floor-plan.jpg`,
   },
   "/floor-plan/5-bhk": {
     path: "/floor-plan/5-bhk",
-    title: "Maruti 360 5 BHK Floor Plan | SG Highway Ahmedabad",
+    title: "Maruti 360 5 BHK Floor Plan | SG Highway, Ahmedabad",
     description:
-      "Explore the Maruti 360 5 BHK floor plan off SG Highway, Ahmedabad, with a private lounge, family deck, staff quarters and premium specifications.",
+      "Explore the Maruti 360 5 BHK sky residence layout on SG Highway, Ahmedabad. Request the approved plan, specifications and current availability.",
     keywords: "Maruti 360 5 BHK, 5 BHK floor plan SG Highway, luxury 5 BHK Ahmedabad",
+    og_image: `${SITE}/og/maruti-360-floor-plan.jpg`,
   },
   "/contact-us": {
     path: "/contact-us",
-    title: "Contact Maruti 360 | Book a Site Visit in Ahmedabad",
+    title: "Contact Maruti 360 | Book a Private Site Visit in Ahmedabad",
     description:
-      "Contact Maruti 360 for 4 and 5 BHK residences off SG Highway, Ahmedabad. Request pricing, floor plans, the brochure or a private site visit.",
+      "Contact Maruti 360 to request the brochure, current price list, approved floor plans or a private site visit on SG Highway, Ahmedabad.",
     keywords: "contact Maruti 360, book site visit Ahmedabad, luxury apartment enquiry SG Highway",
   },
   "/price": {
     path: "/price",
-    title: "Maruti 360 Price | 4 & 5 BHK Apartments Ahmedabad",
-    description: "Request the latest Maruti 360 price list, payment schedule and availability for 4 BHK and 5 BHK residences on SG Highway, Ahmedabad.",
+    title: "Maruti 360 Price & Payment Plan | 4 & 5 BHK Ahmedabad",
+    description:
+      "Request the current Maruti 360 price list, payment plan and availability for 4 and 5 BHK residences on SG Highway, Ahmedabad.",
     keywords: "Maruti 360 price, 4 BHK price Ahmedabad, 5 BHK price SG Highway",
   },
   "/location": {
     path: "/location",
-    title: "Maruti 360 Location | SG Highway, Bodakdev Ahmedabad",
-    description: "Explore the Maruti 360 location near Karnavati Club on SG Highway, Ahmedabad, and request the current route and visit details.",
+    title: "Maruti 360 Location | Near Karnavati Club, SG Highway Ahmedabad",
+    description:
+      "Explore the Maruti 360 location near Karnavati Club on SG Highway, Ahmedabad, with map directions and a practical connectivity overview.",
     keywords: "Maruti 360 location, flats near Karnavati Club, SG Highway apartments Ahmedabad",
+    og_image: `${SITE}/og/maruti-360-location.jpg`,
   },
   "/rera-legal": {
     path: "/rera-legal",
-    title: "Maruti 360 RERA Details | Registration & Legal Information",
-    description: "Review the Maruti 360 RERA registration reference and request current approved project documents before booking.",
+    title: "Maruti 360 RERA Details | Registration and Buyer Documents",
+    description:
+      "Review the Maruti 360 RERA registration reference and request the current approved project documents before booking.",
     keywords: "Maruti 360 RERA, RERA project Ahmedabad, Maruti 360 legal details",
   },
   "/faq": {
     path: "/faq",
-    title: "Maruti 360 FAQ | Price, Floor Plans, Location & RERA",
-    description: "Find answers about Maruti 360 price, floor plans, location, amenities, possession timeline, visits and RERA documents.",
+    title: "Maruti 360 FAQ | Price, Plans, Location and RERA",
+    description:
+      "Find answers about Maruti 360 floor plans, price requests, location, amenities, RERA documents and private site visits.",
     keywords: "Maruti 360 FAQ, Maruti 360 possession, Maruti 360 floor plan questions",
   },
   "/gallery": {
     path: "/gallery",
-    title: "Maruti 360 Gallery | Amenities, Interiors & Skyline Views",
-    description: "Explore selected Maruti 360 visuals of residences, amenities and views, and request the latest brochure and walkthrough.",
+    title: "Maruti 360 Gallery | Residences, Amenities and Skyline Views",
+    description:
+      "Explore approved Maruti 360 visuals of residences, amenities and views. Request the latest brochure, walkthrough and project update.",
     keywords: "Maruti 360 gallery, Maruti 360 photos, luxury apartments Ahmedabad images",
+    og_image: `${SITE}/og/maruti-360-gallery.jpg`,
   },
   "/blog": {
     path: "/blog",
-    title: "Maruti 360 Blog | Ahmedabad Real Estate & Project Updates",
-    description: "Read practical guides about luxury homes, layouts, locations and the purchase process in Ahmedabad.",
+    title: "Maruti 360 Blog | Luxury Home Buying Guides in Ahmedabad",
+    description:
+      "Read practical, fact-checked guides on luxury homes, project documents, layouts and location research in Ahmedabad.",
     keywords: "Ahmedabad real estate blog, luxury apartments Ahmedabad guide, Maruti 360 updates",
+    og_image: `${SITE}/og/maruti-360-blog.jpg`,
   },
   "/privacy-policy": {
     path: "/privacy-policy",
@@ -106,14 +126,16 @@ export const SEO_DEFAULTS: Record<string, SeoMeta> = {
   },
 };
 
-export const SEO_PATHS = Object.keys(SEO_DEFAULTS);
+export const SEO_PATHS: readonly string[] = PUBLIC_ROUTES;
 
 export function getDefaultSeo(path: string): SeoMeta {
-  return SEO_DEFAULTS[path] ?? {
-    path,
-    title: "Maruti 360 | Luxury Apartments in Ahmedabad",
-    description: "Luxury 4 and 5 BHK residences off SG Highway, Ahmedabad.",
-  };
+  return (
+    SEO_DEFAULTS[path] ?? {
+      path,
+      title: "Maruti 360 | Luxury Apartments in Ahmedabad",
+      description: "Luxury 4 and 5 BHK residences off SG Highway, Ahmedabad.",
+    }
+  );
 }
 
 export function resolveSeo(path: string, override?: Partial<SeoMeta> | null): SeoMeta {
@@ -147,8 +169,45 @@ export function seoHead(path: string, override?: Partial<SeoMeta> | null) {
     { name: "twitter:title", content: seo.title },
     { name: "twitter:description", content: seo.description },
     { name: "twitter:image", content: ogImage },
-    { name: "robots", content: seo.noindex ? "noindex, nofollow" : "index, follow, max-image-preview:large" },
+    {
+      name: "robots",
+      content: seo.noindex ? "noindex, nofollow" : "index, follow, max-image-preview:large",
+    },
   ];
   if (seo.keywords) meta.push({ name: "keywords", content: seo.keywords });
   return { meta, links: [{ rel: "canonical", href: url }] };
+}
+
+export function pageSchema(path: string, type: "WebPage" | "CollectionPage" | "Blog" = "WebPage") {
+  const seo = getDefaultSeo(path);
+  const url = `${SITE}${path}`;
+  const crumbs = path.split("/").filter(Boolean);
+  return [
+    {
+      type: "application/ld+json",
+      children: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": type,
+        name: seo.title,
+        description: seo.description,
+        url,
+      }),
+    },
+    {
+      type: "application/ld+json",
+      children: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: `${SITE}/` },
+          ...crumbs.map((part, index) => ({
+            "@type": "ListItem",
+            position: index + 2,
+            name: index === crumbs.length - 1 ? seo.title : part.replaceAll("-", " "),
+            item: `${SITE}/${crumbs.slice(0, index + 1).join("/")}`,
+          })),
+        ],
+      }),
+    },
+  ];
 }

@@ -11,17 +11,41 @@ const DESCRIPTION =
 const URL = "https://www.maruti-360.com/about";
 
 const MILESTONES = [
-  { year: "1985", text: "Foundation laid — the first residential development delivered in Ahmedabad." },
-  { year: "2000s", text: "Expansion into large-format residential townships and commercial addresses." },
-  { year: "2015", text: "Design-led high-rise living introduced with in-house project management." },
-  { year: "Today", text: "41-storey twin towers off SG Highway — 501 ft of skyline-facing living." },
+  {
+    year: "1985",
+    text: "Foundation laid — the first residential development delivered in Ahmedabad.",
+  },
+  {
+    year: "2000s",
+    text: "Expansion into large-format residential townships and commercial addresses.",
+  },
+  {
+    year: "2015",
+    text: "Design-led high-rise living introduced with in-house project management.",
+  },
+  {
+    year: "Today",
+    text: "41-storey twin towers off SG Highway — 501 ft of skyline-facing living.",
+  },
 ];
 
 const VALUES = [
-  { h: "Build Quality", p: "RCC design reviewed by independent structural consultants, with imported formwork systems for a truer finish on every floor." },
-  { h: "Design Partners", p: "Architecture, landscape, MEP and facade handled by specialist consultants rather than a single generalist team." },
-  { h: "Transparency", p: "RERA-registered, with documented payment schedules, carpet-area disclosures and no hidden charges." },
-  { h: "After Handover", p: "A dedicated facility management framework so the amenity decks and common areas age well." },
+  {
+    h: "Build Quality",
+    p: "RCC design reviewed by independent structural consultants, with imported formwork systems for a truer finish on every floor.",
+  },
+  {
+    h: "Design Partners",
+    p: "Architecture, landscape, MEP and facade handled by specialist consultants rather than a single generalist team.",
+  },
+  {
+    h: "Transparency",
+    p: "RERA-registered, with documented payment schedules, carpet-area disclosures and no hidden charges.",
+  },
+  {
+    h: "After Handover",
+    p: "A dedicated facility management framework so the amenity decks and common areas age well.",
+  },
 ];
 
 const FAQS = [
@@ -79,7 +103,7 @@ function AboutPage() {
   return (
     <ResidenceLayout
       eyebrow="Since 1985"
-      title="Inspiring Realty, Built On Promises"
+      title="About Maruti 360 and Maruti Buildcon"
       intro="Four decades of building homes in Ahmedabad — and one address that finally puts the whole city in the frame."
       image={hero}
       imageAlt="Twin luxury residential towers at twilight"
@@ -92,16 +116,15 @@ function AboutPage() {
               Rooted In Craft, Driven By Innovation
             </h2>
             <p className="mt-6 text-[13px] leading-[2] text-muted-foreground">
-              We have been building in Ahmedabad since 1985, one project at a
-              time, with the same idea each time — that a home should feel
-              considered long after the handover. That belief shows up in the
-              structural detailing, the ventilation planning, the depth of the
-              decks and the way common areas are maintained years later.
+              We have been building in Ahmedabad since 1985, one project at a time, with the same
+              idea each time — that a home should feel considered long after the handover. That
+              belief shows up in the structural detailing, the ventilation planning, the depth of
+              the decks and the way common areas are maintained years later.
             </p>
             <p className="mt-4 text-[13px] leading-[2] text-muted-foreground">
-              The twin towers off SG Highway are the clearest expression of that
-              approach: 41 storeys, 501 feet, and residences designed so the
-              skyline is part of everyday life rather than a weekend view.
+              The twin towers off SG Highway are the clearest expression of that approach: 41
+              storeys, 501 feet, and residences designed so the skyline is part of everyday life
+              rather than a weekend view.
             </p>
             <a href="/#contact" className="btn-gold mt-8 inline-block">
               Talk To An Advisor
@@ -128,9 +151,7 @@ function AboutPage() {
             {MILESTONES.map((m) => (
               <div key={m.year} className="border-t border-gold/30 pt-5">
                 <p className="font-display text-[26px] text-gold">{m.year}</p>
-                <p className="mt-3 text-[12px] leading-[1.9] text-muted-foreground">
-                  {m.text}
-                </p>
+                <p className="mt-3 text-[12px] leading-[1.9] text-muted-foreground">{m.text}</p>
               </div>
             ))}
           </div>
@@ -147,9 +168,7 @@ function AboutPage() {
             {VALUES.map((v) => (
               <div key={v.h} className="border-l border-gold/30 pl-6">
                 <h3 className="font-display text-[20px] text-foreground">{v.h}</h3>
-                <p className="mt-3 text-[13px] leading-[2] text-muted-foreground">
-                  {v.p}
-                </p>
+                <p className="mt-3 text-[13px] leading-[2] text-muted-foreground">{v.p}</p>
               </div>
             ))}
           </div>
