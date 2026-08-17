@@ -34,13 +34,16 @@ export async function signInAdmin(
   username: string,
   password: string,
 ): Promise<{ ok: boolean; reason?: "unconfigured" | "invalid" | "error" }> {
-  const user = process.env["ADMIN_USERNAME"];
-  const pass = process.env["ADMIN_PASSWORD"];
-  if (!user || !pass || !process.env["ADMIN_SESSION_SECRET"]) {
-    console.error("Admin credentials are not configured");
+  if (!process.env["ADMIN_SESSION_SECRET"]) {
+    console.error("Admin session secret is not configured");
     return { ok: false, reason: "unconfigured" };
   }
-  if (!matches(username.trim(), user) || !matches(password, pass)) {
+  const user = process.env["ADMIN_USERNAME"];
+  const pass = process.env["ADMIN_PASSWORD"];
+  const envOk = !!user && !!pass && matches(username.trim(), user) && matches(password, pass);
+  const storedOk = envOk ? false : await verifyStoredAdmin(username, password);
+  if (!envOk && !storedOk) {
+    if (!user && !(await adminAccountExists())) return { ok: false, reason: "unconfigured" };
     return { ok: false, reason: "invalid" };
   }
 
