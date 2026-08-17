@@ -34,13 +34,16 @@ export async function signInAdmin(
   username: string,
   password: string,
 ): Promise<{ ok: boolean; reason?: "unconfigured" | "invalid" | "error" }> {
-  const user = process.env["ADMIN_USERNAME"];
-  const pass = process.env["ADMIN_PASSWORD"];
-  if (!user || !pass || !process.env["ADMIN_SESSION_SECRET"]) {
-    console.error("Admin credentials are not configured");
+  if (!process.env["ADMIN_SESSION_SECRET"]) {
+    console.error("Admin session secret is not configured");
     return { ok: false, reason: "unconfigured" };
   }
-  if (!matches(username.trim(), user) || !matches(password, pass)) {
+  const user = process.env["ADMIN_USERNAME"];
+  const pass = process.env["ADMIN_PASSWORD"];
+  const envOk = !!user && !!pass && matches(username.trim(), user) && matches(password, pass);
+  const storedOk = envOk ? false : await verifyStoredAdmin(username, password);
+  if (!envOk && !storedOk) {
+    if (!user && !(await adminAccountExists())) return { ok: false, reason: "unconfigured" };
     return { ok: false, reason: "invalid" };
   }
 
@@ -64,6 +67,79 @@ export async function isAdmin() {
     const session = await getServerSession<AdminSession>(sessionConfig());
     return session.data.admin === true;
   } catch {
+    return false;
+  }
+}
+
+/* ---------------- Database-backed admin accounts ---------------- */
+
+import { pbkdf2Sync, randomBytes } from "node:crypto";
+
+function hashPassword(password: string, salt: string) {
+  return pbkdf2Sync(password, salt, 100_000, 32, "sha256").toString("hex");
+}
+
+// admin_users is intentionally absent from the generated Database types
+// (no public API access at all), so use a loose client here.
+async function admin() {
+  const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+  return supabaseAdmin as unknown as {
+    from: (table: string) => any;
+  };
+}
+
+/** Has an admin account been created yet? */
+export async function adminAccountExists(): Promise<boolean> {
+  try {
+    const db = await admin();
+    const { count, error } = await db
+      .from("admin_users")
+      .select("id", { count: "exact", head: true });
+    if (error) throw error;
+    return (count ?? 0) > 0;
+  } catch (e) {
+    console.error("admin_users lookup failed", e);
+    return false;
+  }
+}
+
+/** First-run signup: stores the credentials and signs the visitor in. */
+export async function signUpAdmin(
+  username: string,
+  password: string,
+): Promise<{ ok: boolean; reason?: "exists" | "error" }> {
+  try {
+    if (await adminAccountExists()) return { ok: false, reason: "exists" };
+    const salt = randomBytes(16).toString("hex");
+    const db = await admin();
+    const { error } = await db.from("admin_users").insert({
+      username: username.trim(),
+      password_hash: hashPassword(password, salt),
+      salt,
+    });
+    if (error) throw error;
+    const session = await getServerSession<AdminSession>(sessionConfig());
+    await session.update({ admin: true, user: username.trim() });
+    return { ok: true };
+  } catch (e) {
+    console.error("Admin signup failed", e);
+    return { ok: false, reason: "error" };
+  }
+}
+
+/** Verify against a stored admin account (returns null when no account matches). */
+export async function verifyStoredAdmin(username: string, password: string) {
+  try {
+    const db = await admin();
+    const { data, error } = await db
+      .from("admin_users")
+      .select("username, password_hash, salt")
+      .eq("username", username.trim())
+      .maybeSingle();
+    if (error || !data) return false;
+    return matches(hashPassword(password, data.salt), data.password_hash);
+  } catch (e) {
+    console.error("Admin verification failed", e);
     return false;
   }
 }

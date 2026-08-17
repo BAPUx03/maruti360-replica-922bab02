@@ -24,6 +24,23 @@ export const adminLogin = createServerFn({ method: "POST" })
     return await signInAdmin(data.username, data.password);
   });
 
+/** Signup availability + first-run admin account creation. */
+export const adminSetupStatus = createServerFn({ method: "POST" }).handler(async () => {
+  const { adminAccountExists } = await import("@/lib/admin-session.server");
+  return { needsSetup: !(await adminAccountExists()) };
+});
+
+export const adminSignup = createServerFn({ method: "POST" })
+  .inputValidator((data: { username: string; password: string }) =>
+    z
+      .object({ username: z.string().min(3).max(120), password: z.string().min(8).max(200) })
+      .parse(data),
+  )
+  .handler(async ({ data }) => {
+    const { signUpAdmin } = await import("@/lib/admin-session.server");
+    return await signUpAdmin(data.username, data.password);
+  });
+
 /** Is the current visitor already signed in as admin? */
 export const adminStatus = createServerFn({ method: "POST" }).handler(async () => {
   const { isAdmin } = await import("@/lib/admin-session.server");

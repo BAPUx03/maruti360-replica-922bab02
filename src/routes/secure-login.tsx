@@ -2,7 +2,7 @@ import { createFileRoute, useRouter } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import { useEffect, useState } from "react";
 import { Eye, EyeOff, Loader2, Lock } from "lucide-react";
-import { adminLogin, adminStatus } from "@/lib/seo.functions";
+import { adminLogin, adminSetupStatus, adminSignup, adminStatus } from "@/lib/seo.functions";
 import logo from "@/assets/Group-35-2.png";
 
 export const Route = createFileRoute("/secure-login")({
@@ -17,6 +17,10 @@ function SecureLogin() {
   const router = useRouter();
   const login = useServerFn(adminLogin);
   const status = useServerFn(adminStatus);
+  const setupStatus = useServerFn(adminSetupStatus);
+  const signup = useServerFn(adminSignup);
+  const [mode, setMode] = useState<"login" | "signup">("login");
+  const [confirm, setConfirm] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [show, setShow] = useState(false);
@@ -31,14 +35,21 @@ function SecureLogin() {
     status({})
       .then((r) => {
         if (!alive) return;
-        if (r.authed) router.navigate({ to: "/admin", replace: true });
-        else setChecking(false);
+        if (r.authed) {
+          router.navigate({ to: "/admin", replace: true });
+          return;
+        }
+        return setupStatus({}).then((s) => {
+          if (!alive) return;
+          if (s.needsSetup) setMode("signup");
+          setChecking(false);
+        });
       })
       .catch(() => alive && setChecking(false));
     return () => {
       alive = false;
     };
-  }, [status, router]);
+  }, [status, setupStatus, router]);
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -47,9 +58,38 @@ function SecureLogin() {
       setError("Please enter both username and password.");
       return;
     }
+    if (mode === "signup") {
+      if (username.trim().length < 3) {
+        setError("Username must be at least 3 characters.");
+        return;
+      }
+      if (password.length < 8) {
+        setError("Password must be at least 8 characters.");
+        return;
+      }
+      if (password !== confirm) {
+        setError("Passwords do not match.");
+        return;
+      }
+    }
     setBusy(true);
     setError("");
     try {
+      if (mode === "signup") {
+        const res = await signup({ data: { username: username.trim(), password } });
+        if (res.ok) {
+          window.location.replace("/admin");
+          return;
+        }
+        setError(
+          res.reason === "exists"
+            ? "An admin account already exists. Please sign in."
+            : "Could not create the admin account. Please try again.",
+        );
+        if (res.reason === "exists") setMode("login");
+        setBusy(false);
+        return;
+      }
       const res = await login({ data: { username: username.trim(), password } });
       if (res.ok) {
         window.location.replace("/admin");
@@ -89,7 +129,7 @@ function SecureLogin() {
         <div className="flex flex-col items-center gap-3">
           <img src={logo} alt="" className="h-10 w-auto" />
           <span className="flex items-center gap-2 text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
-            <Lock size={12} /> Admin Access
+            <Lock size={12} /> {mode === "signup" ? "Create Admin Account" : "Admin Access"}
           </span>
         </div>
 
@@ -120,7 +160,7 @@ function SecureLogin() {
                 onChange={(e) => setPassword(e.target.value)}
                 onKeyUp={(e) => setCaps(e.getModifierState?.("CapsLock") ?? false)}
                 className="w-full border border-border bg-surface px-3 py-2 pr-10 text-[13px] text-foreground outline-none focus:border-gold"
-                autoComplete="current-password"
+                autoComplete={mode === "signup" ? "new-password" : "current-password"}
                 disabled={busy}
               />
               <button
@@ -133,6 +173,21 @@ function SecureLogin() {
               </button>
             </div>
           </label>
+          {mode === "signup" && (
+            <label className="block">
+              <span className="text-[10px] uppercase tracking-[0.22em] text-muted-foreground">
+                Confirm Password
+              </span>
+              <input
+                type={show ? "text" : "password"}
+                value={confirm}
+                onChange={(e) => setConfirm(e.target.value)}
+                className="mt-2 w-full border border-border bg-surface px-3 py-2 text-[13px] text-foreground outline-none focus:border-gold"
+                autoComplete="new-password"
+                disabled={busy}
+              />
+            </label>
+          )}
           {caps && (
             <p className="text-[11px] tracking-[0.08em] text-muted-foreground">Caps Lock is on</p>
           )}
@@ -153,7 +208,13 @@ function SecureLogin() {
           className="mt-6 flex w-full items-center justify-center gap-2 border border-gold/50 bg-gold/10 py-3 text-[11px] uppercase tracking-[0.24em] text-gold transition-colors hover:bg-gold hover:text-surface disabled:opacity-50"
         >
           {busy && <Loader2 size={12} className="animate-spin" />}
-          {busy ? "Signing in…" : "Sign In"}
+          {busy
+            ? mode === "signup"
+              ? "Creating account…"
+              : "Signing in…"
+            : mode === "signup"
+              ? "Create Account"
+              : "Sign In"}
         </button>
 
         <a
