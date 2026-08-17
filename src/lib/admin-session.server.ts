@@ -76,9 +76,13 @@ function hashPassword(password: string, salt: string) {
   return pbkdf2Sync(password, salt, 100_000, 32, "sha256").toString("hex");
 }
 
+// admin_users is intentionally absent from the generated Database types
+// (no public API access at all), so use a loose client here.
 async function admin() {
   const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
-  return supabaseAdmin;
+  return supabaseAdmin as unknown as {
+    from: (table: string) => any;
+  };
 }
 
 /** Has an admin account been created yet? */
