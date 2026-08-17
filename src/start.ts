@@ -1,7 +1,9 @@
 import { createStart, createCsrfMiddleware, createMiddleware } from "@tanstack/react-start";
 
 import { renderErrorPage } from "./lib/error-page";
-import { attachSupabaseAuth } from "@/integrations/supabase/auth-attacher";
+// No server function uses requireSupabaseAuth; this app talks to its own
+// Supabase project server-side, so the generated client-side bearer attacher
+// is intentionally not registered (it would throw on missing VITE_SUPABASE_*).
 
 const errorMiddleware = createMiddleware().server(async ({ next }) => {
   try {
