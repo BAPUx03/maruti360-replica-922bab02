@@ -103,13 +103,22 @@ export async function adminAccountExists(): Promise<boolean> {
   }
 }
 
+/** The login screen only offers first-run signup when no env or stored admin exists. */
+export async function adminSetupNeeded(): Promise<boolean> {
+  const hasConfiguredCredentials = Boolean(
+    process.env["ADMIN_USERNAME"] && process.env["ADMIN_PASSWORD"],
+  );
+  if (hasConfiguredCredentials) return false;
+  return !(await adminAccountExists());
+}
+
 /** First-run signup: stores the credentials and signs the visitor in. */
 export async function signUpAdmin(
   username: string,
   password: string,
 ): Promise<{ ok: boolean; reason?: "exists" | "error" }> {
   try {
-    if (await adminAccountExists()) return { ok: false, reason: "exists" };
+    if (!(await adminSetupNeeded())) return { ok: false, reason: "exists" };
     const salt = randomBytes(16).toString("hex");
     const db = await admin();
     const { error } = await db.from("admin_users").insert({
