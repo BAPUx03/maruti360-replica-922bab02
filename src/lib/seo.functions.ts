@@ -26,8 +26,8 @@ export const adminLogin = createServerFn({ method: "POST" })
 
 /** Signup availability + first-run admin account creation. */
 export const adminSetupStatus = createServerFn({ method: "POST" }).handler(async () => {
-  const { adminAccountExists } = await import("@/lib/admin-session.server");
-  return { needsSetup: !(await adminAccountExists()) };
+  const { adminSetupNeeded } = await import("@/lib/admin-session.server");
+  return { needsSetup: await adminSetupNeeded() };
 });
 
 export const adminSignup = createServerFn({ method: "POST" })
