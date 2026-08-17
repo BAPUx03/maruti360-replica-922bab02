@@ -1,0 +1,1 @@
+DELETE FROM public.admin_users WHERE username = 'maruti_admin';
