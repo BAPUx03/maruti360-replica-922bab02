@@ -28,14 +28,14 @@ export const SEO_DEFAULTS: Record<string, SeoMeta> = {
   },
   "/about": {
     path: "/about",
-    title: "About Maruti 360 | Maruti Buildcon Luxury Residences, Ahmedabad",
+    title: "Maruti 360 About | Maruti Buildcon, Ahmedabad",
     description:
       "Learn about Maruti Buildcon and the vision, design approach and project standards behind Maruti 360 on SG Highway, Ahmedabad.",
     keywords: "Maruti Buildcon, real estate developer Ahmedabad, Maruti 360 developer",
   },
   "/amenities": {
     path: "/amenities",
-    title: "Maruti 360 Amenities | Luxury Lifestyle Features in Ahmedabad",
+    title: "Maruti 360 Amenities | Luxury Lifestyle, Ahmedabad",
     description:
       "Explore Maruti 360 amenities near SG Highway, Ahmedabad, including recreation, fitness, wellness and shared social spaces.",
     keywords: "Maruti 360 amenities, luxury apartment amenities Ahmedabad, clubhouse SG Highway",
@@ -67,7 +67,7 @@ export const SEO_DEFAULTS: Record<string, SeoMeta> = {
   },
   "/contact-us": {
     path: "/contact-us",
-    title: "Contact Maruti 360 | Book a Private Site Visit in Ahmedabad",
+    title: "Maruti 360 Contact | Book a Private Site Visit",
     description:
       "Contact Maruti 360 to request the brochure, current price list, approved floor plans or a private site visit on SG Highway, Ahmedabad.",
     keywords: "contact Maruti 360, book site visit Ahmedabad, luxury apartment enquiry SG Highway",
@@ -81,7 +81,7 @@ export const SEO_DEFAULTS: Record<string, SeoMeta> = {
   },
   "/location": {
     path: "/location",
-    title: "Maruti 360 Location | Near Karnavati Club, SG Highway Ahmedabad",
+    title: "Maruti 360 Location | Karnavati Club, SG Highway",
     description:
       "Explore the Maruti 360 location near Karnavati Club on SG Highway, Ahmedabad, with map directions and a practical connectivity overview.",
     keywords: "Maruti 360 location, flats near Karnavati Club, SG Highway apartments Ahmedabad",
@@ -89,7 +89,7 @@ export const SEO_DEFAULTS: Record<string, SeoMeta> = {
   },
   "/rera-legal": {
     path: "/rera-legal",
-    title: "Maruti 360 RERA Details | Registration and Buyer Documents",
+    title: "Maruti 360 RERA | Registration and Documents",
     description:
       "Review the Maruti 360 RERA registration reference and request the current approved project documents before booking.",
     keywords: "Maruti 360 RERA, RERA project Ahmedabad, Maruti 360 legal details",
@@ -103,7 +103,7 @@ export const SEO_DEFAULTS: Record<string, SeoMeta> = {
   },
   "/gallery": {
     path: "/gallery",
-    title: "Maruti 360 Gallery | Residences, Amenities and Skyline Views",
+    title: "Maruti 360 Gallery | Residences, Amenities, Views",
     description:
       "Explore approved Maruti 360 visuals of residences, amenities and views. Request the latest brochure, walkthrough and project update.",
     keywords: "Maruti 360 gallery, Maruti 360 photos, luxury apartments Ahmedabad images",
@@ -111,7 +111,7 @@ export const SEO_DEFAULTS: Record<string, SeoMeta> = {
   },
   "/blog": {
     path: "/blog",
-    title: "Maruti 360 Blog | Luxury Home Buying Guides in Ahmedabad",
+    title: "Maruti 360 Blog | Luxury Home Buying Guides",
     description:
       "Read practical, fact-checked guides on luxury homes, project documents, layouts and location research in Ahmedabad.",
     keywords: "Ahmedabad real estate blog, luxury apartments Ahmedabad guide, Maruti 360 updates",
@@ -119,7 +119,7 @@ export const SEO_DEFAULTS: Record<string, SeoMeta> = {
   },
   "/privacy-policy": {
     path: "/privacy-policy",
-    title: "Privacy Policy | Maruti 360 Ahmedabad",
+    title: "Maruti 360 Privacy Policy | Ahmedabad",
     description:
       "Read how Maruti 360 collects, uses, stores and protects information submitted through enquiry forms, WhatsApp and site-visit bookings.",
     keywords: null,
