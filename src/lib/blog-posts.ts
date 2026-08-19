@@ -376,6 +376,217 @@ export const BLOG_POSTS: BlogPost[] = [
       { label: "Contact Us", to: "/contact-us" },
     ],
   },
+  {
+    slug: "luxury-apartments-sg-highway-ahmedabad-buyer-guide",
+    title: "Luxury Apartments on SG Highway, Ahmedabad: Buyer Guide | Maruti 360",
+    description:
+      "What to compare before buying a luxury apartment on SG Highway, Ahmedabad — layout efficiency, tower design, amenities, approvals and resale factors.",
+    h1: "Luxury Apartments on SG Highway, Ahmedabad: A Practical Buyer Guide",
+    intro:
+      "SG Highway is one of Ahmedabad's most active corridors for large-format homes, so the useful question is rarely 'which project looks best' but 'which project holds up when you compare layout efficiency, approvals, build quality and long-term liveability side by side'.",
+    publishedDate: "2026-08-19",
+    sections: [
+      {
+        h2: "Start with what the corridor actually offers",
+        paragraphs: [
+          "West Ahmedabad along and around SG Highway has concentrated much of the city's premium residential supply, alongside offices, hospitality, healthcare and retail. That density is the corridor's advantage — and the reason you should evaluate each address individually rather than treating 'on SG Highway' as one uniform location.",
+          "Two projects a few kilometres apart can differ sharply in road access, noise exposure, plot depth and neighbourhood maturity. Visit at a normal weekday hour and judge the specific plot, not the corridor's reputation.",
+        ],
+      },
+      {
+        h2: "Compare on measurable things, not adjectives",
+        paragraphs: [
+          "Most premium brochures use the same vocabulary. Build a short comparison sheet of items that can actually be verified in writing:",
+        ],
+        list: [
+          "RERA registration number and its current status on the Gujarat RERA portal",
+          "Carpet area per configuration, as defined under RERA",
+          "Units per floor and lifts per core — this drives daily wait times",
+          "Ceiling height, window sizes and the direction each main room faces",
+          "Which amenities are built and handed over in the phase you are buying",
+          "Payment schedule tied to construction milestones",
+          "Maintenance estimate and what it does and does not cover",
+        ],
+      },
+      {
+        h2: "Tall towers: the questions people forget",
+        paragraphs: [
+          "In high-rise developments, ask about lift capacity and backup, water pressure at upper levels, fire-safety provisioning, power backup for common areas and residences, and how facade cleaning and maintenance are handled after possession. These are the details that shape daily life for decades and rarely appear in marketing material.",
+        ],
+      },
+      {
+        h2: "Think about the exit before you enter",
+        paragraphs: [
+          "Even for a home you intend to keep, resale liquidity matters. Efficient layouts, credible developer track record, clean documentation and a well-run maintenance regime tend to hold value better than an unusually long amenity list. Ask to see how the developer's earlier completed projects are being maintained today.",
+        ],
+      },
+      {
+        h2: "Verify before you rely on it",
+        paragraphs: [
+          "Prices, availability, timelines and specifications change. Ask for the current approved documents in writing and confirm anything you plan to base a decision on with the official sales team and the Gujarat RERA portal.",
+        ],
+      },
+    ],
+    relatedLinks: [
+      { label: "Maruti 360 Floor Plans", to: "/floor-plan" },
+      { label: "Location Overview", to: "/location" },
+      { label: "Book a Site Visit", to: "/contact-us" },
+    ],
+  },
+  {
+    slug: "what-to-check-during-luxury-apartment-site-visit",
+    title: "What to Check During a Luxury Apartment Site Visit | Maruti 360",
+    description:
+      "A room-by-room site-visit checklist for luxury apartment buyers: sample flat, common areas, construction stage, documents and the questions to ask on site.",
+    h1: "What to Check During a Luxury Apartment Site Visit",
+    intro:
+      "A site visit is your best chance to test the claims in a brochure. Go with a written checklist, visit at a normal hour rather than a curated slot, and leave with copies — not verbal assurances — of anything that will influence your decision.",
+    publishedDate: "2026-08-19",
+    sections: [
+      {
+        h2: "Before you arrive",
+        paragraphs: [
+          "Confirm the appointment and the exact experience-centre address, and ask in advance which documents will be available to review. Carry a measuring tape, a compass app for orientation, and a note of the specific configuration you want to see.",
+        ],
+      },
+      {
+        h2: "Inside the sample residence",
+        paragraphs: [
+          "A sample flat is styled to sell. Read it critically:",
+        ],
+        list: [
+          "Ask which fittings, finishes and appliances are part of the handover and which are staging",
+          "Check whether internal walls in the sample match the sanctioned plan",
+          "Measure a room or two against the plan you were given",
+          "Note natural light and cross-ventilation at the actual time of day you'd use each room",
+          "Look at storage, utility space, servant and service access, and dry-balcony provisioning",
+          "Check switch, socket and AC-point placement against how you'd actually furnish the room",
+        ],
+      },
+      {
+        h2: "Common areas and construction stage",
+        paragraphs: [
+          "Walk the lobby, parking levels, lift cores and amenity zones where accessible. Ask which amenities are complete, which are planned, and in which phase each is handed over. Where construction is ongoing, ask what stage the specific tower you are buying into has reached and how progress is reported to buyers.",
+        ],
+      },
+      {
+        h2: "Documents to request on the day",
+        paragraphs: [
+          "Ask for the RERA certificate, sanctioned plans, the draft Agreement for Sale, the milestone-linked payment schedule, carpet-area statement and a written maintenance estimate. Take them home and read them before committing to anything.",
+        ],
+      },
+      {
+        h2: "Verify before you rely on it",
+        paragraphs: [
+          "Anything said on site should be reflected in the written documents. If a commitment matters to you, ask for it in the agreement rather than in conversation.",
+        ],
+      },
+    ],
+    relatedLinks: [
+      { label: "Book a Site Visit", to: "/contact-us" },
+      { label: "Amenities", to: "/amenities" },
+      { label: "RERA & Legal Details", to: "/rera-legal" },
+    ],
+  },
+  {
+    slug: "high-floor-apartment-living-what-to-know",
+    title: "High-Floor Apartment Living: What to Know Before Buying | Maruti 360",
+    description:
+      "Views, wind, lifts, water pressure, safety and maintenance — a balanced look at what high-floor apartment living is genuinely like before you choose a floor.",
+    h1: "High-Floor Apartment Living: What to Know Before You Choose a Floor",
+    intro:
+      "Higher floors usually mean better views, more light and less street noise — but they also change how you experience lifts, wind, water pressure and emergency planning. Choosing a floor is a lifestyle decision worth making deliberately.",
+    publishedDate: "2026-08-19",
+    sections: [
+      {
+        h2: "What genuinely improves higher up",
+        paragraphs: [
+          "Sightlines open out, daylight is less obstructed by neighbouring buildings, and ground-level traffic noise and dust typically reduce. In dense urban corridors, this difference is often the single biggest reason buyers pay a premium for upper floors.",
+        ],
+      },
+      {
+        h2: "What changes and needs planning",
+        paragraphs: ["Ask specific questions about each of these before you commit to a floor:"],
+        list: [
+          "Lift count, speed and service pattern during peak morning hours",
+          "Backup power for lifts and pumps during an outage",
+          "Water pressure and pumping arrangements at upper levels",
+          "Wind exposure on balconies and how openings are designed for it",
+          "Fire-safety provisioning, refuge floors and evacuation procedure",
+          "How facade glass and exteriors are cleaned and maintained after possession",
+        ],
+      },
+      {
+        h2: "Orientation matters more than floor number",
+        paragraphs: [
+          "In Ahmedabad's climate, the direction a residence faces affects heat gain and comfort through the long summer. Check which rooms take direct afternoon sun, how deep balconies and shading devices are, and what glazing specification is used. A well-oriented mid-floor home can be more comfortable than a poorly oriented top-floor one.",
+        ],
+      },
+      {
+        h2: "Verify before you rely on it",
+        paragraphs: [
+          "Floor availability, view lines and specifications differ by tower and phase. Confirm the specifics for the exact unit you are considering with the official sales team and the approved documents.",
+        ],
+      },
+    ],
+    relatedLinks: [
+      { label: "4 BHK Floor Plan", to: "/floor-plan/4-bhk" },
+      { label: "5 BHK Floor Plan", to: "/floor-plan/5-bhk" },
+      { label: "Contact Us", to: "/contact-us" },
+    ],
+  },
+  {
+    slug: "nri-buying-property-in-ahmedabad-guide",
+    title: "NRI Guide to Buying Property in Ahmedabad | Maruti 360",
+    description:
+      "How NRIs can approach buying residential property in Ahmedabad: eligibility basics, documentation, power of attorney, banking and due diligence steps.",
+    h1: "An NRI Guide to Buying Residential Property in Ahmedabad",
+    intro:
+      "Non-resident Indians can generally purchase residential property in India, but the process involves documentation, banking and representation questions that resident buyers never face. Plan these before you shortlist a project, not after you like one.",
+    publishedDate: "2026-08-19",
+    sections: [
+      {
+        h2: "Get the basics confirmed by a professional",
+        paragraphs: [
+          "Rules on eligibility, repatriation of sale proceeds, taxation and remittance are set by regulation and change over time. Treat this guide as an orientation and confirm your specific position with a chartered accountant and a lawyer who handle NRI property transactions regularly.",
+        ],
+      },
+      {
+        h2: "Documents to prepare early",
+        paragraphs: ["Assembling these in advance is what usually shortens an NRI transaction:"],
+        list: [
+          "Valid passport and visa or residence documentation",
+          "PAN card for tax and registration purposes",
+          "Overseas address proof and recent photographs",
+          "NRE, NRO or FCNR banking arrangements for payments",
+          "A properly executed and attested Power of Attorney if you cannot be present",
+        ],
+      },
+      {
+        h2: "Power of attorney: get the drafting right",
+        paragraphs: [
+          "If someone will sign on your behalf, the Power of Attorney must be drafted for the exact acts you intend to authorise and executed, attested and adjudicated according to the applicable procedure. A generic template is a common source of delay at registration — have it drafted specifically for the transaction.",
+        ],
+      },
+      {
+        h2: "Due diligence you should not delegate entirely",
+        paragraphs: [
+          "Verify the project's registration on the Gujarat RERA portal, obtain the title report and sanctioned plans, read the draft Agreement for Sale in full, and confirm the milestone-linked payment schedule. Ask for a live video walkthrough of the actual tower and floor if you cannot travel, and request written confirmation of anything discussed on a call.",
+        ],
+      },
+      {
+        h2: "Verify before you rely on it",
+        paragraphs: [
+          "Regulatory requirements, banking procedures and tax treatment differ by individual circumstance and change over time. Confirm current requirements with qualified professionals before transferring funds.",
+        ],
+      },
+    ],
+    relatedLinks: [
+      { label: "RERA & Legal Details", to: "/rera-legal" },
+      { label: "Price & Payment Plan", to: "/price" },
+      { label: "Contact Us", to: "/contact-us" },
+    ],
+  },
 ];
 
 export function getBlogPost(slug: string): BlogPost | undefined {

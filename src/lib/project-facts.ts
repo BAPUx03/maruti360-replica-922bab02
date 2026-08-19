@@ -26,6 +26,10 @@ export const BLOG_ARTICLE_SLUGS = [
   "sg-highway-luxury-home-location-checklist",
   "home-buying-payment-plan-questions-india",
   "how-to-evaluate-location-near-karnavati-club",
+  "luxury-apartments-sg-highway-ahmedabad-buyer-guide",
+  "what-to-check-during-luxury-apartment-site-visit",
+  "high-floor-apartment-living-what-to-know",
+  "nri-buying-property-in-ahmedabad-guide",
 ] as const;
 
 export const PUBLIC_ROUTES = [

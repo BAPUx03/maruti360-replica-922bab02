@@ -11,6 +11,8 @@ const NAV = [
   { label: "Floor Plan", href: "/floor-plan" },
   { label: "Price", href: "/price" },
   { label: "Location", href: "/location" },
+  { label: "Gallery", href: "/gallery" },
+  { label: "Blog", href: "/blog" },
   { label: "FAQ", href: "/faq" },
   { label: "Contact Us", href: "/contact-us" },
 ];
@@ -37,7 +39,7 @@ export function SiteHeader() {
           <img src={logo} data-brand-logo alt="Maruti 360 logo" className="h-9 w-auto md:h-11" />
         </a>
 
-        <nav className="hidden items-center gap-8 lg:flex">
+        <nav className="hidden items-center gap-5 lg:flex xl:gap-8">
           {NAV.map((item) => (
             <a
               key={item.label}
