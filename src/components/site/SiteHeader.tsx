@@ -11,6 +11,8 @@ const NAV = [
   { label: "Floor Plan", href: "/floor-plan" },
   { label: "Price", href: "/price" },
   { label: "Location", href: "/location" },
+  { label: "Gallery", href: "/gallery" },
+  { label: "Blog", href: "/blog" },
   { label: "FAQ", href: "/faq" },
   { label: "Contact Us", href: "/contact-us" },
 ];
