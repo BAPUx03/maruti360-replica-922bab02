@@ -4,7 +4,7 @@ import { pageSchema, seoHead } from "@/lib/seo-defaults";
 import { ResidenceLayout, Faqs } from "@/components/site/ResidencePage";
 import { IndexLinks } from "@/components/site/SeoIndexPage";
 import bedroom from "@/assets/Maruti_360_bedroom_2.webp";
-import { FACTUAL_DISCLAIMER } from "@/lib/project-facts";
+import { FACTUAL_DISCLAIMER, PROJECT_FACTS } from "@/lib/project-facts";
 
 const FAQS = [
   {
@@ -40,6 +40,25 @@ export const Route = createFileRoute("/floor-plan/4-bhk")({
     ...seoHead("/floor-plan/4-bhk", loaderData),
     scripts: [
       ...pageSchema("/floor-plan/4-bhk"),
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Apartment",
+          name: "Maruti 360 — 4 BHK Sky Residence",
+          description:
+            "Four-bedroom sky residence at Maruti 360 with a skyline-facing living room, deep private deck and modular-ready kitchen with utility.",
+          url: `${PROJECT_FACTS.canonicalBase}/floor-plan/4-bhk`,
+          numberOfRooms: 4,
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: "Off S.G. Highway, Near Karnavati Club",
+            addressLocality: "Ahmedabad",
+            addressRegion: "Gujarat",
+            addressCountry: "IN",
+          },
+        }),
+      },
       {
         type: "application/ld+json",
         children: JSON.stringify({
