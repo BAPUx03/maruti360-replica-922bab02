@@ -73,11 +73,13 @@ const labelClass =
   "mb-1.5 block text-[9px] uppercase tracking-[0.18em] text-muted-foreground md:text-[10px]";
 
 function Select({
+  id,
   value,
   onChange,
   placeholder,
   options,
 }: {
+  id: string;
   value: string;
   onChange: (v: string) => void;
   placeholder: string;
@@ -86,6 +88,7 @@ function Select({
   return (
     <div className="relative">
       <select
+        id={id}
         required
         value={value}
         onChange={(e) => onChange(e.target.value)}
@@ -296,8 +299,11 @@ export function EnquiryPopup() {
               <form className="mt-4 space-y-3 text-left sm:mt-6 sm:space-y-4" onSubmit={submitForm}>
                 <div className="grid grid-cols-2 gap-3 sm:gap-4">
                   <div>
-                    <label className={labelClass}>Requirement</label>
+                    <label className={labelClass} htmlFor="enq-requirement">
+                      Requirement
+                    </label>
                     <Select
+                      id="enq-requirement"
                       value={requirement}
                       onChange={setRequirement}
                       placeholder="Select Requirement"
@@ -305,8 +311,11 @@ export function EnquiryPopup() {
                     />
                   </div>
                   <div>
-                    <label className={labelClass}>Budget (INR)</label>
+                    <label className={labelClass} htmlFor="enq-budget">
+                      Budget (INR)
+                    </label>
                     <Select
+                      id="enq-budget"
                       value={budget}
                       onChange={setBudget}
                       placeholder="Select Budget"
@@ -317,8 +326,13 @@ export function EnquiryPopup() {
 
                 <div className="grid grid-cols-2 gap-3 sm:gap-4">
                   <div>
-                    <label className={labelClass}>First Name</label>
+                    <label className={labelClass} htmlFor="enq-first-name">
+                      First Name
+                    </label>
                     <input
+                      id="enq-first-name"
+                      name="firstName"
+                      autoComplete="given-name"
                       required
                       value={firstName}
                       onChange={(e) => setFirstName(e.target.value)}
@@ -328,8 +342,13 @@ export function EnquiryPopup() {
                     />
                   </div>
                   <div>
-                    <label className={labelClass}>Last Name</label>
+                    <label className={labelClass} htmlFor="enq-last-name">
+                      Last Name
+                    </label>
                     <input
+                      id="enq-last-name"
+                      name="lastName"
+                      autoComplete="family-name"
                       required
                       value={lastName}
                       onChange={(e) => setLastName(e.target.value)}
@@ -342,8 +361,13 @@ export function EnquiryPopup() {
 
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div>
-                    <label className={labelClass}>Email Address</label>
+                    <label className={labelClass} htmlFor="enq-email">
+                      Email Address
+                    </label>
                     <input
+                      id="enq-email"
+                      name="email"
+                      autoComplete="email"
                       required
                       type="email"
                       value={email}
@@ -354,10 +378,14 @@ export function EnquiryPopup() {
                     />
                   </div>
                   <div>
-                    <label className={labelClass}>Phone Number</label>
+                    <label className={labelClass} htmlFor="enq-phone">
+                      Phone Number
+                    </label>
                     <div className="flex gap-2">
                       <div className="relative w-[110px] shrink-0">
                         <select
+                          id="enq-dial"
+                          aria-label="Country calling code"
                           value={dial}
                           onChange={(e) => setDial(e.target.value)}
                           className={`${fieldClass} px-3 pr-8 text-[12px]`}
@@ -374,6 +402,9 @@ export function EnquiryPopup() {
                         />
                       </div>
                       <input
+                        id="enq-phone"
+                        name="phone"
+                        autoComplete="tel"
                         required
                         inputMode="numeric"
                         value={phone}
@@ -427,6 +458,7 @@ export function EnquiryPopup() {
                       otpRefs.current[i] = el;
                     }}
                     value={d}
+                    aria-label={`OTP digit ${i + 1}`}
                     inputMode="numeric"
                     onChange={(e) => onDigit(i, e.target.value)}
                     onKeyDown={(e) => {

@@ -4,7 +4,7 @@ import { pageSchema, seoHead } from "@/lib/seo-defaults";
 import { ResidenceLayout, Faqs } from "@/components/site/ResidencePage";
 import { IndexLinks } from "@/components/site/SeoIndexPage";
 import view from "@/assets/Maruti_360_view.webp";
-import { FACTUAL_DISCLAIMER } from "@/lib/project-facts";
+import { FACTUAL_DISCLAIMER, PROJECT_FACTS } from "@/lib/project-facts";
 
 const FAQS = [
   {
@@ -40,6 +40,25 @@ export const Route = createFileRoute("/floor-plan/5-bhk")({
     ...seoHead("/floor-plan/5-bhk", loaderData),
     scripts: [
       ...pageSchema("/floor-plan/5-bhk"),
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Apartment",
+          name: "Maruti 360 — 5 BHK Signature Residence",
+          description:
+            "Five-bedroom corner residence at Maruti 360 with a private family lounge, larger deck and staff quarters on most levels.",
+          url: `${PROJECT_FACTS.canonicalBase}/floor-plan/5-bhk`,
+          numberOfRooms: 5,
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: "Off S.G. Highway, Near Karnavati Club",
+            addressLocality: "Ahmedabad",
+            addressRegion: "Gujarat",
+            addressCountry: "IN",
+          },
+        }),
+      },
       {
         type: "application/ld+json",
         children: JSON.stringify({

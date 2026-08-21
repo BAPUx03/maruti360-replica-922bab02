@@ -20,7 +20,7 @@ export function FloorPlanSection() {
           <div className="text-center">
             <p className="eyebrow">Our Floor Plan</p>
             <h2 className="mt-4 font-display text-[28px] leading-snug text-foreground md:text-[42px]">
-              An Engineering Perfection
+              4 &amp; 5 BHK Floor Plans
             </h2>
             <p className="mx-auto mt-6 max-w-[820px] text-[13px] leading-[2] text-muted-foreground">
               Every residence is a reflection of years of exclusive research, mindful planning,
