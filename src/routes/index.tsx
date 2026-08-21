@@ -48,6 +48,42 @@ export const Route = createFileRoute("/")({
           },
         }),
       },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "RealEstateAgent",
+          name: `${PROJECT_FACTS.brand} — ${PROJECT_FACTS.developer}`,
+          url: `${PROJECT_FACTS.canonicalBase}/`,
+          image: `${PROJECT_FACTS.canonicalBase}${PROJECT_FACTS.ogImage}`,
+          telephone: "+91-99049-69298",
+          areaServed: "Ahmedabad, Gujarat, India",
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: "Off S.G. Highway, Near Karnavati Club",
+            addressLocality: "Ahmedabad",
+            addressRegion: "Gujarat",
+            postalCode: "380058",
+            addressCountry: "IN",
+          },
+          openingHoursSpecification: [
+            {
+              "@type": "OpeningHoursSpecification",
+              dayOfWeek: [
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday",
+                "Saturday",
+                "Sunday",
+              ],
+              opens: "10:00",
+              closes: "19:00",
+            },
+          ],
+        }),
+      },
       // No FAQPage script here: the FAQs this page used to mark up were never
       // visibly rendered on the homepage. /faq owns visible FAQ content and
       // schema — see the "keep FAQ schema only where matching content is
