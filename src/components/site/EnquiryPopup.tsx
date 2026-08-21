@@ -73,11 +73,13 @@ const labelClass =
   "mb-1.5 block text-[9px] uppercase tracking-[0.18em] text-muted-foreground md:text-[10px]";
 
 function Select({
+  id,
   value,
   onChange,
   placeholder,
   options,
 }: {
+  id: string;
   value: string;
   onChange: (v: string) => void;
   placeholder: string;
@@ -86,6 +88,7 @@ function Select({
   return (
     <div className="relative">
       <select
+        id={id}
         required
         value={value}
         onChange={(e) => onChange(e.target.value)}
