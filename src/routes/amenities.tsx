@@ -169,7 +169,7 @@ function AmenitiesPage() {
           className={`${gi % 2 === 0 ? "bg-surface" : "bg-surface-2"} px-5 py-16 md:px-10 md:py-24`}
         >
           <div className="mx-auto max-w-[1150px]">
-            <p className="eyebrow">{g.title}</p>
+            <h2 className="eyebrow">{g.title}</h2>
             <div className="mt-10 grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
               {g.items.map(({ icon: Icon, label, copy }) => (
                 <div key={label} className="border-t border-gold/25 pt-6">
