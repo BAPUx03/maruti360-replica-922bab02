@@ -458,6 +458,7 @@ export function EnquiryPopup() {
                       otpRefs.current[i] = el;
                     }}
                     value={d}
+                    aria-label={`OTP digit ${i + 1}`}
                     inputMode="numeric"
                     onChange={(e) => onDigit(i, e.target.value)}
                     onKeyDown={(e) => {
