@@ -17,9 +17,11 @@ export function Hero() {
           Sanidhya &middot; Off SG Highway, Ahmedabad
         </span>
 
-        <h1 className="reveal-up mt-6 max-w-[18ch] font-display text-[36px] leading-[1.12] tracking-[0.04em] text-foreground sm:text-[54px] md:text-[76px]">
-          Maruti 360
-          <span className="block text-gold">Luxury 4 &amp; 5 BHK Apartments on SG Highway</span>
+        <h1 className="reveal-up mt-6 max-w-[20ch] font-display text-[36px] leading-[1.12] tracking-[0.04em] text-foreground sm:text-[54px] md:text-[70px]">
+          Maruti 360 in Bodakdev, Ahmedabad
+          <span className="block text-gold">
+            Luxury 4 &amp; 5 BHK Apartments near Karnavati Club
+          </span>
         </h1>
 
         <p className="reveal-up mt-6 max-w-[560px] text-[13px] leading-[2] text-foreground/75 sm:text-[14px]">

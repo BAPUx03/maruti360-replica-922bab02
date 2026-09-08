@@ -1,5 +1,4 @@
 import logo from "@/assets/Group-35-2.png";
-import { Facebook, Instagram, Linkedin } from "lucide-react";
 
 // Every permanent commercial route, kept in the footer as plain crawlable
 // <a href> links (not JS-only actions) so every page stays reachable from
@@ -41,33 +40,6 @@ export function SiteFooter() {
           ))}
         </nav>
 
-        <div className="mt-8 flex items-center justify-center gap-6 text-muted-foreground">
-          <a
-            href="https://www.facebook.com/"
-            target="_blank"
-            rel="noreferrer"
-            aria-label="Facebook"
-          >
-            <Facebook size={16} className="transition-colors hover:text-gold" />
-          </a>
-          <a
-            href="https://www.instagram.com/"
-            target="_blank"
-            rel="noreferrer"
-            aria-label="Instagram"
-          >
-            <Instagram size={16} className="transition-colors hover:text-gold" />
-          </a>
-          <a
-            href="https://www.linkedin.com/"
-            target="_blank"
-            rel="noreferrer"
-            aria-label="LinkedIn"
-          >
-            <Linkedin size={16} className="transition-colors hover:text-gold" />
-          </a>
-        </div>
-
         <div className="mt-8 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-[11px] uppercase tracking-[0.16em] text-muted-foreground">
           <a
             href="https://www.marutibuildcon.com/"
@@ -84,7 +56,7 @@ export function SiteFooter() {
           <a
             href="/secure-login"
             aria-label="Staff access"
-            rel="nofollow noindex"
+            rel="nofollow"
             className="inline-block h-2 w-2 rounded-full bg-muted-foreground/20 align-middle transition-colors hover:bg-gold"
           >
             <span className="sr-only">Staff access</span>

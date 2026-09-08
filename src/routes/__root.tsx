@@ -86,7 +86,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
   // (src/lib/seo-defaults.ts) — kept out of the root so they never duplicate
   // or compete with a page's own tags. Only genuinely site-wide, non-duplicated
   // concerns (charset, viewport, fonts, favicon) and the shared
-  // Organization/WebSite graph live here.
+  // Only WebSite schema here: no unverified legal Organization identity,
+  // phone or address is claimed for this site.
   head: () => ({
     meta: [
       { charSet: "utf-8" },
@@ -106,22 +107,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "icon", href: "/favicon.png", type: "image/png" },
     ],
     scripts: [
-      {
-        type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "Organization",
-          name: PROJECT_FACTS.brand,
-          url: `${PROJECT_FACTS.canonicalBase}/`,
-          logo: `${PROJECT_FACTS.canonicalBase}/favicon.png`,
-          address: {
-            "@type": "PostalAddress",
-            addressLocality: "Ahmedabad",
-            addressRegion: "Gujarat",
-            addressCountry: "IN",
-          },
-        }),
-      },
       {
         type: "application/ld+json",
         children: JSON.stringify({

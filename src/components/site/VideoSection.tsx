@@ -1,76 +1,114 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
+import { Play, Pause } from "lucide-react";
+import poster from "@/assets/Maruti_360_1.webp";
+
+const FILM_SRC = "https://maruti360.com/wp-content/uploads/2024/05/bg-video.mp4";
 
 export function VideoSection() {
-  const sectionRef = useRef<HTMLElement | null>(null);
+  // The film is a large third-party file, so nothing is requested until the
+  // visitor explicitly asks for it: no autoplay, preload="none", and the
+  // <source> is only attached after the first click.
   const videoRef = useRef<HTMLVideoElement | null>(null);
-  const [inView, setInView] = useState(false);
+  const [started, setStarted] = useState(false);
   const [playing, setPlaying] = useState(false);
 
-  useEffect(() => {
-    const el = sectionRef.current;
-    if (!el) return;
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          setInView(e.isIntersecting);
-          const v = videoRef.current;
-          if (!v) return;
-          if (e.isIntersecting) void v.play().catch(() => {});
-          else v.pause();
-        });
-      },
-      { threshold: 0.35 },
-    );
-    io.observe(el);
-    return () => io.disconnect();
-  }, []);
-
-  // Text reveals on scroll, then clears once the film is running
-  useEffect(() => {
-    if (!inView || !playing) return;
-    const t = setTimeout(() => setInView(false), 2200);
-    return () => clearTimeout(t);
-  }, [inView, playing]);
-
-  const showText = inView;
+  const toggle = () => {
+    const v = videoRef.current;
+    if (!started) {
+      setStarted(true);
+      // Wait for the source element to render before loading/playing.
+      setTimeout(() => {
+        const el = videoRef.current;
+        if (!el) return;
+        el.load();
+        void el.play().then(() => setPlaying(true)).catch(() => setPlaying(false));
+      }, 0);
+      return;
+    }
+    if (!v) return;
+    if (v.paused) {
+      void v.play().then(() => setPlaying(true)).catch(() => {});
+    } else {
+      v.pause();
+      setPlaying(false);
+    }
+  };
 
   return (
-    <section ref={sectionRef} className="over-media relative overflow-hidden bg-background">
+    <section className="over-media relative overflow-hidden bg-background">
       <div className="relative h-[70vh] min-h-[420px] w-full">
-        <video
-          ref={videoRef}
-          className="absolute inset-0 h-full w-full object-cover"
-          src="https://maruti360.com/wp-content/uploads/2024/05/bg-video.mp4"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="metadata"
-          onPlaying={() => setPlaying(true)}
-        />
+        {started ? (
+          <video
+            ref={videoRef}
+            className="absolute inset-0 h-full w-full object-cover"
+            poster={poster}
+            controls
+            muted
+            loop
+            playsInline
+            preload="none"
+            onPlay={() => setPlaying(true)}
+            onPause={() => setPlaying(false)}
+          >
+            <source src={FILM_SRC} type="video/mp4" />
+          </video>
+        ) : (
+          <img
+            src={poster}
+            alt="Maruti 360 twin towers at dusk — still from the project film"
+            loading="lazy"
+            decoding="async"
+            className="absolute inset-0 h-full w-full object-cover"
+          />
+        )}
+
         <div
-          className={`absolute inset-0 transition-opacity duration-[1200ms] ${
-            showText
-              ? "bg-gradient-to-b from-black/70 via-black/40 to-black/80 opacity-100"
-              : "bg-gradient-to-b from-black/30 via-transparent to-black/45 opacity-100"
+          className={`pointer-events-none absolute inset-0 transition-opacity duration-700 ${
+            started
+              ? "bg-gradient-to-b from-black/20 via-transparent to-black/35"
+              : "bg-gradient-to-b from-black/70 via-black/40 to-black/80"
           }`}
         />
 
-        <div className="pointer-events-none relative flex h-full items-center justify-center px-6 text-center">
-          <div
-            className={`transition-all duration-[1100ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
-              showText ? "translate-y-0 opacity-100 blur-0" : "-translate-y-4 opacity-0 blur-[6px]"
-            }`}
-          >
-            <p className="eyebrow">The Film</p>
-            <h2 className="mx-auto mt-4 max-w-[820px] font-display text-[28px] leading-snug text-foreground md:text-[44px]">
-              A Skyline Written In Light
-            </h2>
-            <p className="mx-auto mt-5 max-w-[640px] text-[13px] leading-[2] text-muted-foreground">
-              Twin towers, 41 storeys, and an address that turns every evening into an occasion.
-            </p>
+        {!started && (
+          <div className="relative flex h-full items-center justify-center px-6 text-center">
+            <div>
+              <p className="eyebrow">The Film</p>
+              <h2 className="mx-auto mt-4 max-w-[820px] font-display text-[28px] leading-snug text-foreground md:text-[44px]">
+                A Skyline Written In Light
+              </h2>
+              <p className="mx-auto mt-5 max-w-[640px] text-[13px] leading-[2] text-muted-foreground">
+                Twin towers, 41 storeys, and an address that turns every evening into an occasion.
+              </p>
+              <button
+                type="button"
+                onClick={toggle}
+                aria-label="Play the Maruti 360 project film"
+                className="btn-gold mt-8 inline-flex items-center gap-2"
+              >
+                <Play size={14} />
+                Play film
+              </button>
+              <p className="mt-3 text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+                Loads only when you press play
+              </p>
+            </div>
           </div>
-        </div>
+        )}
+
+        {started && (
+          <button
+            type="button"
+            onClick={toggle}
+            aria-label={playing ? "Pause the project film" : "Play the project film"}
+            className="absolute bottom-5 left-1/2 z-10 -translate-x-1/2 border border-gold/50 bg-black/50 px-5 py-2 text-[11px] uppercase tracking-[0.16em] text-gold"
+          >
+            <span className="inline-flex items-center gap-2">
+              {playing ? <Pause size={13} /> : <Play size={13} />}
+              {playing ? "Pause" : "Play"}
+            </span>
+          </button>
+        )}
       </div>
     </section>
   );

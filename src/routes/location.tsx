@@ -52,8 +52,8 @@ function LocationPage() {
         </div>
         <div className="mt-10 overflow-hidden border border-border">
           <iframe
-            title="Maruti 360 location on SG Highway, Ahmedabad"
-            src="https://www.google.com/maps?q=SG%20Highway%20Ahmedabad&output=embed"
+            title="Map of Maruti 360, Sanidhya, Ahmedabad"
+            src="https://www.google.com/maps?q=Maruti%20360%20Sanidhya%20Ahmedabad&output=embed"
             loading="lazy"
             className="h-[340px] w-full border-0"
             referrerPolicy="no-referrer-when-downgrade"

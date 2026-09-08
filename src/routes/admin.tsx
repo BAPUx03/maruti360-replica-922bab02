@@ -108,17 +108,12 @@ function AdminPanel() {
                   </label>
                 </div>
 
-                <div className="mt-5 grid gap-4 md:grid-cols-2">
+                <div className="mt-5 grid gap-4">
                   <Field
                     label={`Title (${titleLen}/60)`}
                     warn={titleLen > 60}
                     value={row.title}
                     onChange={(v) => update(row.path, { title: v })}
-                  />
-                  <Field
-                    label="Keywords (comma separated)"
-                    value={row.keywords ?? ""}
-                    onChange={(v) => update(row.path, { keywords: v })}
                   />
                 </div>
 
