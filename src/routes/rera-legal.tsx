@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { getSeo } from "@/lib/seo.functions";
 import { pageSchema, seoHead } from "@/lib/seo-defaults";
 import { IndexLinks, IndexSection, SeoIndexPage } from "@/components/site/SeoIndexPage";
-import { PROJECT_FACTS, FACTUAL_DISCLAIMER } from "@/lib/project-facts";
+import { PROJECT_FACTS, FACTUAL_DISCLAIMER, LAST_CHECKED } from "@/lib/project-facts";
 
 export const Route = createFileRoute("/rera-legal")({
   component: ReraPage,
@@ -47,6 +47,9 @@ function ReraPage() {
           RERA registration is not a substitute for independent legal or financial advice. Ask for
           the sanctioned plans, agreement for sale, payment schedule, carpet-area details and the
           latest project disclosures before booking. {FACTUAL_DISCLAIMER}
+        </p>
+        <p className="mt-6 border border-gold/30 bg-surface-2 px-4 py-3 text-[11px] leading-[1.9] text-muted-foreground">
+          Information last checked: {LAST_CHECKED}. Always confirm the registration details on the official GujRERA portal before booking.
         </p>
         <a
           href={PROJECT_FACTS.reraPortalUrl}

@@ -6,7 +6,7 @@ export default defineTool({
   name: "get_page_seo",
   title: "Get page SEO",
   description:
-    "Get the live public title, description and keywords for one page of the Maruti 360 website. Omit `path` to list every available page path.",
+    "Get the live public title and description for one page of the Maruti 360 website. Omit `path` to list every available page path.",
   inputSchema: {
     path: z
       .string()

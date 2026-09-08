@@ -15,6 +15,8 @@ export const PROJECT_FACTS = {
     "Information and availability are subject to the latest approved project documents and change without notice. Please request the current brochure and verify applicable details before making a decision.",
 } as const;
 
+export const LAST_CHECKED = "8 September 2026";
+
 export const FACTUAL_DISCLAIMER = PROJECT_FACTS.factualDisclaimer;
 
 export const BLOG_ARTICLE_SLUGS = [

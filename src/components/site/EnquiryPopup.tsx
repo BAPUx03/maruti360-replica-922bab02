@@ -1,6 +1,6 @@
 import logo from "@/assets/Group-35-2.png";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { ChevronDown, Phone, ShieldCheck } from "lucide-react";
+import { ChevronDown, Phone, ShieldCheck, X } from "lucide-react";
 import { useServerFn } from "@tanstack/react-start";
 import { sendPhoneOtp, verifyPhoneOtp } from "@/lib/otp.functions";
 import { saveLead } from "@/lib/leads";
@@ -109,6 +109,32 @@ function Select({
   );
 }
 
+const SUPPRESS_KEY = "m360_enquiry_last_shown";
+const SUPPRESS_MS = 24 * 60 * 60 * 1000;
+
+/** True when the popup may auto-open: no record in the last 24h.
+ *  If localStorage is unavailable we return false — failing safe rather than
+ *  auto-opening on every page view. */
+function autoOpenAllowed(): boolean {
+  try {
+    const raw = window.localStorage.getItem(SUPPRESS_KEY);
+    if (!raw) return true;
+    const last = Number(raw);
+    if (!Number.isFinite(last)) return true;
+    return Date.now() - last > SUPPRESS_MS;
+  } catch {
+    return false;
+  }
+}
+
+function recordSuppression() {
+  try {
+    window.localStorage.setItem(SUPPRESS_KEY, String(Date.now()));
+  } catch {
+    /* storage unavailable — nothing to record */
+  }
+}
+
 export function EnquiryPopup() {
   const [open, setOpen] = useState(false);
   const [step, setStep] = useState<"form" | "otp" | "done">("form");
@@ -133,8 +159,12 @@ export function EnquiryPopup() {
 
   useEffect(() => {
     const path = typeof window !== "undefined" ? window.location.pathname : "";
-    const blocked = path.startsWith("/admin") || path.startsWith("/secure-login");
-    const t = blocked ? undefined : setTimeout(() => setOpen(true), 7000);
+    const blocked =
+      path.startsWith("/admin") || path.startsWith("/secure-login") || path.startsWith("/blog/");
+    // Auto-open is deliberately unintrusive: never before 35s, and at most
+    // once every 24 hours. If localStorage is unavailable we simply skip the
+    // auto-open rather than risk showing it on every page view.
+    const t = blocked || !autoOpenAllowed() ? undefined : setTimeout(() => setOpen(true), 35000);
     const onOpen = () => {
       setStep("form");
       setError("");
@@ -159,6 +189,11 @@ export function EnquiryPopup() {
       document.body.style.overflow = "";
     };
   }, [open]);
+
+  const dismiss = () => {
+    recordSuppression();
+    setOpen(false);
+  };
 
   if (!open) return null;
 
@@ -197,6 +232,7 @@ export function EnquiryPopup() {
         source: "enquiry_popup",
         phone_verified: false,
       });
+      recordSuppression();
       setOpen(false);
       setStep("form");
     } catch {
@@ -240,6 +276,7 @@ export function EnquiryPopup() {
         source: "enquiry_popup",
         phone_verified: true,
       });
+      recordSuppression();
       setOpen(false);
       setStep("form");
     } catch {
@@ -261,6 +298,15 @@ export function EnquiryPopup() {
     <div className="backdrop-in fixed inset-0 z-[100] flex items-center justify-center bg-black/30 px-3 py-3 backdrop-blur-[3px] sm:px-4 sm:py-8">
       <div className="popup-in relative my-auto max-h-[96vh] w-full max-w-[560px] overflow-x-hidden rounded-xl border border-gold/30 bg-surface/95 shadow-[0_40px_120px_-40px_rgba(0,0,0,0.95)]">
         <div className="gold-sheen h-[3px] w-full" />
+
+        <button
+          type="button"
+          onClick={dismiss}
+          aria-label="Close enquiry form"
+          className="absolute right-3 top-4 z-10 rounded-full border border-border p-1.5 text-muted-foreground transition-colors hover:border-gold hover:text-gold"
+        >
+          <X size={14} />
+        </button>
 
         <div className="px-4 py-5 sm:px-8 sm:py-7 md:px-10 md:py-9">
           <div className="logo-in flex justify-center">
@@ -514,7 +560,7 @@ export function EnquiryPopup() {
                 Thank you, {firstName || "there"}. Your number is verified — our residence advisor
                 will call you shortly with floor plans and priority visit slots.
               </p>
-              <button onClick={() => setOpen(false)} className="btn-gold mt-7 w-full">
+              <button onClick={dismiss} className="btn-gold mt-7 w-full">
                 Close
               </button>
             </div>

@@ -3,6 +3,11 @@ import { toast } from "sonner";
 import { Reveal } from "./Reveal";
 import { saveLead } from "@/lib/leads";
 
+const fieldClass =
+  "w-full border border-border bg-surface-2 px-4 py-3 text-[12px] outline-none placeholder:text-muted-foreground focus:border-gold";
+
+const labelClass = "mb-1.5 block text-[10px] uppercase tracking-[0.18em] text-muted-foreground";
+
 export function ContactSection() {
   const [sending, setSending] = useState(false);
 
@@ -22,6 +27,9 @@ export function ContactSection() {
 
         <Reveal delay={120}>
           <form
+            // method="post" so that if JavaScript ever fails, a fallback
+            // submission never puts personal details into a GET query string.
+            method="post"
             className="mt-10 space-y-4 text-left"
             onSubmit={(e) => {
               e.preventDefault();
@@ -57,57 +65,93 @@ export function ContactSection() {
             }}
           >
             <div className="grid gap-4 sm:grid-cols-2">
-              <input
-                required
-                name="first"
-                autoComplete="given-name"
-                placeholder="First Name"
-                className="w-full border border-border bg-surface-2 px-4 py-3 text-[12px] outline-none placeholder:text-muted-foreground focus:border-gold"
-              />
-              <input
-                required
-                name="last"
-                autoComplete="family-name"
-                placeholder="Last Name"
-                className="w-full border border-border bg-surface-2 px-4 py-3 text-[12px] outline-none placeholder:text-muted-foreground focus:border-gold"
-              />
+              <div>
+                <label htmlFor="contact-first" className={labelClass}>
+                  First name
+                </label>
+                <input
+                  required
+                  id="contact-first"
+                  name="first"
+                  autoComplete="given-name"
+                  placeholder="First Name"
+                  className={fieldClass}
+                />
+              </div>
+              <div>
+                <label htmlFor="contact-last" className={labelClass}>
+                  Last name
+                </label>
+                <input
+                  required
+                  id="contact-last"
+                  name="last"
+                  autoComplete="family-name"
+                  placeholder="Last Name"
+                  className={fieldClass}
+                />
+              </div>
             </div>
             <div className="grid gap-4 sm:grid-cols-2">
-              <input
-                required
-                name="email"
-                type="email"
-                autoComplete="email"
-                placeholder="Email"
-                className="w-full border border-border bg-surface-2 px-4 py-3 text-[12px] outline-none placeholder:text-muted-foreground focus:border-gold"
-              />
-              <input
-                required
-                name="phone"
-                type="tel"
-                inputMode="numeric"
-                autoComplete="tel"
-                placeholder="Phone (10-digit mobile)"
-                className="w-full border border-border bg-surface-2 px-4 py-3 text-[12px] outline-none placeholder:text-muted-foreground focus:border-gold"
+              <div>
+                <label htmlFor="contact-email" className={labelClass}>
+                  Email
+                </label>
+                <input
+                  required
+                  id="contact-email"
+                  name="email"
+                  type="email"
+                  autoComplete="email"
+                  placeholder="Email"
+                  className={fieldClass}
+                />
+              </div>
+              <div>
+                <label htmlFor="contact-phone" className={labelClass}>
+                  Phone (10-digit mobile)
+                </label>
+                <input
+                  required
+                  id="contact-phone"
+                  name="phone"
+                  type="tel"
+                  inputMode="numeric"
+                  autoComplete="tel"
+                  placeholder="Phone (10-digit mobile)"
+                  className={fieldClass}
+                />
+              </div>
+            </div>
+            <div>
+              <label htmlFor="contact-config" className={labelClass}>
+                Configuration of interest
+              </label>
+              <select
+                id="contact-config"
+                name="config"
+                defaultValue=""
+                className={`${fieldClass} text-foreground`}
+              >
+                <option value="">Select configuration</option>
+                <option value="4 BHK">4 BHK Residence</option>
+                <option value="5 BHK">5 BHK Residence</option>
+                <option value="Jodi / Duplex / Penthouse">Jodi / Duplex / Penthouse</option>
+                <option value="Investment">Investment</option>
+              </select>
+            </div>
+            <div>
+              <label htmlFor="contact-message" className={labelClass}>
+                Message (optional)
+              </label>
+              <textarea
+                rows={4}
+                id="contact-message"
+                name="message"
+                placeholder="Message (optional)"
+                className={fieldClass}
               />
             </div>
-            <select
-              name="config"
-              defaultValue=""
-              className="w-full border border-border bg-surface-2 px-4 py-3 text-[12px] text-foreground outline-none focus:border-gold"
-            >
-              <option value="">Select configuration</option>
-              <option value="4 BHK">4 BHK Residence</option>
-              <option value="5 BHK">5 BHK Residence</option>
-              <option value="Jodi / Duplex / Penthouse">Jodi / Duplex / Penthouse</option>
-              <option value="Investment">Investment</option>
-            </select>
-            <textarea
-              rows={4}
-              name="message"
-              placeholder="Message (optional)"
-              className="w-full border border-border bg-surface-2 px-4 py-3 text-[12px] outline-none placeholder:text-muted-foreground focus:border-gold"
-            />
             <button
               type="submit"
               disabled={sending}

@@ -5,7 +5,6 @@ type Row = {
   path: string;
   title: string;
   description: string;
-  keywords: string | null;
   og_image: string | null;
   noindex: boolean;
 };
@@ -33,7 +32,7 @@ export async function readSeo(path: string): Promise<Partial<SeoMeta> | null> {
   if (!supabase) return null;
   const { data, error } = await supabase
     .from("seo_pages")
-    .select("path, title, description, keywords, og_image, noindex")
+    .select("path, title, description, og_image, noindex")
     .eq("path", path)
     .maybeSingle();
   if (error || !data) return null;
@@ -47,7 +46,7 @@ export async function readAllSeo(): Promise<SeoMeta[]> {
   if (supabase) {
     const { data } = await supabase
       .from("seo_pages")
-      .select("path, title, description, keywords, og_image, noindex");
+      .select("path, title, description, og_image, noindex");
     for (const row of (data ?? []) as Row[]) rows[row.path] = row;
   }
   return SEO_PATHS.map((path) => {
@@ -57,7 +56,6 @@ export async function readAllSeo(): Promise<SeoMeta[]> {
       path,
       title: row?.title ?? def.title,
       description: row?.description ?? def.description,
-      keywords: row?.keywords ?? def.keywords ?? "",
       og_image: row?.og_image ?? "",
       noindex: row?.noindex ?? false,
     };
@@ -72,7 +70,6 @@ export async function writeSeo(input: SeoMeta) {
       path: input.path,
       title: input.title,
       description: input.description,
-      keywords: input.keywords || null,
       og_image: input.og_image || null,
       noindex: input.noindex ?? false,
       updated_at: new Date().toISOString(),

@@ -7,6 +7,9 @@ const TOUR_URL = "https://view.pixeldo.com/Maruti360/";
 
 export function ViewSection() {
   const [loaded, setLoaded] = useState(false);
+  // The Pixeldo panorama is a heavy third-party embed: nothing is fetched
+  // until the visitor explicitly clicks "Load 360° view".
+  const [requested, setRequested] = useState(false);
 
   return (
     <section className="bg-surface">
@@ -52,21 +55,46 @@ export function ViewSection() {
               </div>
 
               <div className="relative aspect-[16/10] w-full md:aspect-[16/8]">
-                {!loaded && (
-                  <div className="absolute inset-0 flex items-center justify-center gap-3 bg-background text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
-                    <Loader2 size={15} className="animate-spin text-gold" />
-                    Loading View
-                  </div>
+                {!requested ? (
+                  <>
+                    <img
+                      src={landscape}
+                      alt="Preview of the Maruti 360 panoramic city view"
+                      loading="lazy"
+                      decoding="async"
+                      className="absolute inset-0 h-full w-full object-cover"
+                    />
+                    <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 bg-black/55 px-6 text-center">
+                      <button
+                        type="button"
+                        onClick={() => setRequested(true)}
+                        className="btn-gold"
+                      >
+                        Load 360° view
+                      </button>
+                      <p className="text-[10px] uppercase tracking-[0.2em] text-foreground/70">
+                        Loads an external interactive panorama
+                      </p>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    {!loaded && (
+                      <div className="absolute inset-0 flex items-center justify-center gap-3 bg-background text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
+                        <Loader2 size={15} className="animate-spin text-gold" />
+                        Loading View
+                      </div>
+                    )}
+                    <iframe
+                      src={TOUR_URL}
+                      title="Maruti 360 interactive 360 degree view"
+                      allowFullScreen
+                      allow="accelerometer; gyroscope; fullscreen; xr-spatial-tracking"
+                      onLoad={() => setLoaded(true)}
+                      className="absolute inset-0 h-full w-full border-0"
+                    />
+                  </>
                 )}
-                <iframe
-                  src={TOUR_URL}
-                  title="Maruti 360 interactive 360 degree view"
-                  loading="lazy"
-                  allowFullScreen
-                  allow="accelerometer; gyroscope; fullscreen; xr-spatial-tracking"
-                  onLoad={() => setLoaded(true)}
-                  className="absolute inset-0 h-full w-full border-0"
-                />
               </div>
             </div>
 

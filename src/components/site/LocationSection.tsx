@@ -10,7 +10,7 @@ const PLACES = [
   { id: "04", name: "Business District", note: "Well connected" },
 ];
 
-const MAP_QUERY = "Karnavati Club, S.G. Highway, Ahmedabad, Gujarat";
+const MAP_QUERY = "Maruti 360 Sanidhya Ahmedabad";
 const MAP_SRC = `https://www.google.com/maps?q=${encodeURIComponent(MAP_QUERY)}&z=14&output=embed`;
 const MAP_LINK = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(MAP_QUERY)}`;
 

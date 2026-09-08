@@ -9,7 +9,7 @@ import { Faqs } from "@/components/site/ResidencePage";
 import { IndexLinks } from "@/components/site/SeoIndexPage";
 import blueprint from "@/assets/Maruti-Buildings-01.png";
 import bedroom from "@/assets/Maruti_360_bedroom_2.webp";
-import { FACTUAL_DISCLAIMER } from "@/lib/project-facts";
+import { FACTUAL_DISCLAIMER, LAST_CHECKED } from "@/lib/project-facts";
 
 const FAQS = [
   {
@@ -131,7 +131,9 @@ function FloorPlanIndex() {
                 className="mx-auto mt-16 w-full max-w-[560px] object-contain"
               />
               <p className="mx-auto mt-6 max-w-[700px] text-center text-[12px] leading-[1.9] text-muted-foreground">
-                {FACTUAL_DISCLAIMER}
+                Information last checked: {LAST_CHECKED}. Layouts shown are indicative — the currently
+            approved floor plans and live pricing must be confirmed with our residence advisor.{" "}
+            {FACTUAL_DISCLAIMER}
               </p>
               <div className="mt-10 flex justify-center">
                 <IndexLinks

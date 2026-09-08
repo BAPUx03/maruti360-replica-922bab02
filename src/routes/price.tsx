@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { getSeo } from "@/lib/seo.functions";
 import { pageSchema, seoHead } from "@/lib/seo-defaults";
 import { IndexLinks, IndexSection, SeoIndexPage, FaqSection } from "@/components/site/SeoIndexPage";
-import { PROJECT_FACTS, FACTUAL_DISCLAIMER } from "@/lib/project-facts";
+import { PROJECT_FACTS, FACTUAL_DISCLAIMER, LAST_CHECKED } from "@/lib/project-facts";
 
 const FAQS = [
   {
@@ -67,7 +67,8 @@ function PricePage() {
           ))}
         </div>
         <p className="mt-8 max-w-[760px] text-[13px] leading-[2] text-muted-foreground">
-          {FACTUAL_DISCLAIMER}
+          Information last checked: {LAST_CHECKED}. Live pricing, payment plans and applicable charges must be
+          confirmed with our residence advisor before booking. {FACTUAL_DISCLAIMER}
         </p>
         <IndexLinks
           links={[

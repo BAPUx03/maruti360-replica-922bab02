@@ -35,59 +35,33 @@ export const Route = createFileRoute("/")({
         type: "application/ld+json",
         children: JSON.stringify({
           "@context": "https://schema.org",
-          "@type": "Residence",
+          "@type": "ApartmentComplex",
           name: PROJECT_FACTS.brand,
           description: DESCRIPTION,
           url: `${PROJECT_FACTS.canonicalBase}/`,
-          address: {
-            "@type": "PostalAddress",
-            streetAddress: "S.G. Highway",
-            addressLocality: "Ahmedabad",
-            addressRegion: "Gujarat",
-            addressCountry: "IN",
-          },
-        }),
-      },
-      {
-        type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "RealEstateAgent",
-          name: `${PROJECT_FACTS.brand} — ${PROJECT_FACTS.developer}`,
-          url: `${PROJECT_FACTS.canonicalBase}/`,
           image: `${PROJECT_FACTS.canonicalBase}${PROJECT_FACTS.ogImage}`,
-          telephone: "+91-99049-69298",
-          areaServed: "Ahmedabad, Gujarat, India",
           address: {
             "@type": "PostalAddress",
-            streetAddress: "Off S.G. Highway, Near Karnavati Club",
             addressLocality: "Ahmedabad",
             addressRegion: "Gujarat",
-            postalCode: "380058",
             addressCountry: "IN",
           },
-          openingHoursSpecification: [
+          // 124 is the "Uber Luxe Suites" figure already published on this page.
+          numberOfAccommodationUnits: 124,
+          additionalProperty: [
             {
-              "@type": "OpeningHoursSpecification",
-              dayOfWeek: [
-                "Monday",
-                "Tuesday",
-                "Wednesday",
-                "Thursday",
-                "Friday",
-                "Saturday",
-                "Sunday",
-              ],
-              opens: "10:00",
-              closes: "19:00",
+              "@type": "PropertyValue",
+              name: "RERA registration number",
+              value: PROJECT_FACTS.reraNumber,
             },
           ],
         }),
       },
+      // No RealEstateAgent schema: this site does not carry a verified legal
+      // business identity, phone or address for the developer.
       // No FAQPage script here: the FAQs this page used to mark up were never
       // visibly rendered on the homepage. /faq owns visible FAQ content and
-      // schema — see the "keep FAQ schema only where matching content is
-      // visibly rendered" rule.
+      // schema.
     ],
   }),
 });

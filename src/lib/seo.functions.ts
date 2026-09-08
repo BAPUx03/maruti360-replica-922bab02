@@ -73,7 +73,6 @@ export const adminSaveSeoPage = createServerFn({ method: "POST" })
         path: z.string().min(1).max(120),
         title: z.string().min(1).max(200),
         description: z.string().min(1).max(400),
-        keywords: z.string().max(400).nullish(),
         og_image: z.string().max(500).nullish(),
         noindex: z.boolean().optional(),
       })
