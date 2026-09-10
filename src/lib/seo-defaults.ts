@@ -60,6 +60,42 @@ export const SEO_DEFAULTS: Record<string, SeoMeta> = {
       "Explore the Maruti 360 5 BHK residence layout in Bodakdev, Ahmedabad. Request the approved plan, specifications and current availability.",
     og_image: `${SITE}/og/maruti-360-floor-plan.jpg`,
   },
+  "/specifications": {
+    path: "/specifications",
+    title: "Maruti 360 Specifications | Towers, Floors, Details",
+    description:
+      "Maruti 360 specifications in Ahmedabad: twin 41-storey towers, 501 ft height, 124 residences, 4 & 5 BHK configurations and project partners.",
+  },
+  "/brochure": {
+    path: "/brochure",
+    title: "Maruti 360 Brochure | Download Request, Ahmedabad",
+    description:
+      "Request the latest approved Maruti 360 brochure with 4 & 5 BHK layouts, amenities, location and project registration details in Ahmedabad.",
+  },
+  "/site-visit": {
+    path: "/site-visit",
+    title: "Maruti 360 Site Visit | Book a Private Visit",
+    description:
+      "Book a guided Maruti 360 site visit in Ahmedabad. See the sample apartment, the location and the approved documents in one appointment.",
+  },
+  "/construction-update": {
+    path: "/construction-update",
+    title: "Maruti 360 Construction Update | Ahmedabad",
+    description:
+      "Request the latest verified Maruti 360 construction progress in Ahmedabad, plus the completion timeline declared in the official RERA record.",
+  },
+  "/developer": {
+    path: "/developer",
+    title: "Maruti 360 Developer | Maruti Buildcon, Ahmedabad",
+    description:
+      "Maruti 360 is developed by Maruti Buildcon in Ahmedabad. See the project partners and how to verify the registered promoter on GujRERA.",
+  },
+  "/reviews": {
+    path: "/reviews",
+    title: "Maruti 360 Reviews | How To Verify Before Buying",
+    description:
+      "No unverified ratings. A practical guide to checking Maruti 360 in Ahmedabad using GujRERA records, sanctioned documents and a site visit.",
+  },
   "/contact-us": {
     path: "/contact-us",
     title: "Maruti 360 Contact | Book a Private Site Visit",

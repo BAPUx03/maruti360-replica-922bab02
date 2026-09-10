@@ -14,7 +14,10 @@ import { Route as SplatRouteImport } from './routes/$'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as AmenitiesRouteImport } from './routes/amenities'
+import { Route as BrochureRouteImport } from './routes/brochure'
+import { Route as ConstructionUpdateRouteImport } from './routes/construction-update'
 import { Route as ContactUsRouteImport } from './routes/contact-us'
+import { Route as DeveloperRouteImport } from './routes/developer'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as LocationRouteImport } from './routes/location'
@@ -22,8 +25,11 @@ import { Route as McpRouteImport } from './routes/mcp'
 import { Route as PriceRouteImport } from './routes/price'
 import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
 import { Route as ReraLegalRouteImport } from './routes/rera-legal'
+import { Route as ReviewsRouteImport } from './routes/reviews'
 import { Route as SecureLoginRouteImport } from './routes/secure-login'
+import { Route as SiteVisitRouteImport } from './routes/site-visit'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as SpecificationsRouteImport } from './routes/specifications'
 import { Route as Char91DotmcpChar93ListToolsRouteImport } from './routes/[.mcp]/list-tools'
 import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } from './routes/[.well-known]/oauth-protected-resource'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
@@ -58,9 +64,24 @@ const AmenitiesRoute = AmenitiesRouteImport.update({
   path: '/amenities',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BrochureRoute = BrochureRouteImport.update({
+  id: '/brochure',
+  path: '/brochure',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConstructionUpdateRoute = ConstructionUpdateRouteImport.update({
+  id: '/construction-update',
+  path: '/construction-update',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ContactUsRoute = ContactUsRouteImport.update({
   id: '/contact-us',
   path: '/contact-us',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DeveloperRoute = DeveloperRouteImport.update({
+  id: '/developer',
+  path: '/developer',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FaqRoute = FaqRouteImport.update({
@@ -98,14 +119,29 @@ const ReraLegalRoute = ReraLegalRouteImport.update({
   path: '/rera-legal',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ReviewsRoute = ReviewsRouteImport.update({
+  id: '/reviews',
+  path: '/reviews',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SecureLoginRoute = SecureLoginRouteImport.update({
   id: '/secure-login',
   path: '/secure-login',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SiteVisitRoute = SiteVisitRouteImport.update({
+  id: '/site-visit',
+  path: '/site-visit',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SpecificationsRoute = SpecificationsRouteImport.update({
+  id: '/specifications',
+  path: '/specifications',
   getParentRoute: () => rootRouteImport,
 } as any)
 const Char91DotmcpChar93ListToolsRoute =
@@ -158,7 +194,10 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/admin': typeof AdminRoute
   '/amenities': typeof AmenitiesRoute
+  '/brochure': typeof BrochureRoute
+  '/construction-update': typeof ConstructionUpdateRoute
   '/contact-us': typeof ContactUsRoute
+  '/developer': typeof DeveloperRoute
   '/faq': typeof FaqRoute
   '/gallery': typeof GalleryRoute
   '/location': typeof LocationRoute
@@ -166,8 +205,11 @@ export interface FileRoutesByFullPath {
   '/price': typeof PriceRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/rera-legal': typeof ReraLegalRoute
+  '/reviews': typeof ReviewsRoute
   '/secure-login': typeof SecureLoginRoute
+  '/site-visit': typeof SiteVisitRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/specifications': typeof SpecificationsRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/blog/$slug': typeof BlogSlugRoute
@@ -183,7 +225,10 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/admin': typeof AdminRoute
   '/amenities': typeof AmenitiesRoute
+  '/brochure': typeof BrochureRoute
+  '/construction-update': typeof ConstructionUpdateRoute
   '/contact-us': typeof ContactUsRoute
+  '/developer': typeof DeveloperRoute
   '/faq': typeof FaqRoute
   '/gallery': typeof GalleryRoute
   '/location': typeof LocationRoute
@@ -191,8 +236,11 @@ export interface FileRoutesByTo {
   '/price': typeof PriceRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/rera-legal': typeof ReraLegalRoute
+  '/reviews': typeof ReviewsRoute
   '/secure-login': typeof SecureLoginRoute
+  '/site-visit': typeof SiteVisitRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/specifications': typeof SpecificationsRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/blog/$slug': typeof BlogSlugRoute
@@ -209,7 +257,10 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/admin': typeof AdminRoute
   '/amenities': typeof AmenitiesRoute
+  '/brochure': typeof BrochureRoute
+  '/construction-update': typeof ConstructionUpdateRoute
   '/contact-us': typeof ContactUsRoute
+  '/developer': typeof DeveloperRoute
   '/faq': typeof FaqRoute
   '/gallery': typeof GalleryRoute
   '/location': typeof LocationRoute
@@ -217,8 +268,11 @@ export interface FileRoutesById {
   '/price': typeof PriceRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/rera-legal': typeof ReraLegalRoute
+  '/reviews': typeof ReviewsRoute
   '/secure-login': typeof SecureLoginRoute
+  '/site-visit': typeof SiteVisitRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/specifications': typeof SpecificationsRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/blog/$slug': typeof BlogSlugRoute
@@ -236,7 +290,10 @@ export interface FileRouteTypes {
     | '/about'
     | '/admin'
     | '/amenities'
+    | '/brochure'
+    | '/construction-update'
     | '/contact-us'
+    | '/developer'
     | '/faq'
     | '/gallery'
     | '/location'
@@ -244,8 +301,11 @@ export interface FileRouteTypes {
     | '/price'
     | '/privacy-policy'
     | '/rera-legal'
+    | '/reviews'
     | '/secure-login'
+    | '/site-visit'
     | '/sitemap.xml'
+    | '/specifications'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
     | '/blog/$slug'
@@ -261,7 +321,10 @@ export interface FileRouteTypes {
     | '/about'
     | '/admin'
     | '/amenities'
+    | '/brochure'
+    | '/construction-update'
     | '/contact-us'
+    | '/developer'
     | '/faq'
     | '/gallery'
     | '/location'
@@ -269,8 +332,11 @@ export interface FileRouteTypes {
     | '/price'
     | '/privacy-policy'
     | '/rera-legal'
+    | '/reviews'
     | '/secure-login'
+    | '/site-visit'
     | '/sitemap.xml'
+    | '/specifications'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
     | '/blog/$slug'
@@ -286,7 +352,10 @@ export interface FileRouteTypes {
     | '/about'
     | '/admin'
     | '/amenities'
+    | '/brochure'
+    | '/construction-update'
     | '/contact-us'
+    | '/developer'
     | '/faq'
     | '/gallery'
     | '/location'
@@ -294,8 +363,11 @@ export interface FileRouteTypes {
     | '/price'
     | '/privacy-policy'
     | '/rera-legal'
+    | '/reviews'
     | '/secure-login'
+    | '/site-visit'
     | '/sitemap.xml'
+    | '/specifications'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
     | '/blog/$slug'
@@ -312,7 +384,10 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   AdminRoute: typeof AdminRoute
   AmenitiesRoute: typeof AmenitiesRoute
+  BrochureRoute: typeof BrochureRoute
+  ConstructionUpdateRoute: typeof ConstructionUpdateRoute
   ContactUsRoute: typeof ContactUsRoute
+  DeveloperRoute: typeof DeveloperRoute
   FaqRoute: typeof FaqRoute
   GalleryRoute: typeof GalleryRoute
   LocationRoute: typeof LocationRoute
@@ -320,8 +395,11 @@ export interface RootRouteChildren {
   PriceRoute: typeof PriceRoute
   PrivacyPolicyRoute: typeof PrivacyPolicyRoute
   ReraLegalRoute: typeof ReraLegalRoute
+  ReviewsRoute: typeof ReviewsRoute
   SecureLoginRoute: typeof SecureLoginRoute
+  SiteVisitRoute: typeof SiteVisitRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  SpecificationsRoute: typeof SpecificationsRoute
   Char91DotmcpChar93ListToolsRoute: typeof Char91DotmcpChar93ListToolsRoute
   Char91DotwellKnownChar93OauthProtectedResourceRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   BlogSlugRoute: typeof BlogSlugRoute
@@ -369,11 +447,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AmenitiesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/brochure': {
+      id: '/brochure'
+      path: '/brochure'
+      fullPath: '/brochure'
+      preLoaderRoute: typeof BrochureRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/construction-update': {
+      id: '/construction-update'
+      path: '/construction-update'
+      fullPath: '/construction-update'
+      preLoaderRoute: typeof ConstructionUpdateRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/contact-us': {
       id: '/contact-us'
       path: '/contact-us'
       fullPath: '/contact-us'
       preLoaderRoute: typeof ContactUsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/developer': {
+      id: '/developer'
+      path: '/developer'
+      fullPath: '/developer'
+      preLoaderRoute: typeof DeveloperRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/faq': {
@@ -425,6 +524,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ReraLegalRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/reviews': {
+      id: '/reviews'
+      path: '/reviews'
+      fullPath: '/reviews'
+      preLoaderRoute: typeof ReviewsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/secure-login': {
       id: '/secure-login'
       path: '/secure-login'
@@ -432,11 +538,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SecureLoginRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/site-visit': {
+      id: '/site-visit'
+      path: '/site-visit'
+      fullPath: '/site-visit'
+      preLoaderRoute: typeof SiteVisitRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sitemap.xml': {
       id: '/sitemap.xml'
       path: '/sitemap.xml'
       fullPath: '/sitemap.xml'
       preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/specifications': {
+      id: '/specifications'
+      path: '/specifications'
+      fullPath: '/specifications'
+      preLoaderRoute: typeof SpecificationsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/.mcp/list-tools': {
@@ -504,7 +624,10 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   AdminRoute: AdminRoute,
   AmenitiesRoute: AmenitiesRoute,
+  BrochureRoute: BrochureRoute,
+  ConstructionUpdateRoute: ConstructionUpdateRoute,
   ContactUsRoute: ContactUsRoute,
+  DeveloperRoute: DeveloperRoute,
   FaqRoute: FaqRoute,
   GalleryRoute: GalleryRoute,
   LocationRoute: LocationRoute,
@@ -512,8 +635,11 @@ const rootRouteChildren: RootRouteChildren = {
   PriceRoute: PriceRoute,
   PrivacyPolicyRoute: PrivacyPolicyRoute,
   ReraLegalRoute: ReraLegalRoute,
+  ReviewsRoute: ReviewsRoute,
   SecureLoginRoute: SecureLoginRoute,
+  SiteVisitRoute: SiteVisitRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  SpecificationsRoute: SpecificationsRoute,
   Char91DotmcpChar93ListToolsRoute: Char91DotmcpChar93ListToolsRoute,
   Char91DotwellKnownChar93OauthProtectedResourceRoute:
     Char91DotwellKnownChar93OauthProtectedResourceRoute,
