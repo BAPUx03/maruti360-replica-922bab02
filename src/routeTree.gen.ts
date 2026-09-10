@@ -17,6 +17,7 @@ import { Route as AmenitiesRouteImport } from './routes/amenities'
 import { Route as BrochureRouteImport } from './routes/brochure'
 import { Route as ConstructionUpdateRouteImport } from './routes/construction-update'
 import { Route as ContactUsRouteImport } from './routes/contact-us'
+import { Route as DeveloperRouteImport } from './routes/developer'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as LocationRouteImport } from './routes/location'
@@ -24,6 +25,7 @@ import { Route as McpRouteImport } from './routes/mcp'
 import { Route as PriceRouteImport } from './routes/price'
 import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
 import { Route as ReraLegalRouteImport } from './routes/rera-legal'
+import { Route as ReviewsRouteImport } from './routes/reviews'
 import { Route as SecureLoginRouteImport } from './routes/secure-login'
 import { Route as SiteVisitRouteImport } from './routes/site-visit'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
@@ -77,6 +79,11 @@ const ContactUsRoute = ContactUsRouteImport.update({
   path: '/contact-us',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DeveloperRoute = DeveloperRouteImport.update({
+  id: '/developer',
+  path: '/developer',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const FaqRoute = FaqRouteImport.update({
   id: '/faq',
   path: '/faq',
@@ -110,6 +117,11 @@ const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
 const ReraLegalRoute = ReraLegalRouteImport.update({
   id: '/rera-legal',
   path: '/rera-legal',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReviewsRoute = ReviewsRouteImport.update({
+  id: '/reviews',
+  path: '/reviews',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SecureLoginRoute = SecureLoginRouteImport.update({
@@ -185,6 +197,7 @@ export interface FileRoutesByFullPath {
   '/brochure': typeof BrochureRoute
   '/construction-update': typeof ConstructionUpdateRoute
   '/contact-us': typeof ContactUsRoute
+  '/developer': typeof DeveloperRoute
   '/faq': typeof FaqRoute
   '/gallery': typeof GalleryRoute
   '/location': typeof LocationRoute
@@ -192,6 +205,7 @@ export interface FileRoutesByFullPath {
   '/price': typeof PriceRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/rera-legal': typeof ReraLegalRoute
+  '/reviews': typeof ReviewsRoute
   '/secure-login': typeof SecureLoginRoute
   '/site-visit': typeof SiteVisitRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -214,6 +228,7 @@ export interface FileRoutesByTo {
   '/brochure': typeof BrochureRoute
   '/construction-update': typeof ConstructionUpdateRoute
   '/contact-us': typeof ContactUsRoute
+  '/developer': typeof DeveloperRoute
   '/faq': typeof FaqRoute
   '/gallery': typeof GalleryRoute
   '/location': typeof LocationRoute
@@ -221,6 +236,7 @@ export interface FileRoutesByTo {
   '/price': typeof PriceRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/rera-legal': typeof ReraLegalRoute
+  '/reviews': typeof ReviewsRoute
   '/secure-login': typeof SecureLoginRoute
   '/site-visit': typeof SiteVisitRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -244,6 +260,7 @@ export interface FileRoutesById {
   '/brochure': typeof BrochureRoute
   '/construction-update': typeof ConstructionUpdateRoute
   '/contact-us': typeof ContactUsRoute
+  '/developer': typeof DeveloperRoute
   '/faq': typeof FaqRoute
   '/gallery': typeof GalleryRoute
   '/location': typeof LocationRoute
@@ -251,6 +268,7 @@ export interface FileRoutesById {
   '/price': typeof PriceRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/rera-legal': typeof ReraLegalRoute
+  '/reviews': typeof ReviewsRoute
   '/secure-login': typeof SecureLoginRoute
   '/site-visit': typeof SiteVisitRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -275,6 +293,7 @@ export interface FileRouteTypes {
     | '/brochure'
     | '/construction-update'
     | '/contact-us'
+    | '/developer'
     | '/faq'
     | '/gallery'
     | '/location'
@@ -282,6 +301,7 @@ export interface FileRouteTypes {
     | '/price'
     | '/privacy-policy'
     | '/rera-legal'
+    | '/reviews'
     | '/secure-login'
     | '/site-visit'
     | '/sitemap.xml'
@@ -304,6 +324,7 @@ export interface FileRouteTypes {
     | '/brochure'
     | '/construction-update'
     | '/contact-us'
+    | '/developer'
     | '/faq'
     | '/gallery'
     | '/location'
@@ -311,6 +332,7 @@ export interface FileRouteTypes {
     | '/price'
     | '/privacy-policy'
     | '/rera-legal'
+    | '/reviews'
     | '/secure-login'
     | '/site-visit'
     | '/sitemap.xml'
@@ -333,6 +355,7 @@ export interface FileRouteTypes {
     | '/brochure'
     | '/construction-update'
     | '/contact-us'
+    | '/developer'
     | '/faq'
     | '/gallery'
     | '/location'
@@ -340,6 +363,7 @@ export interface FileRouteTypes {
     | '/price'
     | '/privacy-policy'
     | '/rera-legal'
+    | '/reviews'
     | '/secure-login'
     | '/site-visit'
     | '/sitemap.xml'
@@ -363,6 +387,7 @@ export interface RootRouteChildren {
   BrochureRoute: typeof BrochureRoute
   ConstructionUpdateRoute: typeof ConstructionUpdateRoute
   ContactUsRoute: typeof ContactUsRoute
+  DeveloperRoute: typeof DeveloperRoute
   FaqRoute: typeof FaqRoute
   GalleryRoute: typeof GalleryRoute
   LocationRoute: typeof LocationRoute
@@ -370,6 +395,7 @@ export interface RootRouteChildren {
   PriceRoute: typeof PriceRoute
   PrivacyPolicyRoute: typeof PrivacyPolicyRoute
   ReraLegalRoute: typeof ReraLegalRoute
+  ReviewsRoute: typeof ReviewsRoute
   SecureLoginRoute: typeof SecureLoginRoute
   SiteVisitRoute: typeof SiteVisitRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
@@ -442,6 +468,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactUsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/developer': {
+      id: '/developer'
+      path: '/developer'
+      fullPath: '/developer'
+      preLoaderRoute: typeof DeveloperRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/faq': {
       id: '/faq'
       path: '/faq'
@@ -489,6 +522,13 @@ declare module '@tanstack/react-router' {
       path: '/rera-legal'
       fullPath: '/rera-legal'
       preLoaderRoute: typeof ReraLegalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reviews': {
+      id: '/reviews'
+      path: '/reviews'
+      fullPath: '/reviews'
+      preLoaderRoute: typeof ReviewsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/secure-login': {
@@ -587,6 +627,7 @@ const rootRouteChildren: RootRouteChildren = {
   BrochureRoute: BrochureRoute,
   ConstructionUpdateRoute: ConstructionUpdateRoute,
   ContactUsRoute: ContactUsRoute,
+  DeveloperRoute: DeveloperRoute,
   FaqRoute: FaqRoute,
   GalleryRoute: GalleryRoute,
   LocationRoute: LocationRoute,
@@ -594,6 +635,7 @@ const rootRouteChildren: RootRouteChildren = {
   PriceRoute: PriceRoute,
   PrivacyPolicyRoute: PrivacyPolicyRoute,
   ReraLegalRoute: ReraLegalRoute,
+  ReviewsRoute: ReviewsRoute,
   SecureLoginRoute: SecureLoginRoute,
   SiteVisitRoute: SiteVisitRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
