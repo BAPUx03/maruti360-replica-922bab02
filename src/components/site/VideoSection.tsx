@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Play, Pause } from "lucide-react";
 import poster from "@/assets/Maruti_360_1.webp";
 
@@ -7,6 +7,13 @@ const FILM_SRC = "https://maruti360.com/wp-content/uploads/2024/05/bg-video.mp4"
 export function VideoSection() {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const [playing, setPlaying] = useState(false);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    video.muted = true;
+    void video.play().catch(() => setPlaying(false));
+  }, []);
 
   const toggle = () => {
     const v = videoRef.current;
@@ -30,7 +37,7 @@ export function VideoSection() {
           muted
           loop
           playsInline
-          preload="none"
+          preload="auto"
           aria-label="Maruti 360 project film"
           onPlay={() => setPlaying(true)}
           onPause={() => setPlaying(false)}
