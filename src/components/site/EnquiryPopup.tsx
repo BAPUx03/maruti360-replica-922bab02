@@ -1,6 +1,6 @@
 import logo from "@/assets/Group-35-2.png";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { ChevronDown, Phone, ShieldCheck, X } from "lucide-react";
+import { ChevronDown, Phone, ShieldCheck } from "lucide-react";
 import { useServerFn } from "@tanstack/react-start";
 import { sendPhoneOtp, verifyPhoneOtp } from "@/lib/otp.functions";
 import { saveLead } from "@/lib/leads";
@@ -298,15 +298,6 @@ export function EnquiryPopup() {
     <div className="backdrop-in fixed inset-0 z-[100] flex items-center justify-center bg-black/30 px-3 py-3 backdrop-blur-[3px] sm:px-4 sm:py-8">
       <div className="popup-in relative my-auto max-h-[96vh] w-full max-w-[560px] overflow-x-hidden rounded-xl border border-gold/30 bg-surface/95 shadow-[0_40px_120px_-40px_rgba(0,0,0,0.95)]">
         <div className="gold-sheen h-[3px] w-full" />
-
-        <button
-          type="button"
-          onClick={dismiss}
-          aria-label="Close enquiry form"
-          className="absolute right-3 top-4 z-10 rounded-full border border-border p-1.5 text-muted-foreground transition-colors hover:border-gold hover:text-gold"
-        >
-          <X size={14} />
-        </button>
 
         <div className="px-4 py-5 sm:px-8 sm:py-7 md:px-10 md:py-9">
           <div className="logo-in flex justify-center">
