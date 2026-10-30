@@ -13,6 +13,7 @@ export async function insertLead(lead: Lead) {
   const url = process.env["LEADS_SUPABASE_URL"];
   const key = process.env["LEADS_SUPABASE_PUBLISHABLE_KEY"];
   const JOB_ID = process.env["LEADS_JOB_ID"] ?? "maruti360-website";
+  const SITE = process.env["LEADS_SITE_NAME"] ?? "maruti-360";
   if (!url || !key) {
     console.error("Leads database credentials are not configured");
     return false;
@@ -29,7 +30,10 @@ export async function insertLead(lead: Lead) {
       ? lead.email
       : `no-email.${phone || "unknown"}@maruti360.leads`;
 
-  const { error } = await supabase.from("microsite_leads").insert({
+  // Shared microsite_leads table: `site` marks which microsite the lead came from.
+  // Until the `site` column is added to the shared table, fall back to inserting
+  // without it so no lead is ever lost.
+  const base = {
     job_id: JOB_ID,
     name: fullName || lead.first_name,
     first_name: lead.first_name,
@@ -41,7 +45,20 @@ export async function insertLead(lead: Lead) {
     message: lead.message || null,
     source: lead.source,
     verified_at: new Date().toISOString(),
-  });
+  };
+
+  const { error } = await supabase
+    .from("microsite_leads")
+    .insert({ ...base, site: SITE });
+
+  if (error && /site/.test(error.message)) {
+    const retry = await supabase.from("microsite_leads").insert(base);
+    if (retry.error) {
+      console.error("Lead insert failed", retry.error.message);
+      return false;
+    }
+    return true;
+  }
 
   if (error) {
     console.error("Lead insert failed", error.message);
